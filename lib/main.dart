@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/firebase_options.dart';
+import 'package:nutrikmais/home_screen/home_view.dart';
 import 'package:nutrikmais/login_screen/login_view.dart';
 import 'package:nutrikmais/route_generator.dart';
 
@@ -31,6 +32,6 @@ class _RoutesState extends State<Routes> {
 
   @override
   Widget build(BuildContext context) {
-    return auth.currentUser != null ? const LoginView() : const LoginView();
+    return auth.currentUser != null ? const HomeView() : const LoginView();
   }
 }
