@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
+import 'package:nutrikmais/create_account_screen/models/create_account_model.dart';
+import 'package:nutrikmais/route_generator.dart';
 
 class CreateAccountService {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -39,11 +42,7 @@ class CreateAccountService {
   }
 
   static List<String> listCare() {
-    List<String> care = [
-      'Online',
-      'Presencial',
-      'Online/Presencial',
-    ];
+    List<String> care = ['Online', 'Presencial', 'Online/Presencial'];
     return care;
   }
 
@@ -57,5 +56,87 @@ class CreateAccountService {
       'Outros',
     ];
     return care;
+  }
+
+  Future<void> createUser(
+    BuildContext context,
+    String email,
+    String password,
+    String nameNutritionist,
+    String cpf,
+    String crn,
+    String state,
+    List<String> service,
+    String care,
+    String address,
+    String phone,
+    String typeUser,
+  ) async {
+    try {
+      final userCredential = await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      await completedRegister(
+        userCredential.user!.uid,
+        nameNutritionist,
+        cpf,
+        crn,
+        state,
+        service,
+        care,
+        address,
+        phone,
+        typeUser,
+      );
+
+      if (!context.mounted) return;
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        RouteGenerator.routeLogin,
+        (_) => false,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        debugPrint('A senha fornecida é muito fraca.');
+      } else if (e.code == 'email-already-in-use') {
+        debugPrint('Já existe uma conta para esse email.');
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> completedRegister(
+    String uid,
+    String nameNutritionist,
+    String cpf,
+    String crn,
+    String state,
+    List<String> service,
+    String care,
+    String address,
+    String phone,
+    String typeUser,
+  ) async {
+    final DBCreateAccountNutritionist nutritionist =
+        DBCreateAccountNutritionist();
+
+    nutritionist.uid = uid;
+    nutritionist.nameNutritionist = nameNutritionist;
+    nutritionist.cpf = cpf;
+    nutritionist.crn = crn;
+    nutritionist.state = state;
+    nutritionist.service = service;
+    nutritionist.care = care;
+    nutritionist.address = address;
+    nutritionist.phone = phone;
+    nutritionist.typeUser = typeUser;
+
+    await firestore
+        .collection("nutritionists")
+        .doc(uid)
+        .set(nutritionist.toMap(uid));
   }
 }

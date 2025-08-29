@@ -5,6 +5,7 @@ import 'package:nutrikmais/utils/customs_components/custom_button.dart';
 import 'package:nutrikmais/utils/customs_components/custom_dropdown.dart';
 import 'package:nutrikmais/utils/customs_components/custom_input_field.dart';
 import 'package:nutrikmais/utils/masks.dart';
+import 'package:nutrikmais/utils/customs_components/customs_multidropdown.dart';
 
 class FormNutritionist extends StatefulWidget {
   const FormNutritionist({super.key});
@@ -25,7 +26,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
   bool _isLoading = false;
 
   String? _selectedState;
-  String? _selectedService;
+  List<String> _selectedService = [];
   String? _selectedCare;
 
   @override
@@ -35,8 +36,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
       children: [
         const Text(
           "INFORMAÇÕES DO NUTRICIONISTA",
-          style:
-          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 10),
         CustomInputField(
@@ -49,15 +49,13 @@ class _FormNutritionistState extends State<FormNutritionist> {
           labelText: "CPF",
           hintText: "000.000.000-00",
           keyboardType: TextInputType.number,
-          inputFormatters: [
-            MasksInput.cpfFormatter,
-          ],
+          inputFormatters: [MasksInput.cpfFormatter],
         ),
         CustomInputField(
           controller: _controllerCRN,
           labelText: "CRN",
           hintText: "00.000.000-0",
-          keyboardType: TextInputType.number
+          keyboardType: TextInputType.number,
         ),
         const SizedBox(height: 10),
         CustomDropdown<String>(
@@ -83,17 +81,17 @@ class _FormNutritionistState extends State<FormNutritionist> {
           },
           labelText: 'TIPOS DE ATUAÇÃO',
         ),
-        const SizedBox(height: 10),
-        CustomDropdown<String>(
-          value: _selectedService,
-          hintText: 'Escolha uma área de atendimento',
+        CustomMultiSelectDropdown<String>(
+          hintText: 'Areas de atendimento',
+          labelText: 'ÁREAS DE ATENDIMENTO',
           items: CreateAccountService.listService(),
-          onChanged: (String? newValue) {
+          value: _selectedService,
+          selectItemfinal: _selectedService,
+          onChanged: (newValue) {
             setState(() {
               _selectedService = newValue;
             });
           },
-          labelText: 'ÁREA DE ATENDIMENTO',
         ),
         CustomInputField(
           controller: _controllerAddress,
@@ -108,24 +106,42 @@ class _FormNutritionistState extends State<FormNutritionist> {
           inputFormatters: [MasksInput.phoneFormatter],
         ),
         const SizedBox(height: 30),
-        const Text("INFORMAÇÕES DA CONTA",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        const Text(
+          "INFORMAÇÕES DA CONTA",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
         CustomInputField(
           controller: _controllerEmail,
           labelText: "EMAIL",
           hintText: "exemplo@email.com",
         ),
         CustomInputField(
-            controller: _controllerPassword,
-            labelText: "SENHA",
-            hintText: "******",
-            obscureText: true),
+          controller: _controllerPassword,
+          labelText: "SENHA",
+          hintText: "******",
+          obscureText: true,
+        ),
         const SizedBox(height: 20),
         CustomButton(
           onPressed: () async {
             setState(() {
               _isLoading = true;
             });
+
+            await CreateAccountService().createUser(
+              context,
+              _controllerEmail.text,
+              _controllerPassword.text,
+              _controllerNutritionist.text,
+              _controllerCPF.text,
+              _controllerCRN.text,
+              _selectedState!,
+              _selectedService,
+              _selectedCare!,
+              _controllerAddress.text,
+              _controllerPhone.text,
+              "nutritionist",
+            );
 
             setState(() {
               _isLoading = false;

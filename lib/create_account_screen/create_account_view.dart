@@ -17,121 +17,123 @@ class _CreateAccountViewState extends State<CreateAccountView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Voltar", style: TextStyle(color: Colors.white),),
+        title: const Text("Voltar", style: TextStyle(color: Colors.white)),
         shadowColor: Colors.black45,
         elevation: 10,
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: MyColors.myPrimary,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(15),
-          ),
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(15)),
         ),
       ),
       body: SafeArea(
-          child: SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "CRIAR CONTA",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Text(
-                      "CRIAR CONTA",
-                      style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Expanded(
-                          child: ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  _selectedButton = true;
-                                });
-                              },
-                              style: ButtonStyle(
-                                shape: WidgetStateProperty.resolveWith<
-                                    OutlinedBorder>(
-                                      (Set<WidgetState> states) {
-                                    return RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      side: BorderSide(
-                                        width:
-                                        _selectedButton == true ? 0.0 : 1.0,
-                                        color: _selectedButton == true
-                                            ? MyColors.myPrimary
-                                            : MyColors.myPrimary,
-                                      ),
-                                    );
-                                  },
-                                ),
-                                backgroundColor: WidgetStateProperty.all<Color>(
-                                  _selectedButton == true
-                                      ? MyColors.myPrimary
-                                      : MyColors.mySecondary,
-                                ),
-                                padding: WidgetStateProperty.all(
-                                    const EdgeInsets.symmetric(vertical: 12)),
-                              ),
-                              child: Text("Paciente",
-                                  style: TextStyle(
-                                      color: _selectedButton == true
-                                          ? Colors.white
-                                          : MyColors.myPrimary))),
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _selectedButton = false;
-                                  });
-                                },
-                                style: ButtonStyle(
-                                  shape: WidgetStateProperty.resolveWith<
-                                      OutlinedBorder>(
-                                        (Set<WidgetState> states) {
-                                      return RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(10.0),
-                                        side: BorderSide(
-                                          width: _selectedButton == false
-                                              ? 0.0
-                                              : 1.0,
-                                          color: _selectedButton == false
-                                              ? MyColors.myPrimary
-                                              : MyColors.myPrimary,
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  backgroundColor:
-                                  WidgetStateProperty.all<Color>(
-                                    _selectedButton == false
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          debugPrint("Paciente");
+                          setState(() {
+                            _selectedButton = true;
+                          });
+                        },
+                        style: ButtonStyle(
+                          shape:
+                              WidgetStateProperty.resolveWith<OutlinedBorder>((
+                                Set<WidgetState> states,
+                              ) {
+                                return RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  side: BorderSide(
+                                    width: _selectedButton == true ? 0.0 : 1.0,
+                                    color: _selectedButton == true
                                         ? MyColors.myPrimary
-                                        : MyColors.mySecondary,
+                                        : MyColors.myPrimary,
                                   ),
-                                  padding: WidgetStateProperty.all(
-                                      const EdgeInsets.symmetric(vertical: 12)),
-                                ),
-                                child: Text(
-                                  "Nutricionista",
-                                  style: TextStyle(
-                                      color: _selectedButton == false
-                                          ? Colors.white
-                                          : MyColors.myPrimary),
-                                )))
-                      ],
+                                );
+                              }),
+                          backgroundColor: WidgetStateProperty.all<Color>(
+                            _selectedButton == true
+                                ? MyColors.myPrimary
+                                : MyColors.mySecondary,
+                          ),
+                          padding: WidgetStateProperty.all(
+                            const EdgeInsets.symmetric(vertical: 12),
+                          ),
+                        ),
+                        child: Text(
+                          "Paciente",
+                          style: TextStyle(
+                            color: _selectedButton == true
+                                ? Colors.white
+                                : MyColors.myPrimary,
+                          ),
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 20),
-                    _selectedButton == true ? FormPatient() : FormNutritionist()
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _selectedButton = false;
+                          });
+                        },
+                        style: ButtonStyle(
+                          shape:
+                              WidgetStateProperty.resolveWith<OutlinedBorder>((
+                                Set<WidgetState> states,
+                              ) {
+                                return RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  side: BorderSide(
+                                    width: _selectedButton == false ? 0.0 : 1.0,
+                                    color: _selectedButton == false
+                                        ? MyColors.myPrimary
+                                        : MyColors.myPrimary,
+                                  ),
+                                );
+                              }),
+                          backgroundColor: WidgetStateProperty.all<Color>(
+                            _selectedButton == false
+                                ? MyColors.myPrimary
+                                : MyColors.mySecondary,
+                          ),
+                          padding: WidgetStateProperty.all(
+                            const EdgeInsets.symmetric(vertical: 12),
+                          ),
+                        ),
+                        child: Text(
+                          "Nutricionista",
+                          style: TextStyle(
+                            color: _selectedButton == false
+                                ? Colors.white
+                                : MyColors.myPrimary,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-              )
+                const SizedBox(height: 20),
+                _selectedButton == true ? FormPatient() : FormNutritionist(),
+              ],
             ),
-      )
+          ),
+        ),
+      ),
     );
   }
 }
