@@ -42,7 +42,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     color: MyColors.myPrimary,
                   ),
-                  height: 170,
+                  height: 120,
                   width: 70,
                 ),
                 TextButton(
@@ -105,7 +105,7 @@ class _LoginViewState extends State<LoginView> {
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
               ),
               margin: const EdgeInsets.symmetric(horizontal: 15),
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+              padding: const EdgeInsets.all(25),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -200,6 +200,7 @@ class _LoginViewState extends State<LoginView> {
                 ],
               ),
             ),
+            const SizedBox(height: 10),
           ],
         ),
       ),

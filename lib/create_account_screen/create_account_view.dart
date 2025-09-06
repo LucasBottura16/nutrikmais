@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/create_account_screen/components/form_nutritionist.dart';
 import 'package:nutrikmais/create_account_screen/components/form_patient.dart';
+import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 
 class CreateAccountView extends StatefulWidget {
@@ -16,15 +17,9 @@ class _CreateAccountViewState extends State<CreateAccountView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Voltar", style: TextStyle(color: Colors.white)),
-        shadowColor: Colors.black45,
-        elevation: 10,
-        iconTheme: const IconThemeData(color: Colors.white),
+      appBar: CustomAppBar(
+        title: "Criar Conta",
         backgroundColor: MyColors.myPrimary,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(15)),
-        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
