@@ -6,6 +6,7 @@ class CustomInputField extends StatelessWidget {
   final String labelText;
   final String hintText;
   final String? suffix;
+  final String? prefix;
   final TextStyle? hintStyle;
   final TextStyle? style;
   final TextInputType keyboardType;
@@ -34,6 +35,7 @@ class CustomInputField extends StatelessWidget {
     this.hintText = '',
     this.hintStyle,
     this.suffix,
+    this.prefix,
     this.style,
     this.keyboardType = TextInputType.text,
     this.inputFormatters,
@@ -61,11 +63,14 @@ class CustomInputField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: spacingHeight),
-        labelText == "Sem texto" ? const SizedBox() :
-        Text(
-          labelText,
-          style: labelTextStyle ?? const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-        ),
+        labelText == "Sem texto"
+            ? const SizedBox()
+            : Text(
+                labelText,
+                style:
+                    labelTextStyle ??
+                    const TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              ),
         TextFormField(
           controller: controller,
           keyboardType: keyboardType,
@@ -86,6 +91,7 @@ class CustomInputField extends StatelessWidget {
             prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
             suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
             suffix: suffix != null ? Text(suffix!) : null,
+            prefix: prefix != null ? Text(prefix!) : null,
             contentPadding: contentPadding,
             enabledBorder: enabledBorder,
             focusedBorder: focusedBorder,

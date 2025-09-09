@@ -54,8 +54,9 @@ class _FormNutritionistState extends State<FormNutritionist> {
         CustomInputField(
           controller: _controllerCRN,
           labelText: "CRN",
-          hintText: "00.000.000-0",
+          hintText: "3 12345",
           keyboardType: TextInputType.number,
+          prefix: "CRN-",
         ),
         const SizedBox(height: 10),
         CustomDropdown<String>(
@@ -134,7 +135,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
               _controllerPassword.text,
               _controllerNutritionist.text,
               _controllerCPF.text,
-              _controllerCRN.text,
+              "CRN-${_controllerCRN.text}",
               _selectedState!,
               _selectedService,
               _selectedCare!,

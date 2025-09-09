@@ -2,40 +2,40 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:flutter/services.dart';
 
 class MasksInput {
-
   static var currencyRealFormatter = CurrencyInputFormatter();
 
   static var cpfFormatter = MaskTextInputFormatter(
-      mask: '###.###.###-##', // Define a máscara do CPF
-      filter: {"#": RegExp(r'[0-9]')}, // Permite apenas dígitos de 0 a 9
-      type: MaskAutoCompletionType.lazy // Completa a máscara automaticamente
+    mask: '###.###.###-##', // Define a máscara do CPF
+    filter: {"#": RegExp(r'[0-9]')}, // Permite apenas dígitos de 0 a 9
+    type: MaskAutoCompletionType.lazy, // Completa a máscara automaticamente
   );
 
   static var phoneFormatter = MaskTextInputFormatter(
-      mask: '(##) #####-####', // Máscara para celular com 9 dígitos
-      filter: {"#": RegExp(r'[0-9]')}, // Permite apenas dígitos
-      type: MaskAutoCompletionType.lazy
+    mask: '(##) #####-####', // Máscara para celular com 9 dígitos
+    filter: {"#": RegExp(r'[0-9]')}, // Permite apenas dígitos
+    type: MaskAutoCompletionType.lazy,
   );
 
   static var cnpjFormatter = MaskTextInputFormatter(
-      mask: '##.###.###/####-##', // Define a máscara do CNPJ
-      filter: {"#": RegExp(r'[0-9]')}, // Permite apenas dígitos
-      type: MaskAutoCompletionType.lazy // Tipo de preenchimento da máscara
+    mask: '##.###.###/####-##', // Define a máscara do CNPJ
+    filter: {"#": RegExp(r'[0-9]')}, // Permite apenas dígitos
+    type: MaskAutoCompletionType.lazy, // Tipo de preenchimento da máscara
   );
-
 }
 
 class CurrencyInputFormatter extends MaskTextInputFormatter {
   CurrencyInputFormatter({String initialText = ''})
-      : super(
-    mask: 'R\$ #.###.###.##0,00', // Máscara para valor em Real
-    filter: {"#": RegExp(r'[0-9]')},
-    initialText: initialText,
-  );
+    : super(
+        mask: 'R\$ #.###.###.##0,00', // Máscara para valor em Real
+        filter: {"#": RegExp(r'[0-9]')},
+        initialText: initialText,
+      );
 
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     // Remove tudo que não for dígito da nova string
     String newText = newValue.text.replaceAll(RegExp(r'[^\d]'), '');
 
@@ -54,8 +54,12 @@ class CurrencyInputFormatter extends MaskTextInputFormatter {
     int value = int.parse(newText);
 
     // Formata o número como moeda
-    String formattedValue = (value / 100).toStringAsFixed(2); // Divide por 100 para obter o valor com decimais
-    List<String> parts = formattedValue.split('.'); // Separa parte inteira e decimal
+    String formattedValue = (value / 100).toStringAsFixed(
+      2,
+    ); // Divide por 100 para obter o valor com decimais
+    List<String> parts = formattedValue.split(
+      '.',
+    ); // Separa parte inteira e decimal
 
     String integerPart = parts[0];
     String decimalPart = parts[1];
@@ -65,7 +69,8 @@ class CurrencyInputFormatter extends MaskTextInputFormatter {
     for (int i = 0; i < integerPart.length; i++) {
       result += integerPart[i];
       // Adiciona ponto a cada 3 dígitos, exceto se for o último dígito ou se não houver mais 3 dígitos à frente
-      if ((integerPart.length - 1 - i) % 3 == 0 && (integerPart.length - 1 - i) != 0) {
+      if ((integerPart.length - 1 - i) % 3 == 0 &&
+          (integerPart.length - 1 - i) != 0) {
         result += '.';
       }
     }
