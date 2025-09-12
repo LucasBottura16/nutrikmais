@@ -147,7 +147,7 @@ class _PatientViewState extends State<PatientView> {
                                                       fit: BoxFit.cover,
                                                     )
                                                   : Image.network(
-                                                      myPatient.photo!,
+                                                      myPatient.photo,
                                                       width: 70,
                                                       height: 70,
                                                       fit: BoxFit.cover,
