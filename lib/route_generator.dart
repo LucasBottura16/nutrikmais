@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:nutrikmais/create_account_screen/create_account_view.dart';
 import 'package:nutrikmais/home_screen/home_view.dart';
 import 'package:nutrikmais/main.dart';
+import 'package:nutrikmais/patient_screen/add_pacient_screen/add_patient_view.dart';
+import 'package:nutrikmais/patient_screen/patient_view.dart';
 
 class RouteGenerator {
   static const String routeLogin = "/routes";
   static const String home = "/home";
   static const String createAccount = "/createAccount";
+  static const String patientScreen = "/patient_screen";
+  static const String addPatientScreen = "/add_patient_screen";
 
   static var args;
 
@@ -20,6 +24,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const HomeView());
       case createAccount:
         return MaterialPageRoute(builder: (_) => const CreateAccountView());
+      case patientScreen:
+        return MaterialPageRoute(builder: (_) => const PatientView());
+      case addPatientScreen:
+        return MaterialPageRoute(builder: (_) => const AddPatientView());
       default:
         _errorRoute();
     }
@@ -27,15 +35,13 @@ class RouteGenerator {
   }
 
   static Route<dynamic>? _errorRoute() {
-    return MaterialPageRoute(builder: (_) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text("Tela não encontrada"),
-        ),
-        body: const Center(
-          child: Text("Tela não encontrada"),
-        ),
-      );
-    });
+    return MaterialPageRoute(
+      builder: (_) {
+        return Scaffold(
+          appBar: AppBar(title: const Text("Tela não encontrada")),
+          body: const Center(child: Text("Tela não encontrada")),
+        );
+      },
+    );
   }
 }

@@ -39,7 +39,6 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          debugPrint("Paciente");
                           setState(() {
                             _selectedButton = true;
                           });

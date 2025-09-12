@@ -81,10 +81,132 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {
                         Navigator.pushNamedAndRemoveUntil(
                           context,
+                          RouteGenerator.home,
+                          (_) => false,
+                        );
+                      },
+                    ),
+                  ),
+                  Card(
+                    color: _currentScreen == "patient_screen"
+                        ? MyColors.myPrimary
+                        : Colors.white,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.person_pin,
+                        color: _currentScreen == "patient_screen"
+                            ? Colors.white
+                            : MyColors.myPrimary,
+                      ),
+                      title: Text(
+                        'Pacientes',
+                        style: TextStyle(
+                          color: _currentScreen == "patient_screen"
+                              ? Colors.white
+                              : MyColors.myPrimary,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RouteGenerator.patientScreen,
+                          (_) => false,
+                        );
+                      },
+                    ),
+                  ),
+                  Card(
+                    color: _currentScreen == "consults_screen"
+                        ? MyColors.myPrimary
+                        : Colors.white,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.calendar_month,
+                        color: _currentScreen == "consults_screen"
+                            ? Colors.white
+                            : MyColors.myPrimary,
+                      ),
+                      title: Text(
+                        'Consultas',
+                        style: TextStyle(
+                          color: _currentScreen == "consults_screen"
+                              ? Colors.white
+                              : MyColors.myPrimary,
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                  ),
+                  Card(
+                    color: _currentScreen == "food_plan_screem"
+                        ? MyColors.myPrimary
+                        : Colors.white,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.fastfood,
+                        color: _currentScreen == "food_plan_screem"
+                            ? Colors.white
+                            : MyColors.myPrimary,
+                      ),
+                      title: Text(
+                        'Plano Alimentar',
+                        style: TextStyle(
+                          color: _currentScreen == "food_plan_screem"
+                              ? Colors.white
+                              : MyColors.myPrimary,
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                  ),
+                  Card(
+                    color: _currentScreen == "bioimpedance_screen"
+                        ? MyColors.myPrimary
+                        : Colors.white,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.biotech,
+                        color: _currentScreen == "bioimpedance_screen"
+                            ? Colors.white
+                            : MyColors.myPrimary,
+                      ),
+                      title: Text(
+                        'Bioimpedância',
+                        style: TextStyle(
+                          color: _currentScreen == "bioimpedance_screen"
+                              ? Colors.white
+                              : MyColors.myPrimary,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
                           RouteGenerator.routeLogin,
                           (_) => false,
                         );
                       },
+                    ),
+                  ),
+                  Card(
+                    color: _currentScreen == "orientations_screen"
+                        ? MyColors.myPrimary
+                        : Colors.white,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.note_alt_sharp,
+                        color: _currentScreen == "orientations_screen"
+                            ? Colors.white
+                            : MyColors.myPrimary,
+                      ),
+                      title: Text(
+                        'Orientações',
+                        style: TextStyle(
+                          color: _currentScreen == "orientations_screen"
+                              ? Colors.white
+                              : MyColors.myPrimary,
+                        ),
+                      ),
+                      onTap: () {},
                     ),
                   ),
                 ],

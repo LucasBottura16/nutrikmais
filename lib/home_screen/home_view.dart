@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nutrikmais/home_screen/home_service.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/my_drawer.dart';
@@ -11,6 +12,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    HomeService.getMyDetails();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

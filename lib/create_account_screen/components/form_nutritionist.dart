@@ -129,7 +129,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
               _isLoading = true;
             });
 
-            await CreateAccountService().createUser(
+            await CreateAccountService().createNutritionist(
               context,
               _controllerEmail.text,
               _controllerPassword.text,
