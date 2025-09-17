@@ -3,6 +3,7 @@ import 'package:nutrikmais/home_screen/home_service.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/my_drawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -12,10 +13,25 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  String _nome = "";
+
+  _verifyAccount() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _nome = prefs.getString('nameLogged') ?? '';
+
+    if (_nome.isEmpty) {
+      debugPrint("buscando no banco...");
+      await HomeService.getMyDetails();
+    }
+    setState(() {
+      _nome = prefs.getString('nameLogged') ?? '';
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    HomeService.getMyDetails();
+    _verifyAccount();
   }
 
   @override
@@ -29,8 +45,8 @@ class _HomeViewState extends State<HomeView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Olá, Karine Fernandes',
+              Text(
+                'Olá, $_nome!',
                 style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),

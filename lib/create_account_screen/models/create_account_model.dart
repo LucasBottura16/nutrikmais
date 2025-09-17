@@ -10,6 +10,7 @@ class DBCreateAccountNutritionist {
   String? _care;
   String? _address;
   String? _phone;
+  String? _photo;
   String? _typeUser = "Nutritionist";
 
   DBCreateAccountNutritionist();
@@ -27,6 +28,7 @@ class DBCreateAccountNutritionist {
     address = documentSnapshot["address"];
     phone = documentSnapshot["phone"];
     typeUser = documentSnapshot["typeUser"];
+    photo = documentSnapshot["photo"];
   }
 
   Map<String, dynamic> toMap(uid) {
@@ -42,6 +44,7 @@ class DBCreateAccountNutritionist {
         'address': _address,
         'phone': _phone,
         'typeUser': _typeUser,
+        'photo': "null",
       };
     }
 
@@ -74,6 +77,9 @@ class DBCreateAccountNutritionist {
 
   String get phone => _phone!;
   set phone(String value) => _phone = value;
+
+  String get photo => _photo!;
+  set photo(String value) => _photo = value;
 
   String get typeUser => _typeUser!;
   set typeUser(String value) => _typeUser = value;

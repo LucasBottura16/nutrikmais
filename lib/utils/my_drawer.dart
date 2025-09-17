@@ -15,11 +15,51 @@ class MyDrawer extends StatefulWidget {
 
 class _MyDrawerState extends State<MyDrawer> {
   late String _currentScreen;
+  String _nome = "";
+  String _photo = "";
+  String _typeUser = "";
+
+  _verifyAccount() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _nome = prefs.getString('nameLogged') ?? '';
+      _photo = prefs.getString('photoLogged') ?? '';
+      _typeUser = prefs.getString('typeUser') ?? '';
+    });
+    debugPrint(_typeUser);
+  }
+
+  _singoutAccount() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    const List<String> allPossibleKeys = [
+      "uidLogged",
+      "nameLogged",
+      "typeUser",
+      "photoLogged",
+    ];
+
+    for (final key in allPossibleKeys) {
+      if (prefs.containsKey(key)) {
+        await prefs.remove(key);
+      }
+    }
+
+    await auth.signOut().then(
+      (value) => Navigator.pushNamedAndRemoveUntil(
+        context,
+        RouteGenerator.routeLogin,
+        (_) => false,
+      ),
+    );
+  }
 
   @override
   void initState() {
     super.initState();
     _currentScreen = widget.screen;
+    _verifyAccount();
   }
 
   @override
@@ -35,21 +75,56 @@ class _MyDrawerState extends State<MyDrawer> {
                 children: [
                   const SizedBox(height: 25),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        RouteGenerator.profileScreen,
+                        (_) => false,
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: SizedBox(
-                            height: 70,
-                            width: 70,
-                            child: Container(
-                              color: Colors.grey.shade400,
-                              height: 70,
-                              width: 70,
+                        Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: _photo == "null" || _photo == ""
+                                  ? Image.asset(
+                                      "images/Logo.png",
+                                      color: MyColors.myPrimary,
+                                      width: 70,
+                                      height: 70,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.network(
+                                      _photo,
+                                      width: 70,
+                                      height: 70,
+                                      fit: BoxFit.cover,
+                                    ),
                             ),
-                          ),
+                            const SizedBox(width: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _nome,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                Text(
+                                  "Acessar perfil",
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                         const Icon(
                           Icons.keyboard_arrow_right_outlined,
@@ -87,34 +162,35 @@ class _MyDrawerState extends State<MyDrawer> {
                       },
                     ),
                   ),
-                  Card(
-                    color: _currentScreen == "patient_screen"
-                        ? MyColors.myPrimary
-                        : Colors.white,
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.person_pin,
-                        color: _currentScreen == "patient_screen"
-                            ? Colors.white
-                            : MyColors.myPrimary,
-                      ),
-                      title: Text(
-                        'Pacientes',
-                        style: TextStyle(
+                  if (_typeUser == "nutritionist")
+                    Card(
+                      color: _currentScreen == "patient_screen"
+                          ? MyColors.myPrimary
+                          : Colors.white,
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.person_pin,
                           color: _currentScreen == "patient_screen"
                               ? Colors.white
                               : MyColors.myPrimary,
                         ),
+                        title: Text(
+                          'Pacientes',
+                          style: TextStyle(
+                            color: _currentScreen == "patient_screen"
+                                ? Colors.white
+                                : MyColors.myPrimary,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            RouteGenerator.patientScreen,
+                            (_) => false,
+                          );
+                        },
                       ),
-                      onTap: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          RouteGenerator.patientScreen,
-                          (_) => false,
-                        );
-                      },
                     ),
-                  ),
                   Card(
                     color: _currentScreen == "consults_screen"
                         ? MyColors.myPrimary
@@ -220,14 +296,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onTap: () {
-                    FirebaseAuth auth = FirebaseAuth.instance;
-                    auth.signOut().then(
-                      (value) => Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        RouteGenerator.routeLogin,
-                        (_) => false,
-                      ),
-                    );
+                    _singoutAccount();
                   },
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeService {
@@ -7,33 +8,94 @@ class HomeService {
 
   static Future<void> getMyDetails() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    await firestore
-        .collection("Nutritionists")
-        .doc(auth.currentUser!.uid)
-        .get()
-        .then((value) => _details(value));
+    final userUid = auth.currentUser!.uid;
+
+    try {
+      final nutritionistDoc = await firestore
+          .collection("Nutritionists")
+          .doc(userUid)
+          .get();
+
+      if (nutritionistDoc.exists && nutritionistDoc.data() != null) {
+        await _details(nutritionistDoc, "nutritionist");
+        return;
+      }
+
+      final patientQuery = await firestore
+          .collection("Patients")
+          .where("uidPatient", isEqualTo: userUid)
+          .get();
+
+      if (patientQuery.docs.isNotEmpty) {
+        final patientDoc = patientQuery.docs.first;
+        await _details(patientDoc, "patient");
+        return;
+      }
+
+      debugPrint(
+        "Usuário não encontrado nas coleções Nutritionists ou Patients",
+      );
+    } catch (e) {
+      debugPrint("Erro ao buscar detalhes do usuário: $e");
+    }
   }
 
-  static Future<void> _details(DocumentSnapshot? myDetails) async {
-    if (myDetails != null && myDetails.data() != null) {
+  static Future<void> _details(
+    DocumentSnapshot myDetails,
+    String userType,
+  ) async {
+    try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-
       var details = myDetails.data() as Map<String, dynamic>;
 
-      String typeUser = details["typeUser"];
+      debugPrint("Detalhes do usuário: $details");
+      debugPrint("Tipo de usuário: $userType");
 
-      switch (typeUser) {
+      switch (userType) {
         case "nutritionist":
-          prefs.setString("nameNutritionist", details["nameNutritionist"]);
-          prefs.setString("crnNutritionist", details["crn"]);
+          prefs.setString("uidLogged", details["uid"] ?? "");
+          prefs.setString("nameLogged", details["nameNutritionist"] ?? "");
+          prefs.setString("photoLogged", details["photo"] ?? "");
+
+          prefs.setString("crnNutritionist", details["crn"] ?? "");
+          prefs.setString("cpf", details["cpf"] ?? "");
+          prefs.setString("state", details["state"] ?? "");
+          prefs.setString("address", details["address"] ?? "");
+          prefs.setString("phone", details["phone"] ?? "");
+
+          //prefs.setString("care", details["care"] ?? "");
+          //prefs.setString("service", details["service"] ?? "");
+          prefs.setString("typeUser", details["typeUser"]);
           break;
         case "patient":
-          prefs.setString("namePatient", details["patient"]);
-          prefs.setString("codePatient", details["codePatient"]);
+          prefs.setString("uidLogged", details["uidPatient"] ?? "");
+          prefs.setString("nameLogged", details["patient"] ?? "");
+          prefs.setString("photoLogged", details["photo"] ?? "");
+
+          prefs.setString(
+            "nameNutritionist",
+            details["nameNutritionist"] ?? "",
+          );
+          prefs.setString("crnNutritionist", details["crnNutritionist"] ?? "");
+          prefs.setString("uidNutritionist", details["uidNutritionist"] ?? "");
+
+          prefs.setString("patient", details["patient"] ?? "");
+          prefs.setString("age", details["age"] ?? "");
+          prefs.setString("cpf", details["cpf"] ?? "");
+          prefs.setString("gender", details["gender"] ?? "");
+          prefs.setString("address", details["address"] ?? "");
+          prefs.setString("phone", details["phone"] ?? "");
+          prefs.setString("email", details["email"] ?? "");
+
+          prefs.setString("lastschedule", details["lastschedule"] ?? "");
+          prefs.setString("typeUser", details["typeUser"] ?? "");
+          prefs.setString("uidAccount", details["uidAccount"] ?? "");
           break;
         default:
           break;
       }
+    } catch (e) {
+      debugPrint("Erro ao salvar detalhes: $e");
     }
   }
 }

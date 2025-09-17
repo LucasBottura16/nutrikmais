@@ -98,7 +98,14 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ],
             ),
-            Center(child: Image.asset("images/Logo.png", fit: BoxFit.contain)),
+            Center(
+              child: Image.asset(
+                "images/Logo.png",
+                fit: BoxFit.cover,
+                width: 320,
+                height: 320,
+              ),
+            ),
             Container(
               decoration: BoxDecoration(
                 color: MyColors.myPrimary,
