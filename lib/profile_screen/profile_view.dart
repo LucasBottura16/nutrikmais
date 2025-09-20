@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/profile_service.dart';
+import 'package:nutrikmais/route_generator.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_image_picker.dart';
@@ -40,7 +41,7 @@ class _ProfileViewState extends State<ProfileView> {
     _verifyAccount();
   }
 
-  Widget _buildInfoTile(IconData icon, String title) {
+  Widget _buildInfoTile(IconData icon, String title, String route) {
     return ListTile(
       leading: Icon(icon, color: Colors.grey[600]),
       title: Text(
@@ -52,7 +53,9 @@ class _ProfileViewState extends State<ProfileView> {
         size: 16,
         color: Colors.grey[400],
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, route);
+      },
     );
   }
 
@@ -103,18 +106,28 @@ class _ProfileViewState extends State<ProfileView> {
                       _buildInfoTile(
                         Icons.assignment,
                         'Planos de nutricionista',
+                        "",
                       ),
                       Divider(),
                       _buildInfoTile(
                         Icons.person_outline,
                         'Informações do nutricionista',
+                        "",
                       ),
                       Divider(),
-                      _buildInfoTile(Icons.settings, 'Serviços'),
+                      _buildInfoTile(Icons.settings, 'Serviços', ""),
                       Divider(),
-                      _buildInfoTile(Icons.restaurant_menu, 'Alimentos'),
+                      _buildInfoTile(
+                        Icons.restaurant_menu,
+                        'Alimentos',
+                        RouteGenerator.profileFoodScreen,
+                      ),
                       Divider(),
-                      _buildInfoTile(Icons.calendar_today, 'Agendas'),
+                      _buildInfoTile(
+                        Icons.calendar_today,
+                        'Agendas',
+                        RouteGenerator.profileConsultationsScreen,
+                      ),
                       Divider(),
                     ],
                   )
@@ -124,25 +137,29 @@ class _ProfileViewState extends State<ProfileView> {
                       _buildInfoTile(
                         Icons.accessibility_new_outlined,
                         'Evolução',
+                        "",
                       ),
                       Divider(),
                       _buildInfoTile(
                         Icons.person_outline,
                         'Informações pessoais',
+                        "",
                       ),
                       Divider(),
-                      _buildInfoTile(Icons.calendar_today, 'Consultas'),
+                      _buildInfoTile(Icons.calendar_today, 'Consultas', ""),
                       Divider(),
                       _buildInfoTile(
                         Icons.restaurant_menu,
                         'Planos Alimentares',
+                        "",
                       ),
                       Divider(),
-                      _buildInfoTile(Icons.biotech, 'Bioimpedâncias'),
+                      _buildInfoTile(Icons.biotech, 'Bioimpedâncias', ""),
                       Divider(),
                       _buildInfoTile(
                         Icons.assignment,
                         'Dados do nutricionista',
+                        "",
                       ),
                       Divider(),
                     ],

@@ -72,6 +72,7 @@ flutter:
     - images/icon_insta.png
     - images/icon_whats.png
     - images/icon_site.png
+    - images/tabela_taco.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
