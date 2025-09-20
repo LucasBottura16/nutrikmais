@@ -18,7 +18,13 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
         title: "Consultas",
         backgroundColor: MyColors.myPrimary,
       ),
-      body: SingleChildScrollView(child: Column(children: [Text("data")])),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(children: [
+            
+            ]
+            ),
+      ),
     );
   }
 }

@@ -6,17 +6,22 @@ import 'package:nutrikmais/patient_screen/add_pacient_screen/add_patient_view.da
 import 'package:nutrikmais/patient_screen/patient_view.dart';
 import 'package:nutrikmais/profile_screen/profile_consultations_screen/profile_consultations_view.dart';
 import 'package:nutrikmais/profile_screen/profile_food_screen/profile_food_view.dart';
+import 'package:nutrikmais/profile_screen/profile_services_screen/profile_services_view.dart';
 import 'package:nutrikmais/profile_screen/profile_view.dart';
 
 class RouteGenerator {
   static const String routeLogin = "/routes";
   static const String home = "/home";
   static const String createAccount = "/createAccount";
+
   static const String patientScreen = "/patient_screen";
   static const String addPatientScreen = "/add_patient_screen";
+
   static const String profileScreen = "/profile_screen";
-  static const String profileConsultationsScreen = "/consultations_screen";
-  static const String profileFoodScreen = "/food_screen";
+  static const String profileConsultationsScreen =
+      "/profile_consultations_screen";
+  static const String profileFoodScreen = "/profile_food_screen";
+  static const String profileServicesScreen = "/profile_services_screen";
 
   static var args;
 
@@ -40,6 +45,8 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const ProfileConsultationsView(),
         );
+      case profileServicesScreen:
+        return MaterialPageRoute(builder: (_) => const ProfileServicesView());
       case profileFoodScreen:
         return MaterialPageRoute(builder: (_) => const TabelaAlimentosView());
       default:

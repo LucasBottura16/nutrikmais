@@ -115,7 +115,11 @@ class _ProfileViewState extends State<ProfileView> {
                         "",
                       ),
                       Divider(),
-                      _buildInfoTile(Icons.settings, 'Serviços', ""),
+                      _buildInfoTile(
+                        Icons.settings,
+                        'Serviços',
+                        RouteGenerator.profileServicesScreen,
+                      ),
                       Divider(),
                       _buildInfoTile(
                         Icons.restaurant_menu,
