@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/profile_screen/profile_food_screen/profile_food_model.dart';
+import 'package:nutrikmais/profile_screen/profile_food_screen/models/profile_food_model.dart';
 import 'package:nutrikmais/profile_screen/profile_food_screen/profile_food_service.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
