@@ -26,7 +26,6 @@ class _MyDrawerState extends State<MyDrawer> {
       _photo = prefs.getString('photoLogged') ?? '';
       _typeUser = prefs.getString('typeUser') ?? '';
     });
-    debugPrint(_typeUser);
   }
 
   _singoutAccount() async {

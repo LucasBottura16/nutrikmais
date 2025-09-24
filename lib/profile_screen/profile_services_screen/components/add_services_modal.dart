@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/profile_screen/profile_service.dart';
 import 'package:nutrikmais/profile_screen/profile_services_screen/profile_services_service.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';

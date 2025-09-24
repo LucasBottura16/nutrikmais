@@ -62,23 +62,31 @@ class HomeService {
           prefs.setString("state", details["state"] ?? "");
           prefs.setString("address", details["address"] ?? "");
           prefs.setString("phone", details["phone"] ?? "");
+          prefs.setString("care", details["care"] ?? "");
 
-          //prefs.setString("care", details["care"] ?? "");
-          //prefs.setString("service", details["service"] ?? "");
+          List<String> serviceList = [];
+
+          final dynamic serviceValue = details['service'];
+
+          if (serviceValue is List) {
+            serviceList = serviceValue.cast<String>();
+          } else if (serviceValue is String) {
+            serviceList = serviceValue.split(',').map((s) => s.trim()).toList();
+          }
+          await prefs.setStringList("service", serviceList);
+
           prefs.setString("typeUser", details["typeUser"]);
           break;
         case "patient":
           prefs.setString("uidLogged", details["uidPatient"] ?? "");
           prefs.setString("nameLogged", details["patient"] ?? "");
           prefs.setString("photoLogged", details["photo"] ?? "");
-
           prefs.setString(
             "nameNutritionist",
             details["nameNutritionist"] ?? "",
           );
           prefs.setString("crnNutritionist", details["crnNutritionist"] ?? "");
           prefs.setString("uidNutritionist", details["uidNutritionist"] ?? "");
-
           prefs.setString("patient", details["patient"] ?? "");
           prefs.setString("age", details["age"] ?? "");
           prefs.setString("cpf", details["cpf"] ?? "");
@@ -86,7 +94,6 @@ class HomeService {
           prefs.setString("address", details["address"] ?? "");
           prefs.setString("phone", details["phone"] ?? "");
           prefs.setString("email", details["email"] ?? "");
-
           prefs.setString("lastschedule", details["lastschedule"] ?? "");
           prefs.setString("typeUser", details["typeUser"] ?? "");
           prefs.setString("uidAccount", details["uidAccount"] ?? "");

@@ -84,11 +84,34 @@ class _ProfileViewState extends State<ProfileView> {
             SizedBox(
               width: 150,
               height: 150,
-              child: ImageSelectionButton(
-                currentImagePath: _pickerValue,
-                onImageSelected: _setPicker,
-                buttonBackgroundColor: MyColors.myPrimary,
-                borderRadius: 100.0,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ImageSelectionButton(
+                    currentImagePath: _pickerValue,
+                    onImageSelected: _setPicker,
+                    buttonBackgroundColor: MyColors.myPrimary,
+                    borderRadius: 100.0,
+                  ),
+
+                  Positioned(
+                    bottom: 5,
+                    right: 5,
+                    child: Container(
+                      padding: const EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                        color: MyColors.myPrimary,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 2),
+                      ),
+                      child: const Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                        size: 17,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Text(
@@ -106,13 +129,13 @@ class _ProfileViewState extends State<ProfileView> {
                       _buildInfoTile(
                         Icons.assignment,
                         'Planos de nutricionista',
-                        "",
+                        RouteGenerator.profilePlansScreen,
                       ),
                       Divider(),
                       _buildInfoTile(
                         Icons.person_outline,
                         'Informações do nutricionista',
-                        "",
+                        RouteGenerator.profileInfosScreen,
                       ),
                       Divider(),
                       _buildInfoTile(
