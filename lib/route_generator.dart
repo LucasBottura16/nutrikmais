@@ -4,11 +4,11 @@ import 'package:nutrikmais/home_screen/home_view.dart';
 import 'package:nutrikmais/main.dart';
 import 'package:nutrikmais/patient_screen/add_pacient_screen/add_patient_view.dart';
 import 'package:nutrikmais/patient_screen/patient_view.dart';
-import 'package:nutrikmais/profile_screen/profile_consultations_screen/profile_consultations_view.dart';
-import 'package:nutrikmais/profile_screen/profile_food_screen/profile_food_view.dart';
-import 'package:nutrikmais/profile_screen/profile_infos_screen/profile_infos_view.dart';
-import 'package:nutrikmais/profile_screen/profile_plans_screen/profile_plans_view.dart';
-import 'package:nutrikmais/profile_screen/profile_services_screen/profile_services_view.dart';
+import 'package:nutrikmais/profile_screen/nutritionist/profile_consultations_screen/profile_consultations_view.dart';
+import 'package:nutrikmais/profile_screen/nutritionist/profile_food_screen/profile_food_view.dart';
+import 'package:nutrikmais/profile_screen/nutritionist/profile_infos_screen/profile_infos_view.dart';
+import 'package:nutrikmais/profile_screen/nutritionist/profile_plans_screen/profile_plans_view.dart';
+import 'package:nutrikmais/profile_screen/nutritionist/profile_services_screen/profile_services_view.dart';
 import 'package:nutrikmais/profile_screen/profile_view.dart';
 
 class RouteGenerator {

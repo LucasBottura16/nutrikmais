@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nutrikmais/profile_screen/profile_services_screen/models/profile_services_model.dart';
+import 'package:nutrikmais/profile_screen/nutritionist/profile_services_screen/models/profile_services_model.dart';
 import 'package:nutrikmais/utils/random_key.dart';
 
 class ProfileServicesService {

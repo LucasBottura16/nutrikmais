@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:nutrikmais/profile_screen/profile_consultations_screen/profile_consultations_service.dart';
+import 'package:nutrikmais/profile_screen/nutritionist/profile_consultations_screen/profile_consultations_service.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
