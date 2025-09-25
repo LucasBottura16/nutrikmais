@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/profile_screen/nutritionist/profile_services_screen/components/add_services_modal.dart';
-import 'package:nutrikmais/profile_screen/nutritionist/profile_services_screen/models/profile_services_model.dart';
-import 'package:nutrikmais/profile_screen/nutritionist/profile_services_screen/profile_services_service.dart';
+import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/components/add_services_modal.dart';
+import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/models/profile_services_model.dart';
+import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/profile_services_service.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';

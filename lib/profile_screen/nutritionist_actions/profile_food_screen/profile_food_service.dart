@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:nutrikmais/profile_screen/nutritionist/profile_food_screen/models/profile_food_model.dart';
+import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_food_screen/models/profile_food_model.dart';
 
 class AlimentoService {
   static Future<List<Alimento>> carregarAlimentos() async {

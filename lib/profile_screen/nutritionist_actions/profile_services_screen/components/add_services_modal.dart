@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/profile_screen/nutritionist/profile_services_screen/profile_services_service.dart';
+import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/profile_services_service.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
 import 'package:nutrikmais/utils/customs_components/custom_input_field.dart';
