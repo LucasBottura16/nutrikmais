@@ -5,19 +5,20 @@ import 'package:nutrikmais/firebase_options.dart';
 import 'package:nutrikmais/home_screen/home_view.dart';
 import 'package:nutrikmais/login_screen/login_view.dart';
 import 'package:nutrikmais/route_generator.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  await initializeDateFormatting('pt_BR', null);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  runApp(
+    const MaterialApp(
+      home: Routes(),
+      initialRoute: "/",
+      onGenerateRoute: RouteGenerator.generateRoute,
+      debugShowCheckedModeBanner: false,
+    ),
   );
-  runApp(const MaterialApp(
-    home: Routes(),
-    initialRoute: "/",
-    onGenerateRoute: RouteGenerator.generateRoute,
-    debugShowCheckedModeBanner: false,
-  ));
 }
 
 class Routes extends StatefulWidget {
