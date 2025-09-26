@@ -162,31 +162,15 @@ class _ProfileViewState extends State<ProfileView> {
                     children: [
                       Divider(),
                       _buildInfoTile(
-                        Icons.accessibility_new_outlined,
-                        'Evolução',
-                        "",
-                      ),
-                      Divider(),
-                      _buildInfoTile(
                         Icons.person_outline,
                         'Informações pessoais',
-                        "",
+                        RouteGenerator.profileInfosPatientScreen,
                       ),
-                      Divider(),
-                      _buildInfoTile(Icons.calendar_today, 'Consultas', ""),
-                      Divider(),
-                      _buildInfoTile(
-                        Icons.restaurant_menu,
-                        'Planos Alimentares',
-                        "",
-                      ),
-                      Divider(),
-                      _buildInfoTile(Icons.biotech, 'Bioimpedâncias', ""),
                       Divider(),
                       _buildInfoTile(
                         Icons.assignment,
                         'Dados do nutricionista',
-                        "",
+                        RouteGenerator.profileMyNutriScreen,
                       ),
                       Divider(),
                     ],

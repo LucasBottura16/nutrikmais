@@ -9,6 +9,9 @@ import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_food_scre
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_infos_screen/profile_infos_view.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_plans_screen/profile_plans_view.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/profile_services_view.dart';
+import 'package:nutrikmais/profile_screen/patient_actions/profile_evolution_screen/profile_evolution_view.dart';
+import 'package:nutrikmais/profile_screen/patient_actions/profile_infos_patient_screen/profile_infos_patient_view.dart';
+import 'package:nutrikmais/profile_screen/patient_actions/profile_my_nutri_screen/profile_my_nutri_view.dart';
 import 'package:nutrikmais/profile_screen/profile_view.dart';
 
 class RouteGenerator {
@@ -26,6 +29,10 @@ class RouteGenerator {
   static const String profileServicesScreen = "/profile_services_screen";
   static const String profilePlansScreen = "/profile_plans_screen";
   static const String profileInfosScreen = "/profile_infos_screen";
+  static const String profileEvolutionScreen = "/profile_evolution_screen";
+  static const String profileMyNutriScreen = "/profile_my_nutri_screen";
+  static const String profileInfosPatientScreen =
+      "/profile_infos_patient_screen";
 
   static var args;
 
@@ -57,6 +64,14 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ProfilePlansView());
       case profileInfosScreen:
         return MaterialPageRoute(builder: (_) => const ProfileInfosView());
+      case profileEvolutionScreen:
+        return MaterialPageRoute(builder: (_) => const ProfileEvolutionView());
+      case profileMyNutriScreen:
+        return MaterialPageRoute(builder: (_) => const ProfileMyNutriView());
+      case profileInfosPatientScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProfileInfosPatientView(),
+        );
       default:
         _errorRoute();
     }

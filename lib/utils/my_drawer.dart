@@ -284,6 +284,28 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () {},
                     ),
                   ),
+                  Card(
+                    color: _currentScreen == "Evolution_screen"
+                        ? MyColors.myPrimary
+                        : Colors.white,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.accessibility_new_outlined,
+                        color: _currentScreen == "Evolution_screen"
+                            ? Colors.white
+                            : MyColors.myPrimary,
+                      ),
+                      title: Text(
+                        'Evolução',
+                        style: TextStyle(
+                          color: _currentScreen == "Evolution_screen"
+                              ? Colors.white
+                              : MyColors.myPrimary,
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                  ),
                 ],
               ),
               Card(
