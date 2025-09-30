@@ -9,7 +9,7 @@ import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_food_scre
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_infos_screen/profile_infos_view.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_plans_screen/profile_plans_view.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/profile_services_view.dart';
-import 'package:nutrikmais/profile_screen/patient_actions/profile_evolution_screen/profile_evolution_view.dart';
+import 'package:nutrikmais/evolution_screen/evolution_view.dart';
 import 'package:nutrikmais/profile_screen/patient_actions/profile_infos_patient_screen/profile_infos_patient_view.dart';
 import 'package:nutrikmais/profile_screen/patient_actions/profile_my_nutri_screen/profile_my_nutri_view.dart';
 import 'package:nutrikmais/profile_screen/profile_view.dart';
@@ -65,7 +65,7 @@ class RouteGenerator {
       case profileInfosScreen:
         return MaterialPageRoute(builder: (_) => const ProfileInfosView());
       case profileEvolutionScreen:
-        return MaterialPageRoute(builder: (_) => const ProfileEvolutionView());
+        return MaterialPageRoute(builder: (_) => const EvolutionView());
       case profileMyNutriScreen:
         return MaterialPageRoute(builder: (_) => const ProfileMyNutriView());
       case profileInfosPatientScreen:

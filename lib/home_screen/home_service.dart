@@ -87,11 +87,16 @@ class HomeService {
           );
           prefs.setString("crnNutritionist", details["crnNutritionist"] ?? "");
           prefs.setString("uidNutritionist", details["uidNutritionist"] ?? "");
+          prefs.setString(
+            "phoneNutritionist",
+            details["phoneNutritionist"] ?? "",
+          );
           prefs.setString("patient", details["patient"] ?? "");
           prefs.setString("age", details["age"] ?? "");
           prefs.setString("cpf", details["cpf"] ?? "");
           prefs.setString("gender", details["gender"] ?? "");
           prefs.setString("address", details["address"] ?? "");
+          prefs.setString("codePatient", details["codePatient"] ?? "");
           prefs.setString("phone", details["phone"] ?? "");
           prefs.setString("email", details["email"] ?? "");
           prefs.setString("lastschedule", details["lastschedule"] ?? "");

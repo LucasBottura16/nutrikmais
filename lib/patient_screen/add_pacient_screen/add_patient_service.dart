@@ -74,6 +74,7 @@ class AddPatientService {
     patients.cpf = "";
     patients.uidPatient = "";
     patients.codePatient = RandomKeys().generateRandomCode();
+    patients.phoneNutritionist = prefs.getString('phone') ?? '';
 
     String uid = RandomKeys().generateRandomString();
 

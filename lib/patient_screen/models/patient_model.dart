@@ -17,6 +17,7 @@ class DBPatientModel {
   String? _nameNutritionist;
   String? _crnNutritionist;
   String? _uidNutritionist;
+  String? _phoneNutritionist;
 
   DBPatientModel();
 
@@ -39,6 +40,7 @@ class DBPatientModel {
     crnNutritionist = documentSnapshot['crnNutritionist'];
     cpf = documentSnapshot['cpf'];
     uidPatient = documentSnapshot['uidPatient'];
+    phoneNutritionist = documentSnapshot['phoneNutritionist'];
   }
 
   Map<String, dynamic> toMap(uidAccount, uidNutritionist) {
@@ -60,10 +62,16 @@ class DBPatientModel {
         'crnNutritionist': _crnNutritionist,
         'uidNutritionist': uidNutritionist,
         'uidPatient': _uidPatient,
+        'phoneNutritionist': _phoneNutritionist,
       };
     }
 
     return map();
+  }
+
+  String get phoneNutritionist => _phoneNutritionist!;
+  set phoneNutritionist(String? value) {
+    _phoneNutritionist = value;
   }
 
   String get uidPatient => _uidPatient!;

@@ -45,13 +45,8 @@ class _ProfileInfosViewState extends State<ProfileInfosView> {
     final state = prefs.getString('state') ?? '';
     final cpf = prefs.getString('cpf') ?? '';
     final care = prefs.getString('care') ?? '';
-    final typeUser = prefs.getString('typeUser') ?? '';
-
     final services = prefs.getStringList('service') ?? [];
-
-    final uidValue = typeUser == "nutritionist"
-        ? prefs.getString('uidLogged') ?? ""
-        : prefs.getString('uidAccount') ?? "";
+    final uidValue = prefs.getString('uidLogged') ?? "";
 
     setState(() {
       _nameNutri = name;
@@ -84,7 +79,6 @@ class _ProfileInfosViewState extends State<ProfileInfosView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // O restante do seu build method continua igual...
                     const Text(
                       'Informações do Nutricionista',
                       style: TextStyle(

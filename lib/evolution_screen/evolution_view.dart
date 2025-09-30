@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 
-class ProfileEvolutionView extends StatefulWidget {
-  const ProfileEvolutionView({super.key});
+class EvolutionView extends StatefulWidget {
+  const EvolutionView({super.key});
 
   @override
-  State<ProfileEvolutionView> createState() => _ProfileEvolutionViewState();
+  State<EvolutionView> createState() => _EvolutionViewState();
 }
 
-class _ProfileEvolutionViewState extends State<ProfileEvolutionView> {
+class _EvolutionViewState extends State<EvolutionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
