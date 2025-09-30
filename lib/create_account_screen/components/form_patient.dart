@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/create_account_screen/create_account_service.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
@@ -25,7 +26,27 @@ class _FormPatientState extends State<FormPatient> {
 
   DBPatientModel? foundPatient;
 
+  String? _nameNutritionist;
+  String? _crnNutritionist;
+
   bool _isLoading = false;
+
+  Future getNutritionistInfo() async {
+    final uidNutritionist = foundPatient?.uidNutritionistPatient ?? '';
+
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot doc = await firestore
+        .collection('Nutritionists')
+        .doc(uidNutritionist)
+        .get();
+
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    setState(() {
+      _nameNutritionist = data['nameNutritionist'] ?? '';
+      _crnNutritionist = data['crn'] ?? '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,13 +76,13 @@ class _FormPatientState extends State<FormPatient> {
                       "NOME DO NUTRICIONISTA",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(foundPatient?.nameNutritionist ?? ""),
+                    Text(_nameNutritionist ?? ""),
                     const SizedBox(height: 10),
                     Text(
                       "CRN DO NUTRICIONISTA",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text(foundPatient?.crnNutritionist ?? ""),
+                    Text(_crnNutritionist ?? ""),
                     SizedBox(height: 15),
                     Text(
                       "Dados do Paciente",
@@ -136,6 +157,14 @@ class _FormPatientState extends State<FormPatient> {
                       return;
                     }
 
+                    if (patient == "Conta já está ativa" ||
+                        patient == "Estado da conta inválido") {
+                      setState(() {
+                        _isLoading = false;
+                      });
+                      return;
+                    }
+
                     setState(() {
                       foundPatient = patient;
                     });
@@ -147,6 +176,8 @@ class _FormPatientState extends State<FormPatient> {
                       _controllerPhonePatient.text = foundPatient?.phone ?? '';
                       _controllerEmail.text = foundPatient?.email ?? '';
                     });
+
+                    await getNutritionistInfo();
 
                     setState(() {
                       _isLoading = false;
@@ -168,8 +199,6 @@ class _FormPatientState extends State<FormPatient> {
 
                     await CreateAccountService().createPatient(
                       context,
-                      foundPatient!.nameNutritionist,
-                      foundPatient!.crnNutritionist,
                       foundPatient!.uidNutritionistPatient,
                       foundPatient!.gender,
                       foundPatient!.age,

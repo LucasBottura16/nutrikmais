@@ -143,8 +143,6 @@ class CreateAccountService {
 
   Future<void> createPatient(
     BuildContext context,
-    String nameNutritionist,
-    String crnNutritionist,
     String uidNutritionist,
     String gender,
     String age,
@@ -168,8 +166,6 @@ class CreateAccountService {
 
       await completedRegisterPatient(
         userCredential.user!.uid,
-        nameNutritionist,
-        crnNutritionist,
         uidNutritionist,
         gender,
         age,
@@ -204,8 +200,6 @@ class CreateAccountService {
 
   Future<void> completedRegisterPatient(
     String uidPatient,
-    String nameNutritionist,
-    String crnNutritionist,
     String uidNutritionist,
     String gender,
     String age,
@@ -221,11 +215,6 @@ class CreateAccountService {
     String typeUser,
   ) async {
     final DBPatientModel patient = DBPatientModel();
-
-    debugPrint("iniciou o cadastro do paciente");
-
-    patient.nameNutritionist = nameNutritionist;
-    patient.crnNutritionist = crnNutritionist;
     patient.uidPatient = uidPatient;
     patient.patient = namePatient;
     patient.address = address;
@@ -238,8 +227,7 @@ class CreateAccountService {
     patient.codePatient = codePatient;
     patient.photo = photo;
     patient.lastschedule = lastschedule;
-
-    debugPrint("finalizou o cadastro do paciente");
+    patient.stateAccount = "active";
 
     await firestore
         .collection("Patients")
@@ -256,9 +244,60 @@ class CreateAccountService {
           .where("codePatient", isEqualTo: code)
           .get();
 
-      return querySnapshot.docs
-          .map((doc) => DBPatientModel.fromDocumentSnapshotPatients(doc))
-          .first;
+      if (querySnapshot.docs.isEmpty) {
+        throw Exception("Código não encontrado");
+      }
+
+      final patientDoc = querySnapshot.docs.first;
+      final patientData = patientDoc.data();
+
+      // Verifica o stateAccount
+      final stateAccount = patientData['stateAccount'] ?? '';
+
+      if (stateAccount == 'active') {
+        if (!context.mounted) return;
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Conta já Ativa"),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("Esta conta já está ativa. Faça login diretamente."),
+                ],
+              ),
+            );
+          },
+        );
+        return "Conta já está ativa";
+      }
+
+      if (stateAccount != 'pending') {
+        if (!context.mounted) return;
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Conta Inválida"),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Estado da conta inválido. Entre em contato com seu nutricionista.",
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+        return "Estado da conta inválido";
+      }
+
+      // Se chegou até aqui, stateAccount é 'pending' - pode seguir o fluxo
+      return DBPatientModel.fromDocumentSnapshotPatients(patientDoc);
     } catch (e) {
       if (!context.mounted) return;
       showDialog(

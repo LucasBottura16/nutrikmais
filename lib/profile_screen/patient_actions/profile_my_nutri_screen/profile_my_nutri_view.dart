@@ -28,14 +28,12 @@ class _ProfileMyNutriViewState extends State<ProfileMyNutriView> {
   Future<void> _loadUserInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    final name = prefs.getString('nameNutritionist') ?? '';
-    final crn = prefs.getString('crnNutritionist') ?? '';
-    final phone = prefs.getString('phoneNutritionist') ?? '';
+    final nutriInfo = await ProfileMyNutriService.getNutritionistInfo();
 
     setState(() {
-      _nameNutri = name;
-      _crnNutri = crn;
-      _phoneNutri = phone;
+      _nameNutri = nutriInfo['nameNutritionist'];
+      _crnNutri = nutriInfo['crn'];
+      _phoneNutri = nutriInfo['phone'];
       _isLoading = false;
     });
   }

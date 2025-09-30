@@ -56,7 +56,6 @@ class HomeService {
           prefs.setString("uidLogged", details["uid"] ?? "");
           prefs.setString("nameLogged", details["nameNutritionist"] ?? "");
           prefs.setString("photoLogged", details["photo"] ?? "");
-
           prefs.setString("crnNutritionist", details["crn"] ?? "");
           prefs.setString("cpf", details["cpf"] ?? "");
           prefs.setString("state", details["state"] ?? "");
@@ -81,16 +80,7 @@ class HomeService {
           prefs.setString("uidLogged", details["uidPatient"] ?? "");
           prefs.setString("nameLogged", details["patient"] ?? "");
           prefs.setString("photoLogged", details["photo"] ?? "");
-          prefs.setString(
-            "nameNutritionist",
-            details["nameNutritionist"] ?? "",
-          );
-          prefs.setString("crnNutritionist", details["crnNutritionist"] ?? "");
           prefs.setString("uidNutritionist", details["uidNutritionist"] ?? "");
-          prefs.setString(
-            "phoneNutritionist",
-            details["phoneNutritionist"] ?? "",
-          );
           prefs.setString("patient", details["patient"] ?? "");
           prefs.setString("age", details["age"] ?? "");
           prefs.setString("cpf", details["cpf"] ?? "");

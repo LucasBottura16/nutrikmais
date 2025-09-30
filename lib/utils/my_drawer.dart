@@ -47,8 +47,6 @@ class _MyDrawerState extends State<MyDrawer> {
       "uidLogged",
       "nameLogged",
       "photoLogged",
-      "nameNutritionist",
-      "crnNutritionist",
       "uidNutritionist",
       "patient",
       "age",

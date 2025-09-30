@@ -14,10 +14,8 @@ class DBPatientModel {
   String? _typeUser;
   String? _photo;
   String? _lastschedule;
-  String? _nameNutritionist;
-  String? _crnNutritionist;
   String? _uidNutritionist;
-  String? _phoneNutritionist;
+  String? _stateAccount;
 
   DBPatientModel();
 
@@ -36,11 +34,9 @@ class DBPatientModel {
     typeUser = documentSnapshot['typeUser'];
     photo = documentSnapshot['photo'];
     lastschedule = documentSnapshot['lastschedule'];
-    nameNutritionist = documentSnapshot['nameNutritionist'];
-    crnNutritionist = documentSnapshot['crnNutritionist'];
     cpf = documentSnapshot['cpf'];
     uidPatient = documentSnapshot['uidPatient'];
-    phoneNutritionist = documentSnapshot['phoneNutritionist'];
+    stateAccount = documentSnapshot['stateAccount'];
   }
 
   Map<String, dynamic> toMap(uidAccount, uidNutritionist) {
@@ -58,20 +54,18 @@ class DBPatientModel {
         'typeUser': "patient",
         'photo': _photo,
         'lastschedule': _lastschedule,
-        'nameNutritionist': _nameNutritionist,
-        'crnNutritionist': _crnNutritionist,
         'uidNutritionist': uidNutritionist,
         'uidPatient': _uidPatient,
-        'phoneNutritionist': _phoneNutritionist,
+        'stateAccount': _stateAccount,
       };
     }
 
     return map();
   }
 
-  String get phoneNutritionist => _phoneNutritionist!;
-  set phoneNutritionist(String? value) {
-    _phoneNutritionist = value;
+  String get stateAccount => _stateAccount!;
+  set stateAccount(String? value) {
+    _stateAccount = value;
   }
 
   String get uidPatient => _uidPatient!;
@@ -82,16 +76,6 @@ class DBPatientModel {
   String get cpf => _cpf!;
   set cpf(String? value) {
     _cpf = value;
-  }
-
-  String get nameNutritionist => _nameNutritionist!;
-  set nameNutritionist(String? value) {
-    _nameNutritionist = value;
-  }
-
-  String get crnNutritionist => _crnNutritionist!;
-  set crnNutritionist(String? value) {
-    _crnNutritionist = value;
   }
 
   String get lastschedule => _lastschedule!;

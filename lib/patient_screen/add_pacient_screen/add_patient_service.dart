@@ -59,8 +59,6 @@ class AddPatientService {
     String email,
   ) async {
     DBPatientModel patients = DBPatientModel();
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
     patients.patient = patient;
     patients.gender = gender;
     patients.age = age;
@@ -69,12 +67,10 @@ class AddPatientService {
     patients.email = email;
     patients.photo = "null";
     patients.lastschedule = "Ainda não agendado";
-    patients.nameNutritionist = prefs.getString('nameNutritionist') ?? '';
-    patients.crnNutritionist = prefs.getString('crnNutritionist') ?? '';
     patients.cpf = "";
     patients.uidPatient = "";
     patients.codePatient = RandomKeys().generateRandomCode();
-    patients.phoneNutritionist = prefs.getString('phone') ?? '';
+    patients.stateAccount = "pending";
 
     String uid = RandomKeys().generateRandomString();
 
