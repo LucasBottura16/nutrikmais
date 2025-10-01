@@ -3,7 +3,6 @@ import 'package:nutrikmais/profile_screen/patient_actions/profile_my_nutri_scree
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileMyNutriView extends StatefulWidget {
   const ProfileMyNutriView({super.key});
@@ -26,8 +25,6 @@ class _ProfileMyNutriViewState extends State<ProfileMyNutriView> {
   }
 
   Future<void> _loadUserInfo() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
     final nutriInfo = await ProfileMyNutriService.getNutritionistInfo();
 
     setState(() {

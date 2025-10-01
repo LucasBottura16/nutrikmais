@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
 import 'package:nutrikmais/utils/random_key.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AddPatientService {
   static FirebaseAuth auth = FirebaseAuth.instance;
