@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:nutrikmais/patient_screen/components/modal_patient_view.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
 import 'package:nutrikmais/patient_screen/patient_service.dart';
 import 'package:nutrikmais/route_generator.dart';
@@ -20,6 +21,15 @@ class _PatientViewState extends State<PatientView> {
   final _controllerStream = StreamController<QuerySnapshot>.broadcast();
 
   final bool _isLoading = false;
+
+  _modalPatient(patient) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return ModalPatientView(patient: patient);
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -127,7 +137,9 @@ class _PatientViewState extends State<PatientView> {
                                     );
 
                                 return GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    _modalPatient(myPatient);
+                                  },
                                   child: Card(
                                     child: Row(
                                       mainAxisAlignment:

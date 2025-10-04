@@ -34,11 +34,7 @@ class RouteGenerator {
   static const String profileInfosPatientScreen =
       "/profile_infos_patient_screen";
 
-  static var args;
-
   static Route<dynamic>? generateRoute(RouteSettings settings) {
-    args = settings.arguments;
-
     switch (settings.name) {
       case routeLogin:
         return MaterialPageRoute(builder: (_) => const Routes());
