@@ -213,25 +213,31 @@ class _MyDrawerState extends State<MyDrawer> {
                       ),
                     ),
                   Card(
-                    color: _currentScreen == "consults_screen"
+                    color: _currentScreen == "consultations_screen"
                         ? MyColors.myPrimary
                         : Colors.white,
                     child: ListTile(
                       leading: Icon(
                         Icons.calendar_month,
-                        color: _currentScreen == "consults_screen"
+                        color: _currentScreen == "consultations_screen"
                             ? Colors.white
                             : MyColors.myPrimary,
                       ),
                       title: Text(
                         'Consultas',
                         style: TextStyle(
-                          color: _currentScreen == "consults_screen"
+                          color: _currentScreen == "consultations_screen"
                               ? Colors.white
                               : MyColors.myPrimary,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RouteGenerator.consultationsScreen,
+                          (_) => false,
+                        );
+                      },
                     ),
                   ),
                   Card(

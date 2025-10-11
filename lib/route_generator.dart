@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nutrikmais/consultations_screen/add_consultations_screen/add_consultations_view.dart';
+import 'package:nutrikmais/consultations_screen/consultations_view.dart';
 import 'package:nutrikmais/create_account_screen/create_account_view.dart';
 import 'package:nutrikmais/home_screen/home_view.dart';
 import 'package:nutrikmais/main.dart';
@@ -33,6 +35,8 @@ class RouteGenerator {
   static const String profileMyNutriScreen = "/profile_my_nutri_screen";
   static const String profileInfosPatientScreen =
       "/profile_infos_patient_screen";
+  static const String consultationsScreen = "/consultations_screen";
+  static const String addConsultationsScreen = "/add_consultations_screen";
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -68,6 +72,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const ProfileInfosPatientView(),
         );
+      case consultationsScreen:
+        return MaterialPageRoute(builder: (_) => const ConsultationsView());
+      case addConsultationsScreen:
+        return MaterialPageRoute(builder: (_) => const AddConsultationsView());
       default:
         _errorRoute();
     }
