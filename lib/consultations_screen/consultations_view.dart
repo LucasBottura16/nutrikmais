@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:nutrikmais/consultations_screen/consultations_services.dart';
 import 'package:nutrikmais/route_generator.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
@@ -24,6 +24,12 @@ class _ConsultationsViewState extends State<ConsultationsView> {
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
   CalendarFormat _calendarFormat = CalendarFormat.month;
+
+  @override
+  void initState() {
+    super.initState();
+    ConsultationsServices.addListenerConsultations(_controllerStream);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +88,7 @@ class _ConsultationsViewState extends State<ConsultationsView> {
                 Navigator.pushNamed(
                   context,
                   RouteGenerator.addConsultationsScreen,
+                  arguments: DateFormat("dd/MM/yyyy").format(_selectedDay),
                 );
               },
               buttonColor: MyColors.myPrimary,
@@ -123,6 +130,7 @@ class _ConsultationsViewState extends State<ConsultationsView> {
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
                           ),
                         );

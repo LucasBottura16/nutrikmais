@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_consultations_screen/profile_consultations_service.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -16,83 +18,36 @@ class ProfileConsultationsView extends StatefulWidget {
 }
 
 class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
-  final ConsultationService _consultationService = ConsultationService();
-  StreamSubscription? _slotsSubscription;
+  final _controllerStream = StreamController<QuerySnapshot>.broadcast();
 
+  String? _nutritionistUid;
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
   CalendarFormat _calendarFormat = CalendarFormat.month;
 
-  String? _nutritionistUid;
-  bool _isLoading = true;
-
-  List<Map<String, dynamic>> _allSlots = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _loadInitialData();
-  }
-
-  @override
-  void dispose() {
-    _slotsSubscription?.cancel();
-    super.dispose();
-  }
-
-  Future<void> _loadInitialData() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      _nutritionistUid = prefs.getString('uidLogged');
-
-      if (_nutritionistUid == null || _nutritionistUid!.isEmpty) {
-        throw Exception("UID do nutricionista não encontrado.");
-      }
-
-      _setupSlotsStream();
-    } catch (e) {
-      _showSnackBar(e.toString(), isError: true);
-      setState(() => _isLoading = false);
-    }
-  }
-
-  void _setupSlotsStream() {
-    if (_nutritionistUid == null) return;
-
-    _slotsSubscription?.cancel();
-    _slotsSubscription = _consultationService
-        .getAvailableSlotsStream(_nutritionistUid!)
-        .listen((slots) {
-          setState(() {
-            _allSlots = slots;
-            _isLoading = false;
-          });
-        });
-  }
-
-  List<Map<String, dynamic>> _getSlotsForDay(DateTime day) {
-    return _allSlots.where((slot) => isSameDay(slot['slotTime'], day)).toList();
-  }
-
-  Future<void> _addSlotForSelectedDay() async {
+  Future<void> _addAvailabilityDay() async {
     final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
     );
 
+    String date = DateFormat("dd/MM/yyyy").format(_selectedDay);
+
     if (pickedTime != null && _nutritionistUid != null) {
-      final newSlotTime = DateTime(
-        _selectedDay.year,
-        _selectedDay.month,
-        _selectedDay.day,
-        pickedTime.hour,
-        pickedTime.minute,
-      );
+      final hourStr = pickedTime.hour.toString().padLeft(2, '0');
+      final minuteStr = pickedTime.minute.toString().padLeft(2, '0');
+      final time = '$hourStr:$minuteStr';
 
       try {
-        await _consultationService.addAvailableSlot(
+        await ConsultationService().addAvailability(
           nutritionistUid: _nutritionistUid!,
-          slotTime: newSlotTime,
+          date: date,
+          time: time,
+        );
+        ConsultationService.addListenerAvailability(
+          _controllerStream,
+          _nutritionistUid!,
+          DateFormat("dd/MM/yyyy").format(_selectedDay),
         );
         _showSnackBar('Horário adicionado com sucesso!');
       } catch (e) {
@@ -111,149 +66,213 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
     );
   }
 
+  Future<void> _loadInitialData() async {
+    final prefs = await SharedPreferences.getInstance();
+    _nutritionistUid = prefs.getString('uidLogged');
+
+    if (_nutritionistUid != null) {
+      ConsultationService.addListenerAvailability(
+        _controllerStream,
+        _nutritionistUid!,
+        DateFormat("dd/MM/yyyy").format(_selectedDay),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadInitialData();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final selectedDaySlots = _getSlotsForDay(_selectedDay)
-      ..sort(
-        (a, b) =>
-            (a['slotTime'] as DateTime).compareTo(b['slotTime'] as DateTime),
-      );
-
     return Scaffold(
       appBar: CustomAppBar(
         title: "Agenda de Consultas",
         backgroundColor: MyColors.myPrimary,
       ),
-      body: _isLoading
-          ? const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(color: MyColors.myPrimary),
-                  SizedBox(height: 16),
-                  Text(
-                    'Carregando horários...',
-                    style: TextStyle(fontSize: 16, color: MyColors.myPrimary),
-                  ),
-                ],
+      body: Column(
+        children: [
+          TableCalendar(
+            focusedDay: _focusedDay,
+            firstDay: DateTime.utc(2020, 1, 1),
+            lastDay: DateTime.utc(2030, 12, 31),
+            calendarFormat: _calendarFormat,
+            locale: 'pt_BR',
+            // eventLoader: _getAvailabilitysForDay,
+            selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+            onDaySelected: (selectedDay, focusedDay) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay;
+
+                ConsultationService.addListenerAvailability(
+                  _controllerStream,
+                  _nutritionistUid!,
+                  DateFormat("dd/MM/yyyy").format(_selectedDay),
+                );
+              });
+            },
+            onFormatChanged: (format) {
+              if (_calendarFormat != format) {
+                setState(() {
+                  _calendarFormat = format;
+                });
+              }
+            },
+            headerStyle: const HeaderStyle(formatButtonShowsNext: false),
+            calendarStyle: CalendarStyle(
+              weekendTextStyle: const TextStyle(color: Colors.red),
+              markerDecoration: const BoxDecoration(
+                color: MyColors.myPrimary,
+                shape: BoxShape.circle,
               ),
-            )
-          : Column(
-              children: [
-                TableCalendar(
-                  focusedDay: _focusedDay,
-                  firstDay: DateTime.utc(2020, 1, 1),
-                  lastDay: DateTime.utc(2030, 12, 31),
-                  calendarFormat: _calendarFormat,
-                  locale: 'pt_BR',
-                  eventLoader: _getSlotsForDay,
-                  selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-                  onDaySelected: (selectedDay, focusedDay) {
-                    setState(() {
-                      _selectedDay = selectedDay;
-                      _focusedDay = focusedDay;
-                    });
-                  },
-                  onFormatChanged: (format) {
-                    if (_calendarFormat != format) {
-                      setState(() {
-                        _calendarFormat = format;
-                      });
+              todayDecoration: BoxDecoration(
+                color: const Color.fromARGB(125, 72, 178, 128).withValues(),
+                shape: BoxShape.circle,
+              ),
+              selectedDecoration: const BoxDecoration(
+                color: MyColors.myPrimary,
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Divider(height: 1),
+          const SizedBox(height: 8),
+          Expanded(
+            child: StreamBuilder(
+              stream: _controllerStream.stream,
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.none:
+                  case ConnectionState.waiting:
+                    return CustomLoadingData(
+                      nameData: "Disponibilidades cadastradas",
+                      loadingColor: Colors.white,
+                      nameDataColor: Colors.white,
+                    );
+                  case ConnectionState.active:
+                  case ConnectionState.done:
+                    if (snapshot.hasError) {
+                      return const Text("Erro ao carregar");
                     }
-                  },
-                  headerStyle: const HeaderStyle(formatButtonShowsNext: false),
-                  calendarStyle: CalendarStyle(
-                    weekendTextStyle: const TextStyle(color: Colors.red),
-                    markerDecoration: const BoxDecoration(
-                      color: MyColors.myPrimary,
-                      shape: BoxShape.circle,
-                    ),
-                    todayDecoration: BoxDecoration(
-                      color: const Color.fromARGB(
-                        125,
-                        72,
-                        178,
-                        128,
-                      ).withValues(),
-                      shape: BoxShape.circle,
-                    ),
-                    selectedDecoration: const BoxDecoration(
-                      color: MyColors.myPrimary,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Divider(height: 1),
-                const SizedBox(height: 8),
-                Expanded(
-                  child: selectedDaySlots.isEmpty
-                      ? const Center(
-                          child: Text(
-                            'Nenhum horário disponível para este dia.',
+
+                    QuerySnapshot<Object?>? querySnapshot = snapshot.data;
+
+                    debugPrint(
+                      'Número de documentos: ${querySnapshot?.docs.length}',
+                    );
+
+                    if (querySnapshot!.docs.isEmpty) {
+                      return const Center(
+                        child: Text(
+                          "Nenhuma disponibilidade encontrada!",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: MyColors.myPrimary,
                           ),
-                        )
-                      : ListView.builder(
-                          padding: const EdgeInsets.all(8.0),
-                          itemCount: selectedDaySlots.length,
-                          itemBuilder: (context, index) {
-                            final slot = selectedDaySlots[index];
-                            final isScheduled = slot['isScheduled'] as bool;
-                            final slotTime = slot['slotTime'] as DateTime;
-                            return Card(
-                              color: isScheduled ? MyColors.myPrimary : null,
-                              child: ListTile(
-                                title: Text(
-                                  'Horário: ${DateFormat('HH:mm').format(slotTime)}',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: isScheduled
-                                        ? Colors.white
-                                        : Colors.black,
-                                  ),
-                                ),
-                                trailing: IconButton(
-                                  icon: Icon(
-                                    Icons.delete_outline,
-                                    color: isScheduled
-                                        ? Colors.white
-                                        : Colors.red,
-                                  ),
-                                  onPressed: isScheduled
-                                      ? () {
-                                          _showSnackBar(
-                                            'Horario agendado, não pode ser removido.',
-                                            isError: true,
-                                          );
-                                        }
-                                      : () async {
-                                          try {
-                                            await _consultationService
-                                                .removeAvailableSlot(
-                                                  nutritionistUid:
-                                                      _nutritionistUid!,
-                                                  slotTime: slotTime,
-                                                );
-                                            _showSnackBar(
-                                              'Horário removido com sucesso!',
-                                            );
-                                          } catch (e) {
-                                            _showSnackBar(
-                                              e.toString(),
-                                              isError: true,
-                                            );
-                                          }
-                                        },
+                        ),
+                      );
+                    }
+
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListView.builder(
+                        itemCount: querySnapshot.docs.length,
+                        itemBuilder: (context, index) {
+                          var doc = querySnapshot.docs[index];
+                          String date = doc['date'] ?? '';
+                          String time = doc['time'] ?? '';
+                          bool isScheduled = doc['isScheduled'] ?? false;
+
+                          return Card(
+                            color: isScheduled
+                                ? Colors.grey[300]
+                                : MyColors.myPrimary,
+                            child: ListTile(
+                              title: Text(
+                                'Horário: $time',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: isScheduled
+                                      ? Colors.black
+                                      : Colors.white,
                                 ),
                               ),
-                            );
-                          },
-                        ),
-                ),
-              ],
+                              subtitle: Text(
+                                'Data: $date',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: isScheduled
+                                      ? Colors.black
+                                      : Colors.white,
+                                ),
+                              ),
+                              trailing: IconButton(
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () async {
+                                  if (!mounted) return;
+
+                                  final confirm = await showDialog<bool>(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        title: const Text('Confirmar remoção'),
+                                        content: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text('Deseja realmente remover a disponibilidade em $date às $time?'),
+                                          ],
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.of(context).pop(false),
+                                            child: const Text('Cancelar'),
+                                          ),
+                                          TextButton(
+                                            onPressed: () => Navigator.of(context).pop(true),
+                                            child: const Text('Remover', style: TextStyle(color: Colors.red)),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+
+                                  if (confirm != true) return;
+
+                                  try {
+                                    await ConsultationService().removeAvailability(
+                                      nutritionistUid: _nutritionistUid!,
+                                      date: date,
+                                      time: time,
+                                      isScheduled: isScheduled,
+                                    );
+                                    _showSnackBar('Disponibilidade removida com sucesso!');
+                                  } catch (e) {
+                                    _showSnackBar(e.toString(), isError: true);
+                                  }
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                }
+              },
             ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addSlotForSelectedDay,
+        onPressed: _addAvailabilityDay,
         tooltip: 'Adicionar Horário',
         child: const Icon(Icons.add),
       ),

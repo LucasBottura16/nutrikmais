@@ -1,24 +1,50 @@
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ConsultationService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  static FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<void> addAvailableSlot({
+  static Future<Stream<QuerySnapshot>?>? addListenerAvailability(
+    StreamController<QuerySnapshot> controllerStream,
+    String nutritionistUid,
+    String date,
+  ) async {
+    Stream<QuerySnapshot> stream = firestore
+        .collection('Nutritionists')
+        .doc(nutritionistUid)
+        .collection('Availability')
+        .where('date', isEqualTo: date)
+        .orderBy('time', descending: false)
+        .snapshots();
+
+    stream.listen((event) {
+      controllerStream.add(event);
+    });
+
+    return null;
+  }
+
+  Future<void> addAvailability({
     required String nutritionistUid,
-    required DateTime slotTime,
+    required String date,
+    required String time,
   }) async {
-    if (slotTime.isBefore(DateTime.now())) {
+    final availability = DateTime.parse(
+      '${date.split('/').reversed.join('-')}T$time:00',
+    );
+    if (availability.isBefore(DateTime.now())) {
       throw Exception('Não é possível cadastrar horários em datas passadas.');
     }
 
     try {
-      final collectionRef = _firestore
+      final collectionRef = firestore
           .collection('Nutritionists')
           .doc(nutritionistUid)
-          .collection('AvailableSlots');
+          .collection('Availability');
 
       final querySnapshot = await collectionRef
-          .where('slotTime', isEqualTo: Timestamp.fromDate(slotTime))
+          .where('date', isEqualTo: date)
+          .where('time', isEqualTo: time)
           .limit(1)
           .get();
 
@@ -27,10 +53,8 @@ class ConsultationService {
       }
 
       await collectionRef.add({
-        'slotTime': Timestamp.fromDate(slotTime),
-        'isBooked': false,
-        'patientUid': null,
-        'patientName': null,
+        'date': date,
+        'time': time,
         'isScheduled': false,
       });
     } catch (e) {
@@ -38,34 +62,23 @@ class ConsultationService {
     }
   }
 
-  Stream<List<Map<String, dynamic>>> getAvailableSlotsStream(
-    String nutritionistUid,
-  ) {
-    return _firestore
-        .collection('Nutritionists')
-        .doc(nutritionistUid)
-        .collection('AvailableSlots')
-        .snapshots()
-        .map((snapshot) {
-          return snapshot.docs.map((doc) {
-            final data = doc.data();
-            final timestamp = data['slotTime'] as Timestamp;
-            final isScheduled = data['isScheduled'] ?? false;
-            return {'slotTime': timestamp.toDate(), 'isScheduled': isScheduled};
-          }).toList();
-        });
-  }
-
-  Future<void> removeAvailableSlot({
+  Future<void> removeAvailability({
     required String nutritionistUid,
-    required DateTime slotTime,
+    required String date,
+    required String time,
+    required bool isScheduled,
   }) async {
+    if (isScheduled) {
+      throw Exception('Não é possível remover um horário já agendado.');
+    }
+
     try {
-      final querySnapshot = await _firestore
+      final querySnapshot = await firestore
           .collection('Nutritionists')
           .doc(nutritionistUid)
-          .collection('AvailableSlots')
-          .where('slotTime', isEqualTo: Timestamp.fromDate(slotTime))
+          .collection('Availability')
+          .where('date', isEqualTo: date)
+          .where('time', isEqualTo: time)
           .limit(1)
           .get();
 

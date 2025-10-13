@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/consultations_screen/add_consultations_screen/add_consultations_view.dart';
 import 'package:nutrikmais/consultations_screen/consultations_view.dart';
@@ -75,7 +76,10 @@ class RouteGenerator {
       case consultationsScreen:
         return MaterialPageRoute(builder: (_) => const ConsultationsView());
       case addConsultationsScreen:
-        return MaterialPageRoute(builder: (_) => const AddConsultationsView());
+        return MaterialPageRoute(
+          builder: (_) =>
+              AddConsultationsView(date: settings.arguments as String?),
+        );
       default:
         _errorRoute();
     }
