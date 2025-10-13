@@ -7,6 +7,7 @@ import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
+import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
 
 class ProfileServicesView extends StatefulWidget {
   const ProfileServicesView({super.key});
@@ -30,26 +31,6 @@ class _ProfileServicesViewState extends State<ProfileServicesView> {
 
   @override
   Widget build(BuildContext context) {
-    Widget loadingData = Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(MyColors.myPrimary),
-          ),
-          SizedBox(height: 20),
-          Text(
-            "Carregando Serviços...",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: MyColors.myPrimary,
-            ),
-          ),
-        ],
-      ),
-    );
-
     return Scaffold(
       appBar: CustomAppBar(
         title: "Serviços",
@@ -66,7 +47,7 @@ class _ProfileServicesViewState extends State<ProfileServicesView> {
                   switch (snapshot.connectionState) {
                     case ConnectionState.none:
                     case ConnectionState.waiting:
-                      return loadingData;
+                      return CustomLoadingData(nameData: "Serviços");
                     case ConnectionState.active:
                     case ConnectionState.done:
                       if (snapshot.hasError) {

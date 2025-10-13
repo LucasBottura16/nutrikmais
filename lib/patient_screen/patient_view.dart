@@ -8,6 +8,7 @@ import 'package:nutrikmais/route_generator.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
+import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
 import 'package:nutrikmais/utils/my_drawer.dart';
 
 class PatientView extends StatefulWidget {
@@ -39,28 +40,6 @@ class _PatientViewState extends State<PatientView> {
 
   @override
   Widget build(BuildContext context) {
-    Widget loadingDataPacients = Center(
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(MyColors.myPrimary),
-            ),
-            SizedBox(height: 20),
-            Text(
-              "Carregando Pacientes...",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: MyColors.myPrimary,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-
     return Scaffold(
       appBar: CustomAppBar(
         title: "Pacientes",
@@ -100,7 +79,7 @@ class _PatientViewState extends State<PatientView> {
                         switch (snapshot.connectionState) {
                           case ConnectionState.none:
                           case ConnectionState.waiting:
-                            return loadingDataPacients;
+                            return CustomLoadingData(nameData: "Pacientes");
                           case ConnectionState.active:
                           case ConnectionState.done:
                             if (snapshot.hasError) {

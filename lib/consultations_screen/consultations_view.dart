@@ -1,9 +1,13 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nutrikmais/route_generator.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
+import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
 import 'package:nutrikmais/utils/my_drawer.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -15,7 +19,7 @@ class ConsultationsView extends StatefulWidget {
 }
 
 class _ConsultationsViewState extends State<ConsultationsView> {
-  bool _isLoading = true;
+  final _controllerStream = StreamController<QuerySnapshot>.broadcast();
 
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
@@ -93,35 +97,61 @@ class _ConsultationsViewState extends State<ConsultationsView> {
                 color: MyColors.myPrimary,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: false
-                  ? const Center(
-                      child: Text(
-                        'Nenhuma consulta para este dia.',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
-                  : ListView.builder(
-                      padding: const EdgeInsets.all(8.0),
-                      itemCount: 2,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          color: MyColors.mySecondary,
-                          child: ListTile(
-                            title: Text(
-                              'Horário: ${DateFormat('HH:mm').format(DateTime.now())}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
+              child: StreamBuilder(
+                stream: _controllerStream.stream,
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                    case ConnectionState.waiting:
+                      return CustomLoadingData(
+                        nameData: "Consultas",
+                        loadingColor: Colors.white,
+                        nameDataColor: Colors.white,
+                      );
+                    case ConnectionState.active:
+                    case ConnectionState.done:
+                      if (snapshot.hasError) {
+                        return const Text("Erro ao carregar");
+                      }
+
+                      QuerySnapshot<Object?>? querySnapshot = snapshot.data;
+
+                      if (querySnapshot!.docs.isEmpty) {
+                        return const Center(
+                          child: Text(
+                            "Nenhuma consulta encontrada!",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         );
-                      },
-                    ),
+                      }
+
+                      return ListView.builder(
+                        itemCount: querySnapshot.docs.length,
+                        itemBuilder: (context, index) {
+                          List<DocumentSnapshot> consultations = querySnapshot
+                              .docs
+                              .toList();
+                          DocumentSnapshot documentSnapshot =
+                              consultations[index];
+
+                          return GestureDetector(
+                            onTap: () {},
+                            child: Card(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                  }
+                },
+              ),
             ),
           ),
         ],
