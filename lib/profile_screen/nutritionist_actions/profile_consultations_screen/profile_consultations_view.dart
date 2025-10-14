@@ -269,198 +269,202 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
         title: "Agenda de Consultas",
         backgroundColor: MyColors.myPrimary,
       ),
-      body: Column(
-        children: [
-          TableCalendar(
-            focusedDay: _focusedDay,
-            firstDay: DateTime.utc(2020, 1, 1),
-            lastDay: DateTime.utc(2030, 12, 31),
-            calendarFormat: _calendarFormat,
-            locale: 'pt_BR',
-            // eventLoader: _getAvailabilitysForDay,
-            selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-            onDaySelected: (selectedDay, focusedDay) {
-              setState(() {
-                _selectedDay = selectedDay;
-                _focusedDay = focusedDay;
-
-                ConsultationService.addListenerAvailability(
-                  _controllerStream,
-                  _nutritionistUid!,
-                  DateFormat("dd/MM/yyyy").format(_selectedDay),
-                );
-              });
-            },
-            onFormatChanged: (format) {
-              if (_calendarFormat != format) {
+      body: SafeArea(
+        child: Column(
+          children: [
+            TableCalendar(
+              focusedDay: _focusedDay,
+              firstDay: DateTime.utc(2020, 1, 1),
+              lastDay: DateTime.utc(2030, 12, 31),
+              calendarFormat: _calendarFormat,
+              locale: 'pt_BR',
+              // eventLoader: _getAvailabilitysForDay,
+              selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+              onDaySelected: (selectedDay, focusedDay) {
                 setState(() {
-                  _calendarFormat = format;
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay;
+
+                  ConsultationService.addListenerAvailability(
+                    _controllerStream,
+                    _nutritionistUid!,
+                    DateFormat("dd/MM/yyyy").format(_selectedDay),
+                  );
                 });
-              }
-            },
-            headerStyle: const HeaderStyle(formatButtonShowsNext: false),
-            calendarStyle: CalendarStyle(
-              weekendTextStyle: const TextStyle(color: Colors.red),
-              markerDecoration: const BoxDecoration(
-                color: MyColors.myPrimary,
-                shape: BoxShape.circle,
-              ),
-              todayDecoration: BoxDecoration(
-                color: const Color.fromARGB(125, 72, 178, 128).withValues(),
-                shape: BoxShape.circle,
-              ),
-              selectedDecoration: const BoxDecoration(
-                color: MyColors.myPrimary,
-                shape: BoxShape.circle,
-              ),
-            ),
-          ),
-          const SizedBox(height: 8),
-          const Divider(height: 1),
-          const SizedBox(height: 8),
-          Expanded(
-            child: StreamBuilder(
-              stream: _controllerStream.stream,
-              builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.none:
-                  case ConnectionState.waiting:
-                    return CustomLoadingData(
-                      nameData: "Disponibilidades cadastradas",
-                      loadingColor: Colors.white,
-                      nameDataColor: Colors.white,
-                    );
-                  case ConnectionState.active:
-                  case ConnectionState.done:
-                    if (snapshot.hasError) {
-                      return const Text("Erro ao carregar");
-                    }
-
-                    QuerySnapshot<Object?>? querySnapshot = snapshot.data;
-
-                    debugPrint(
-                      'Número de documentos: ${querySnapshot?.docs.length}',
-                    );
-
-                    if (querySnapshot!.docs.isEmpty) {
-                      return const Center(
-                        child: Text(
-                          "Nenhuma disponibilidade encontrada!",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: MyColors.myPrimary,
-                          ),
-                        ),
-                      );
-                    }
-
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.builder(
-                        itemCount: querySnapshot.docs.length,
-                        itemBuilder: (context, index) {
-                          var doc = querySnapshot.docs[index];
-                          String date = doc['date'] ?? '';
-                          String time = doc['time'] ?? '';
-                          bool isScheduled = doc['isScheduled'] ?? false;
-
-                          return Card(
-                            color: isScheduled
-                                ? Colors.grey[300]
-                                : MyColors.myPrimary,
-                            child: ListTile(
-                              title: Text(
-                                'Horário: $time',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: isScheduled
-                                      ? Colors.black
-                                      : Colors.white,
-                                ),
-                              ),
-                              subtitle: Text(
-                                'Data: $date',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: isScheduled
-                                      ? Colors.black
-                                      : Colors.white,
-                                ),
-                              ),
-                              trailing: IconButton(
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () async {
-                                  if (!mounted) return;
-
-                                  final confirm = await showDialog<bool>(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title: const Text('Confirmar remoção'),
-                                        content: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'Deseja realmente remover a disponibilidade em $date às $time?',
-                                            ),
-                                          ],
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.of(
-                                              context,
-                                            ).pop(false),
-                                            child: const Text('Cancelar'),
-                                          ),
-                                          TextButton(
-                                            onPressed: () =>
-                                                Navigator.of(context).pop(true),
-                                            child: const Text(
-                                              'Remover',
-                                              style: TextStyle(
-                                                color: Colors.red,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-
-                                  if (confirm != true) return;
-
-                                  try {
-                                    await ConsultationService()
-                                        .removeAvailability(
-                                          nutritionistUid: _nutritionistUid!,
-                                          date: date,
-                                          time: time,
-                                          isScheduled: isScheduled,
-                                        );
-                                    _showSnackBar(
-                                      'Disponibilidade removida com sucesso!',
-                                    );
-                                  } catch (e) {
-                                    _showSnackBar(e.toString(), isError: true);
-                                  }
-                                },
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    );
+              },
+              onFormatChanged: (format) {
+                if (_calendarFormat != format) {
+                  setState(() {
+                    _calendarFormat = format;
+                  });
                 }
               },
+              headerStyle: const HeaderStyle(formatButtonShowsNext: false),
+              calendarStyle: CalendarStyle(
+                weekendTextStyle: const TextStyle(color: Colors.red),
+                markerDecoration: const BoxDecoration(
+                  color: MyColors.myPrimary,
+                  shape: BoxShape.circle,
+                ),
+                todayDecoration: BoxDecoration(
+                  color: const Color.fromARGB(125, 72, 178, 128).withValues(),
+                  shape: BoxShape.circle,
+                ),
+                selectedDecoration: const BoxDecoration(
+                  color: MyColors.myPrimary,
+                  shape: BoxShape.circle,
+                ),
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            const Divider(height: 1),
+            const SizedBox(height: 8),
+            Expanded(
+              child: StreamBuilder(
+                stream: _controllerStream.stream,
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                    case ConnectionState.waiting:
+                      return CustomLoadingData(
+                        nameData: "Disponibilidades cadastradas",
+                        loadingColor: Colors.white,
+                        nameDataColor: Colors.white,
+                      );
+                    case ConnectionState.active:
+                    case ConnectionState.done:
+                      if (snapshot.hasError) {
+                        return const Text("Erro ao carregar");
+                      }
+
+                      QuerySnapshot<Object?>? querySnapshot = snapshot.data;
+
+                      if (querySnapshot!.docs.isEmpty) {
+                        return const Center(
+                          child: Text(
+                            "Nenhuma disponibilidade encontrada!",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: MyColors.myPrimary,
+                            ),
+                          ),
+                        );
+                      }
+
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListView.builder(
+                          itemCount: querySnapshot.docs.length,
+                          itemBuilder: (context, index) {
+                            var doc = querySnapshot.docs[index];
+                            String date = doc['date'] ?? '';
+                            String time = doc['time'] ?? '';
+                            bool isScheduled = doc['isScheduled'] ?? false;
+
+                            return Card(
+                              color: isScheduled
+                                  ? Colors.grey[300]
+                                  : MyColors.myPrimary,
+                              child: ListTile(
+                                title: Text(
+                                  'Horário: $time',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: isScheduled
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  'Data: $date',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: isScheduled
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
+                                ),
+                                trailing: IconButton(
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () async {
+                                    if (!mounted) return;
+
+                                    final confirm = await showDialog<bool>(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          title: const Text(
+                                            'Confirmar remoção',
+                                          ),
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Deseja realmente remover a disponibilidade em $date às $time?',
+                                              ),
+                                            ],
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.of(
+                                                context,
+                                              ).pop(false),
+                                              child: const Text('Cancelar'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () => Navigator.of(
+                                                context,
+                                              ).pop(true),
+                                              child: const Text(
+                                                'Remover',
+                                                style: TextStyle(
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+
+                                    if (confirm != true) return;
+
+                                    try {
+                                      await ConsultationService()
+                                          .removeAvailability(
+                                            nutritionistUid: _nutritionistUid!,
+                                            date: date,
+                                            time: time,
+                                            isScheduled: isScheduled,
+                                          );
+                                      _showSnackBar(
+                                        'Disponibilidade removida com sucesso!',
+                                      );
+                                    } catch (e) {
+                                      _showSnackBar(
+                                        e.toString(),
+                                        isError: true,
+                                      );
+                                    }
+                                  },
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addAvailabilityDay,

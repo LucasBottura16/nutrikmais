@@ -48,9 +48,6 @@ class HomeService {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var details = myDetails.data() as Map<String, dynamic>;
 
-      debugPrint("Detalhes do usuário: $details");
-      debugPrint("Tipo de usuário: $userType");
-
       switch (userType) {
         case "nutritionist":
           prefs.setString("uidLogged", details["uid"] ?? "");

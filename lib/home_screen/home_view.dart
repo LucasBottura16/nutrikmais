@@ -20,7 +20,6 @@ class _HomeViewState extends State<HomeView> {
     _nome = prefs.getString('nameLogged') ?? '';
 
     if (_nome.isEmpty) {
-      debugPrint("buscando no banco...");
       await HomeService.getMyDetails();
     }
     setState(() {
