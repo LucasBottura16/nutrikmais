@@ -39,7 +39,8 @@ class _ConsultationsViewState extends State<ConsultationsView> {
         backgroundColor: MyColors.myPrimary,
       ),
       drawer: MyDrawer(screen: "consultations_screen"),
-      body: Column(
+      body: SafeArea(
+        child: Column(
         children: [
           TableCalendar(
             focusedDay: _focusedDay,
@@ -139,18 +140,13 @@ class _ConsultationsViewState extends State<ConsultationsView> {
                       return ListView.builder(
                         itemCount: querySnapshot.docs.length,
                         itemBuilder: (context, index) {
-                          List<DocumentSnapshot> consultations = querySnapshot
-                              .docs
-                              .toList();
-                          DocumentSnapshot documentSnapshot =
-                              consultations[index];
+                          // final documentSnapshot = querySnapshot.docs[index];
 
                           return GestureDetector(
                             onTap: () {},
                             child: Card(
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [],
                               ),
                             ),
@@ -163,6 +159,7 @@ class _ConsultationsViewState extends State<ConsultationsView> {
             ),
           ),
         ],
+        ),
       ),
     );
   }
