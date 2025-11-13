@@ -1,23 +1,64 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+// removed unused intl import
 
 class ConsultationsServices {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   static FirebaseAuth auth = FirebaseAuth.instance;
 
-  static Future<Stream<QuerySnapshot>?>? addListenerConsultations(
+  static StreamSubscription<QuerySnapshot<Object?>>? _subscription;
+
+  static Future<void> addListenerConsultations(
     StreamController<QuerySnapshot> controllerStream,
+    String date,
   ) async {
-    Stream<QuerySnapshot> stream = firestore
+    // cancel previous subscription if exists
+    try {
+      await _subscription?.cancel();
+    } catch (_) {}
+
+    final stream = firestore
         .collection("Consultations")
         .where("uidNutritionist", isEqualTo: auth.currentUser?.uid)
+        .where("dateConsultation", isEqualTo: date)
+        .orderBy("timeConsultation")
         .snapshots();
 
-    stream.listen((event) {
+    _subscription = stream.listen((event) {
       controllerStream.add(event);
     });
 
-    return null;
+    return;
+  }
+
+  static Future<void> finalizeConsultation(String docId) async {
+    try {
+      final doc = await firestore.collection('Consultations').doc(docId).get();
+      final current = doc.data()?['status'];
+      if (current == 'Finalizada') {
+        throw Exception('Consulta já finalizada');
+      }
+      await firestore.collection('Consultations').doc(docId).update({
+        'status': 'Finalizada',
+      });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  static Future<void> cancelConsultation(String docId) async {
+    try {
+      final doc = await firestore.collection('Consultations').doc(docId).get();
+      final current = doc.data()?['status'];
+      if (current == 'Cancelada') {
+        throw Exception('Consulta já cancelada');
+      }
+      await firestore.collection('Consultations').doc(docId).update({
+        'status': 'Cancelada',
+      });
+    } catch (e) {
+      rethrow;
+    }
   }
 }
