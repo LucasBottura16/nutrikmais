@@ -11,6 +11,9 @@ class CustomButton extends StatelessWidget {
   final double? iconSize;
   final Color? buttonColor;
   final double? buttonBorderRadius;
+  final bool? showBorder;
+  final Color? borderColor;
+  final double? borderWidth;
   final EdgeInsets? buttonEdgeInsets;
   final bool? isLoading;
   final Color? loadingColor;
@@ -27,6 +30,9 @@ class CustomButton extends StatelessWidget {
     this.iconSize,
     this.buttonColor,
     this.buttonBorderRadius,
+    this.showBorder,
+    this.borderColor,
+    this.borderWidth,
     this.buttonEdgeInsets,
     this.isLoading,
     this.loadingColor,
@@ -46,6 +52,9 @@ class CustomButton extends StatelessWidget {
             (Set<WidgetState> states) {
               return RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(buttonBorderRadius ?? 15),
+                side: (showBorder == true)
+                    ? BorderSide(color: borderColor ?? Colors.black, width: borderWidth ?? 1)
+                    : BorderSide.none,
               );
             },
           ),

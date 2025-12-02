@@ -281,13 +281,7 @@ class _MyDrawerState extends State<MyDrawer> {
                               : MyColors.myPrimary,
                         ),
                       ),
-                      onTap: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          RouteGenerator.routeLogin,
-                          (_) => false,
-                        );
-                      },
+                      onTap: () {},
                     ),
                   ),
                   Card(
@@ -309,29 +303,13 @@ class _MyDrawerState extends State<MyDrawer> {
                               : MyColors.myPrimary,
                         ),
                       ),
-                      onTap: () {},
-                    ),
-                  ),
-                  Card(
-                    color: _currentScreen == "Evolution_screen"
-                        ? MyColors.myPrimary
-                        : Colors.white,
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.accessibility_new_outlined,
-                        color: _currentScreen == "Evolution_screen"
-                            ? Colors.white
-                            : MyColors.myPrimary,
-                      ),
-                      title: Text(
-                        'Evolução',
-                        style: TextStyle(
-                          color: _currentScreen == "Evolution_screen"
-                              ? Colors.white
-                              : MyColors.myPrimary,
-                        ),
-                      ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RouteGenerator.orientationsScreen,
+                          (_) => false,
+                        );
+                      },
                     ),
                   ),
                 ],

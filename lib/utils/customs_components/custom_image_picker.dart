@@ -70,11 +70,7 @@ class ImageSelectionButton extends StatelessWidget {
         ),
         minimumSize: Size(double.infinity, height),
       ),
-      child: Icon(
-        addPhotoIcon,
-        color: buttonIconColor,
-        size: buttonIconSize,
-      ),
+      child: Icon(addPhotoIcon, color: buttonIconColor, size: buttonIconSize),
     );
   }
 
@@ -107,27 +103,24 @@ class ImageSelectionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
           child: kIsWeb
               ? Image.network(
-            currentImagePath,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return _buildPlaceholder(context);
-            },
-          )
-              : Image.file( // Para mobile, usa File
-            File(currentImagePath),
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return _buildPlaceholder(context);
-            },
-          ),
+                  currentImagePath,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return _buildPlaceholder(context);
+                  },
+                )
+              : Image.file(
+                  // Para mobile, usa File
+                  File(currentImagePath),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return _buildPlaceholder(context);
+                  },
+                ),
         ),
       );
     }
 
-    return SizedBox(
-      height: height,
-      width: double.infinity,
-      child: imageWidget,
-    );
+    return SizedBox(height: height, width: double.infinity, child: imageWidget);
   }
 }

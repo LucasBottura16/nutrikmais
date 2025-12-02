@@ -7,26 +7,35 @@ class LoginService {
   static FirebaseAuth auth = FirebaseAuth.instance;
 
   static Future<void> login(
-      String email, String password, BuildContext context) async {
+    String email,
+    String password,
+    BuildContext context,
+  ) async {
     if (email.isEmpty || password.isEmpty) {
       LoginModalError.showErrorDialog(
-          context, 'Por favor, preencha todos os campos.');
+        context,
+        'Por favor, preencha todos os campos.',
+      );
       return;
     }
 
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       Navigator.pushNamedAndRemoveUntil(
-          context, RouteGenerator.routeLogin, (_) => false);
+        context,
+        RouteGenerator.routeLogin,
+        (_) => false,
+      );
     } on FirebaseAuthException catch (e) {
       String errorMessage = LoginModalError.getErrorMessage(e);
       LoginModalError.showErrorDialog(context, errorMessage);
     } catch (e) {
       LoginModalError.showErrorDialog(
-          context, 'Ocorreu um erro inesperado. Tente novamente mais tarde.');
+        context,
+        'Ocorreu um erro inesperado. Tente novamente mais tarde.',
+      );
     }
   }
-
 
   void openInstagram() {
     debugPrint('Abrindo Instagram...');

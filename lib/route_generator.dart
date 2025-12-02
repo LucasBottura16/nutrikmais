@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:nutrikmais/consultations_screen/add_consultations_screen/add_consultations_view.dart';
 import 'package:nutrikmais/consultations_screen/consultations_view.dart';
 import 'package:nutrikmais/create_account_screen/create_account_view.dart';
+import 'package:nutrikmais/orientations_screen/add_orientations_screen/add_orientations_view.dart';
+import 'package:nutrikmais/orientations_screen/models/orientations_model.dart';
+import 'package:nutrikmais/orientations_screen/orientation_details_screen/orientation_details_view.dart';
+import 'package:nutrikmais/orientations_screen/orientations_view.dart';
 import 'package:nutrikmais/home_screen/home_view.dart';
 import 'package:nutrikmais/main.dart';
 import 'package:nutrikmais/patient_screen/add_pacient_screen/add_patient_view.dart';
@@ -37,6 +41,9 @@ class RouteGenerator {
       "/profile_infos_patient_screen";
   static const String consultationsScreen = "/consultations_screen";
   static const String addConsultationsScreen = "/add_consultations_screen";
+  static const String orientationsScreen = "/orientations_screen";
+  static const String addOrientationsScreen = "/add_orientations_screen";
+  static const String orientationDetailsScreen = "/orientation_details_screen";
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -78,6 +85,16 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) =>
               AddConsultationsView(date: settings.arguments as String?),
+        );
+      case orientationsScreen:
+        return MaterialPageRoute(builder: (_) => const OrientationsView());
+      case addOrientationsScreen:
+        return MaterialPageRoute(builder: (_) => const AddOrientationsView());
+      case orientationDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => OrientationDetailsView(
+            orientationData: settings.arguments as DBOrientations,
+          ),
         );
       default:
         _errorRoute();
