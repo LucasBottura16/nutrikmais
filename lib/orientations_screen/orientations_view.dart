@@ -175,6 +175,39 @@ class _OrientationsViewState extends State<OrientationsView> {
                                         arguments: myOrientation,
                                       );
                                     },
+                                    onLongPress: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            title: const Text(
+                                              'Excluir Orientação',
+                                            ),
+                                            content: const Text(
+                                              'Tem certeza que deseja excluir esta orientação?',
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: const Text('Cancelar'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () async {
+                                                  await OrientationsService.deleteOrientation(
+                                                    myOrientation
+                                                        .uidOrientations,
+                                                  );
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: const Text('Excluir'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
                                     child: Card(
                                       child: Column(
                                         crossAxisAlignment:

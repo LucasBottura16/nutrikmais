@@ -28,4 +28,8 @@ class OrientationsService {
 
     return subscription;
   }
+
+  static Future<void> deleteOrientation(String docId) async {
+    await firestore.collection('Orientations').doc(docId).delete();
+  }
 }
