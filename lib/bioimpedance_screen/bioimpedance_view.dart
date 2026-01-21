@@ -229,8 +229,7 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  myBioimpedance.patientName ??
-                                                      '',
+                                                  myBioimpedance.patientName,
                                                   style: const TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.bold,
@@ -274,10 +273,11 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
 
                     // Reassina o listener para garantir atualização em tempo real
                     _subscription?.cancel();
-                    _subscription = BioimpedanceService.addListenerBioimpedances(
-                      _controllerStream,
-                      uidPatient: _selectedPatientUid,
-                    );
+                    _subscription =
+                        BioimpedanceService.addListenerBioimpedances(
+                          _controllerStream,
+                          uidPatient: _selectedPatientUid,
+                        );
                   },
                   title: "ADICIONAR BIOIMPEDÂNCIA",
                   titleColor: Colors.white,
