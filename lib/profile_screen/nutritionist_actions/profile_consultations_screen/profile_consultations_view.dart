@@ -18,7 +18,7 @@ class ProfileConsultationsView extends StatefulWidget {
 }
 
 class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
-  final _controllerStream = StreamController<QuerySnapshot>.broadcast();
+  late StreamController<QuerySnapshot> _controllerStream;
 
   String? _nutritionistUid;
   DateTime _selectedDay = DateTime.now();
@@ -75,7 +75,7 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
             date: date,
             time: time,
           );
-          ConsultationService.addListenerAvailability(
+          await ConsultationService.addListenerAvailability(
             _controllerStream,
             _nutritionistUid!,
             DateFormat("dd/MM/yyyy").format(_selectedDay),
@@ -219,7 +219,7 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
       if (intervalMinutes <= 0) break;
     }
 
-    ConsultationService.addListenerAvailability(
+    await ConsultationService.addListenerAvailability(
       _controllerStream,
       _nutritionistUid!,
       DateFormat("dd/MM/yyyy").format(_selectedDay),
@@ -248,7 +248,7 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
     _nutritionistUid = prefs.getString('uidLogged');
 
     if (_nutritionistUid != null) {
-      ConsultationService.addListenerAvailability(
+      await ConsultationService.addListenerAvailability(
         _controllerStream,
         _nutritionistUid!,
         DateFormat("dd/MM/yyyy").format(_selectedDay),
@@ -259,7 +259,16 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
   @override
   void initState() {
     super.initState();
+    _controllerStream = StreamController<QuerySnapshot>.broadcast();
     _loadInitialData();
+  }
+
+  @override
+  void dispose() {
+    if (!_controllerStream.isClosed) {
+      _controllerStream.close();
+    }
+    super.dispose();
   }
 
   @override
@@ -289,7 +298,7 @@ class _ProfileConsultationsViewState extends State<ProfileConsultationsView> {
                     _controllerStream,
                     _nutritionistUid!,
                     DateFormat("dd/MM/yyyy").format(_selectedDay),
-                  );
+                  ).ignore();
                 });
               },
               onFormatChanged: (format) {

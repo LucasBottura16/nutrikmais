@@ -19,7 +19,7 @@ class PatientView extends StatefulWidget {
 }
 
 class _PatientViewState extends State<PatientView> {
-  final _controllerStream = StreamController<QuerySnapshot>.broadcast();
+  late StreamController<QuerySnapshot> _controllerStream;
 
   final bool _isLoading = false;
 
@@ -35,7 +35,16 @@ class _PatientViewState extends State<PatientView> {
   @override
   void initState() {
     super.initState();
+    _controllerStream = StreamController<QuerySnapshot>.broadcast();
     PatientService.addListenerPatient(_controllerStream);
+  }
+
+  @override
+  void dispose() {
+    if (!_controllerStream.isClosed) {
+      _controllerStream.close();
+    }
+    super.dispose();
   }
 
   @override

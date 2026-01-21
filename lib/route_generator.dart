@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nutrikmais/bioimpedance_screen/add_bioimpedance_screen/add_bioimpedance_view.dart';
+import 'package:nutrikmais/bioimpedance_screen/bioimpedance_view.dart';
+import 'package:nutrikmais/bioimpedance_screen/bioimpedance_details_screen/bioimpedance_details_view.dart';
+import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
 import 'package:nutrikmais/consultations_screen/add_consultations_screen/add_consultations_view.dart';
 import 'package:nutrikmais/consultations_screen/consultations_view.dart';
 import 'package:nutrikmais/create_account_screen/create_account_view.dart';
@@ -44,6 +48,10 @@ class RouteGenerator {
   static const String orientationsScreen = "/orientations_screen";
   static const String addOrientationsScreen = "/add_orientations_screen";
   static const String orientationDetailsScreen = "/orientation_details_screen";
+  static const String bioimpedanceScreen = "/bioimpedance_screen";
+  static const String addBioimpedanceScreen = "/add_bioimpedance_screen";
+  static const String bioimpedanceDetailsScreen =
+      "/bioimpedance_details_screen";
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -94,6 +102,16 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => OrientationDetailsView(
             orientationData: settings.arguments as DBOrientations,
+          ),
+        );
+      case bioimpedanceScreen:
+        return MaterialPageRoute(builder: (_) => const BioimpedanceView());
+      case addBioimpedanceScreen:
+        return MaterialPageRoute(builder: (_) => const AddBioimpedanceView());
+      case bioimpedanceDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => BioimpedanceDetailsView(
+            bioimpedanceData: settings.arguments as DBBioimpedance,
           ),
         );
       default:

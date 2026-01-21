@@ -21,7 +21,7 @@ class ConsultationsView extends StatefulWidget {
 }
 
 class _ConsultationsViewState extends State<ConsultationsView> {
-  final _controllerStream = StreamController<QuerySnapshot>.broadcast();
+  late StreamController<QuerySnapshot> _controllerStream;
 
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
@@ -30,10 +30,19 @@ class _ConsultationsViewState extends State<ConsultationsView> {
   @override
   void initState() {
     super.initState();
+    _controllerStream = StreamController<QuerySnapshot>.broadcast();
     ConsultationsServices.addListenerConsultations(
       _controllerStream,
       DateFormat('dd/MM/yyyy').format(_selectedDay),
     );
+  }
+
+  @override
+  void dispose() {
+    if (!_controllerStream.isClosed) {
+      _controllerStream.close();
+    }
+    super.dispose();
   }
 
   @override
@@ -63,7 +72,7 @@ class _ConsultationsViewState extends State<ConsultationsView> {
                 ConsultationsServices.addListenerConsultations(
                   _controllerStream,
                   DateFormat('dd/MM/yyyy').format(_selectedDay),
-                );
+                ).ignore();
               },
               onFormatChanged: (format) {
                 if (_calendarFormat != format) {

@@ -281,7 +281,13 @@ class _MyDrawerState extends State<MyDrawer> {
                               : MyColors.myPrimary,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RouteGenerator.bioimpedanceScreen,
+                          (_) => false,
+                        );
+                      },
                     ),
                   ),
                   Card(

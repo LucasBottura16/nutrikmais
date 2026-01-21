@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/orientations_screen/models/orientations_model.dart';
-import 'package:nutrikmais/orientations_screen/orientations_service.dart';
+import 'package:nutrikmais/bioimpedance_screen/bioimpedance_service.dart';
+import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
 import 'package:nutrikmais/orientations_screen/patient_selector_modal.dart';
 import 'package:nutrikmais/route_generator.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
@@ -11,24 +11,25 @@ import 'package:nutrikmais/utils/customs_components/custom_button.dart';
 import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
 import 'package:nutrikmais/utils/my_drawer.dart';
 
-class OrientationsView extends StatefulWidget {
-  const OrientationsView({super.key});
+class BioimpedanceView extends StatefulWidget {
+  const BioimpedanceView({super.key});
 
   @override
-  State<OrientationsView> createState() => _OrientationsViewState();
+  State<BioimpedanceView> createState() => _BioimpedanceViewState();
 }
 
-class _OrientationsViewState extends State<OrientationsView> {
+class _BioimpedanceViewState extends State<BioimpedanceView> {
   late StreamController<QuerySnapshot> _controllerStream;
   final bool _isLoading = false;
   StreamSubscription<QuerySnapshot>? _subscription;
   String? _selectedPatientName;
+  String? _selectedPatientUid;
 
   @override
   void initState() {
     super.initState();
     _controllerStream = StreamController<QuerySnapshot>.broadcast();
-    _subscription = OrientationsService.addListenerOrientations(
+    _subscription = BioimpedanceService.addListenerBioimpedances(
       _controllerStream,
     );
   }
@@ -46,10 +47,10 @@ class _OrientationsViewState extends State<OrientationsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Orientações",
+        title: "bioimpedância",
         backgroundColor: MyColors.myPrimary,
       ),
-      drawer: MyDrawer(screen: "orientations_screen"),
+      drawer: MyDrawer(screen: "bioimpedance_screen"),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -61,7 +62,7 @@ class _OrientationsViewState extends State<OrientationsView> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      "Orientações",
+                      "bioimpedâncias",
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
@@ -79,14 +80,15 @@ class _OrientationsViewState extends State<OrientationsView> {
                         if (selectedUid.isEmpty) {
                           setState(() {
                             _selectedPatientName = null;
+                            _selectedPatientUid = null;
                           });
                           _subscription =
-                              OrientationsService.addListenerOrientations(
+                              BioimpedanceService.addListenerBioimpedances(
                                 _controllerStream,
                               );
                         } else {
                           final doc = await FirebaseFirestore.instance
-                              .collection('Orientations')
+                              .collection('Bioimpedance')
                               .where('uidPatient', isEqualTo: selectedUid)
                               .limit(1)
                               .get();
@@ -99,10 +101,11 @@ class _OrientationsViewState extends State<OrientationsView> {
 
                           setState(() {
                             _selectedPatientName = patientName;
+                            _selectedPatientUid = selectedUid;
                           });
 
                           _subscription =
-                              OrientationsService.addListenerOrientations(
+                              BioimpedanceService.addListenerBioimpedances(
                                 _controllerStream,
                                 uidPatient: selectedUid,
                               );
@@ -135,7 +138,9 @@ class _OrientationsViewState extends State<OrientationsView> {
                           switch (snapshot.connectionState) {
                             case ConnectionState.none:
                             case ConnectionState.waiting:
-                              return CustomLoadingData(nameData: "Orientações");
+                              return CustomLoadingData(
+                                nameData: "Bioimpedâncias",
+                              );
                             case ConnectionState.active:
                             case ConnectionState.done:
                               if (snapshot.hasError) {
@@ -148,7 +153,7 @@ class _OrientationsViewState extends State<OrientationsView> {
                               if (querySnapshot!.docs.isEmpty) {
                                 return const Center(
                                   child: Text(
-                                    "Nenhuma orientação encontrada!",
+                                    "Nenhuma bioimpedância encontrada!",
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
@@ -160,13 +165,13 @@ class _OrientationsViewState extends State<OrientationsView> {
                               return ListView.builder(
                                 itemCount: querySnapshot.docs.length,
                                 itemBuilder: (context, index) {
-                                  List<DocumentSnapshot> orientations =
+                                  List<DocumentSnapshot> bioimpedances =
                                       querySnapshot.docs.toList();
                                   DocumentSnapshot documentSnapshot =
-                                      orientations[index];
+                                      bioimpedances[index];
 
-                                  DBOrientations myOrientation =
-                                      DBOrientations.fromDocumentSnapshotOrientations(
+                                  DBBioimpedance myBioimpedance =
+                                      DBBioimpedance.fromDocumentSnapshotBioimpedance(
                                         documentSnapshot,
                                       );
 
@@ -174,8 +179,9 @@ class _OrientationsViewState extends State<OrientationsView> {
                                     onTap: () {
                                       Navigator.pushNamed(
                                         context,
-                                        RouteGenerator.orientationDetailsScreen,
-                                        arguments: myOrientation,
+                                        RouteGenerator
+                                            .bioimpedanceDetailsScreen,
+                                        arguments: myBioimpedance,
                                       );
                                     },
                                     onLongPress: () {
@@ -184,10 +190,10 @@ class _OrientationsViewState extends State<OrientationsView> {
                                         builder: (context) {
                                           return AlertDialog(
                                             title: const Text(
-                                              'Excluir Orientação',
+                                              'Excluir Bioimpedância',
                                             ),
                                             content: const Text(
-                                              'Tem certeza que deseja excluir esta orientação?',
+                                              'Tem certeza que deseja excluir esta bioimpedância?',
                                             ),
                                             actions: [
                                               TextButton(
@@ -198,9 +204,9 @@ class _OrientationsViewState extends State<OrientationsView> {
                                               ),
                                               TextButton(
                                                 onPressed: () async {
-                                                  await OrientationsService.deleteOrientation(
-                                                    myOrientation
-                                                        .uidOrientations,
+                                                  await BioimpedanceService.deleteBioimpedance(
+                                                    myBioimpedance
+                                                        .uidBioimpedance,
                                                   );
                                                   Navigator.of(context).pop();
                                                 },
@@ -223,7 +229,7 @@ class _OrientationsViewState extends State<OrientationsView> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  myOrientation.patientName ??
+                                                  myBioimpedance.patientName ??
                                                       '',
                                                   style: const TextStyle(
                                                     fontSize: 16,
@@ -231,7 +237,7 @@ class _OrientationsViewState extends State<OrientationsView> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  'Atualizado em: ${myOrientation.orientationsUpdatedAt}',
+                                                  'Atualizado em: ${myBioimpedance.bioimpedanceUpdatedAt}',
                                                   style: const TextStyle(
                                                     fontSize: 14,
                                                     color: Colors.grey,
@@ -261,12 +267,19 @@ class _OrientationsViewState extends State<OrientationsView> {
                 width: double.infinity,
                 child: CustomButton(
                   onPressed: () async {
-                    Navigator.pushNamed(
+                    await Navigator.pushNamed(
                       context,
-                      RouteGenerator.addOrientationsScreen,
+                      RouteGenerator.addBioimpedanceScreen,
+                    );
+
+                    // Reassina o listener para garantir atualização em tempo real
+                    _subscription?.cancel();
+                    _subscription = BioimpedanceService.addListenerBioimpedances(
+                      _controllerStream,
+                      uidPatient: _selectedPatientUid,
                     );
                   },
-                  title: "ADICIONAR ORIENTAÇÃO",
+                  title: "ADICIONAR BIOIMPEDÂNCIA",
                   titleColor: Colors.white,
                   titleSize: 16,
                   buttonEdgeInsets: const EdgeInsets.symmetric(vertical: 20),

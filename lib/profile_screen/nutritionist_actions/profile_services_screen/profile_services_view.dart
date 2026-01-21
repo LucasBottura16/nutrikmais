@@ -17,7 +17,7 @@ class ProfileServicesView extends StatefulWidget {
 }
 
 class _ProfileServicesViewState extends State<ProfileServicesView> {
-  final _controllerStream = StreamController<QuerySnapshot>.broadcast();
+  late StreamController<QuerySnapshot> _controllerStream;
 
   _addNewServices() async {
     await AddServiceSheet.show(context);
@@ -26,7 +26,16 @@ class _ProfileServicesViewState extends State<ProfileServicesView> {
   @override
   void initState() {
     super.initState();
-    ProfileServicesService.addListenerService(_controllerStream);
+    _controllerStream = StreamController<QuerySnapshot>.broadcast();
+    ProfileServicesService.addListenerService(_controllerStream).ignore();
+  }
+
+  @override
+  void dispose() {
+    if (!_controllerStream.isClosed) {
+      _controllerStream.close();
+    }
+    super.dispose();
   }
 
   @override

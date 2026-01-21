@@ -3,12 +3,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ConsultationService {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
+  static StreamSubscription<QuerySnapshot>? _subscription;
 
-  static Future<Stream<QuerySnapshot>?>? addListenerAvailability(
+  static Future<void> addListenerAvailability(
     StreamController<QuerySnapshot> controllerStream,
     String nutritionistUid,
     String date,
   ) async {
+    try {
+      await _subscription?.cancel();
+    } catch (_) {}
+
     Stream<QuerySnapshot> stream = firestore
         .collection('Nutritionists')
         .doc(nutritionistUid)
@@ -17,11 +22,9 @@ class ConsultationService {
         .orderBy('time', descending: false)
         .snapshots();
 
-    stream.listen((event) {
+    _subscription = stream.listen((event) {
       controllerStream.add(event);
     });
-
-    return null;
   }
 
   Future<void> addAvailability({

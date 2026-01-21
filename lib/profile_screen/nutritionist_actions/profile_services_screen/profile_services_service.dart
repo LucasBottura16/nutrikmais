@@ -8,21 +8,24 @@ import 'package:nutrikmais/utils/random_key.dart';
 class ProfileServicesService {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   static FirebaseAuth auth = FirebaseAuth.instance;
+  static StreamSubscription<QuerySnapshot>? _subscription;
 
-  static Future<Stream<QuerySnapshot>?>? addListenerService(
+  static Future<void> addListenerService(
     StreamController<QuerySnapshot> controllerStream,
   ) async {
+    try {
+      await _subscription?.cancel();
+    } catch (_) {}
+
     Stream<QuerySnapshot> stream = firestore
         .collection("Nutritionists")
         .doc(auth.currentUser?.uid)
         .collection("Services")
         .snapshots();
 
-    stream.listen((event) {
+    _subscription = stream.listen((event) {
       controllerStream.add(event);
     });
-
-    return null;
   }
 
   Future<void> addServicesNutritionist(
