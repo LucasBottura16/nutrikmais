@@ -11,21 +11,31 @@ class ConsultationsServices {
 
   static Future<void> addListenerConsultations(
     StreamController<QuerySnapshot> controllerStream,
-    String date,
-  ) async {
+    String date, {
+    String? typeUser,
+  }) async {
     // cancel previous subscription if exists
     try {
       await _subscription?.cancel();
     } catch (_) {}
 
-    final stream = firestore
-        .collection("Consultations")
-        .where("uidNutritionist", isEqualTo: auth.currentUser?.uid)
-        .where("dateConsultation", isEqualTo: date)
-        .orderBy("timeConsultation")
-        .snapshots();
+    Query stream = firestore.collection("Consultations");
+    
+    if (typeUser == "patient") {
+      // Se for paciente, busca pelas consultas do paciente
+      stream = stream
+          .where("uidPatient", isEqualTo: auth.currentUser?.uid)
+          .where("dateConsultation", isEqualTo: date)
+          .orderBy("timeConsultation");
+    } else {
+      // Se for nutricionista, busca pelas consultas do nutricionista
+      stream = stream
+          .where("uidNutritionist", isEqualTo: auth.currentUser?.uid)
+          .where("dateConsultation", isEqualTo: date)
+          .orderBy("timeConsultation");
+    }
 
-    _subscription = stream.listen((event) {
+    _subscription = stream.snapshots().listen((event) {
       controllerStream.add(event);
     });
 

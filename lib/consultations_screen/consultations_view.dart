@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nutrikmais/consultations_screen/consultations_services.dart';
@@ -11,6 +12,7 @@ import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
 import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
 import 'package:nutrikmais/utils/my_drawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class ConsultationsView extends StatefulWidget {
@@ -26,15 +28,78 @@ class _ConsultationsViewState extends State<ConsultationsView> {
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
   CalendarFormat _calendarFormat = CalendarFormat.month;
+  String _typeUser = "";
+  Map<DateTime, List<dynamic>> _events = {};
+
+  _verifyAccount() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _typeUser = prefs.getString('typeUser') ?? '';
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     _controllerStream = StreamController<QuerySnapshot>.broadcast();
+    _initializeData();
+  }
+
+  void _initializeData() async {
+    await _verifyAccount();
+    await _loadMonthEvents(_focusedDay);
     ConsultationsServices.addListenerConsultations(
       _controllerStream,
       DateFormat('dd/MM/yyyy').format(_selectedDay),
+      typeUser: _typeUser,
     );
+  }
+
+  Future<void> _loadMonthEvents(DateTime month) async {
+    final firstDay = DateTime(month.year, month.month, 1);
+    final lastDay = DateTime(month.year, month.month + 1, 0);
+    
+    Query query = FirebaseFirestore.instance.collection('Consultations');
+    
+    if (_typeUser == "patient") {
+      query = query.where('uidPatient', isEqualTo: FirebaseAuth.instance.currentUser?.uid);
+    } else {
+      query = query.where('uidNutritionist', isEqualTo: FirebaseAuth.instance.currentUser?.uid);
+    }
+    
+    final snapshot = await query.get();
+    final Map<DateTime, List<dynamic>> events = {};
+    
+    for (var doc in snapshot.docs) {
+      final data = doc.data() as Map<String, dynamic>;
+      final dateStr = data['dateConsultation'] as String?;
+      
+      if (dateStr != null) {
+        try {
+          final date = DateFormat('dd/MM/yyyy').parse(dateStr);
+          final normalizedDate = DateTime(date.year, date.month, date.day);
+          
+          if (normalizedDate.isAfter(firstDay.subtract(const Duration(days: 1))) &&
+              normalizedDate.isBefore(lastDay.add(const Duration(days: 1)))) {
+            if (events[normalizedDate] == null) {
+              events[normalizedDate] = [];
+            }
+            events[normalizedDate]!.add(doc.id);
+          }
+        } catch (e) {
+          // Ignora datas inválidas
+        }
+      }
+    }
+    
+    setState(() {
+      _events = events;
+    });
+  }
+
+  List<dynamic> _getEventsForDay(DateTime day) {
+    final normalizedDay = DateTime(day.year, day.month, day.day);
+    return _events[normalizedDay] ?? [];
   }
 
   @override
@@ -63,6 +128,11 @@ class _ConsultationsViewState extends State<ConsultationsView> {
               calendarFormat: _calendarFormat,
               locale: 'pt_BR',
               selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+              eventLoader: _getEventsForDay,
+              onPageChanged: (focusedDay) {
+                _focusedDay = focusedDay;
+                _loadMonthEvents(focusedDay);
+              },
               onDaySelected: (selectedDay, focusedDay) {
                 setState(() {
                   _selectedDay = selectedDay;
@@ -72,6 +142,7 @@ class _ConsultationsViewState extends State<ConsultationsView> {
                 ConsultationsServices.addListenerConsultations(
                   _controllerStream,
                   DateFormat('dd/MM/yyyy').format(_selectedDay),
+                  typeUser: _typeUser,
                 ).ignore();
               },
               onFormatChanged: (format) {
@@ -99,24 +170,28 @@ class _ConsultationsViewState extends State<ConsultationsView> {
               ),
             ),
             const SizedBox(height: 16),
-            SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.9,
-              height: 50,
-              child: CustomButton(
-                title: "Adicionar Horário",
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    RouteGenerator.addConsultationsScreen,
-                    arguments: DateFormat("dd/MM/yyyy").format(_selectedDay),
-                  );
-                },
-                buttonColor: MyColors.myPrimary,
-                titleColor: Colors.white,
-                icon: Icons.add,
-                iconColor: Colors.white,
-              ),
-            ),
+            _typeUser == "patient"
+                ? const SizedBox.shrink()
+                : SizedBox(
+                    width: MediaQuery.sizeOf(context).width * 0.9,
+                    height: 50,
+                    child: CustomButton(
+                      title: "Adicionar Horário",
+                      onPressed: () {
+                        Navigator.pushNamed(
+                          context,
+                          RouteGenerator.addConsultationsScreen,
+                          arguments: DateFormat(
+                            "dd/MM/yyyy",
+                          ).format(_selectedDay),
+                        );
+                      },
+                      buttonColor: MyColors.myPrimary,
+                      titleColor: Colors.white,
+                      icon: Icons.add,
+                      iconColor: Colors.white,
+                    ),
+                  ),
             const SizedBox(height: 16),
             Expanded(
               child: Container(

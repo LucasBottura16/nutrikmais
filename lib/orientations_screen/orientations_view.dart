@@ -10,6 +10,7 @@ import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
 import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
 import 'package:nutrikmais/utils/my_drawer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OrientationsView extends StatefulWidget {
   const OrientationsView({super.key});
@@ -23,13 +24,27 @@ class _OrientationsViewState extends State<OrientationsView> {
   final bool _isLoading = false;
   StreamSubscription<QuerySnapshot>? _subscription;
   String? _selectedPatientName;
+  String _typeUser = "";
+
+  _verifyAccount() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _typeUser = prefs.getString('typeUser') ?? '';
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     _controllerStream = StreamController<QuerySnapshot>.broadcast();
+    _initializeData();
+  }
+
+  void _initializeData() async {
+    await _verifyAccount();
     _subscription = OrientationsService.addListenerOrientations(
       _controllerStream,
+      typeUser: _typeUser,
     );
   }
 
@@ -68,64 +83,76 @@ class _OrientationsViewState extends State<OrientationsView> {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    CustomButton(
-                      onPressed: () async {
-                        final selectedUid = await showPatientSelectorDialog(
-                          context,
-                        );
-                        if (selectedUid == null) return;
+                    _typeUser == "patient"
+                        ? const SizedBox.shrink()
+                        : Column(
+                            children: [
+                              CustomButton(
+                                onPressed: () async {
+                                  final selectedUid =
+                                      await showPatientSelectorDialog(context);
+                                  if (selectedUid == null) return;
 
-                        _subscription?.cancel();
-                        if (selectedUid.isEmpty) {
-                          setState(() {
-                            _selectedPatientName = null;
-                          });
-                          _subscription =
-                              OrientationsService.addListenerOrientations(
-                                _controllerStream,
-                              );
-                        } else {
-                          final doc = await FirebaseFirestore.instance
-                              .collection('Orientations')
-                              .where('uidPatient', isEqualTo: selectedUid)
-                              .limit(1)
-                              .get();
-                          final patientName = doc.docs.isNotEmpty
-                              ? (doc.docs.first.data()['patientName'] ??
-                                        doc.docs.first.data()['patient'] ??
-                                        '')
-                                    .toString()
-                              : '';
+                                  _subscription?.cancel();
+                                  if (selectedUid.isEmpty) {
+                                    setState(() {
+                                      _selectedPatientName = null;
+                                    });
+                                    _subscription =
+                                        OrientationsService.addListenerOrientations(
+                                          _controllerStream,
+                                          typeUser: _typeUser,
+                                        );
+                                  } else {
+                                    final doc = await FirebaseFirestore.instance
+                                        .collection('Orientations')
+                                        .where(
+                                          'uidPatient',
+                                          isEqualTo: selectedUid,
+                                        )
+                                        .limit(1)
+                                        .get();
+                                    final patientName = doc.docs.isNotEmpty
+                                        ? (doc.docs.first
+                                                      .data()['patientName'] ??
+                                                  doc.docs.first
+                                                      .data()['patient'] ??
+                                                  '')
+                                              .toString()
+                                        : '';
 
-                          setState(() {
-                            _selectedPatientName = patientName;
-                          });
+                                    setState(() {
+                                      _selectedPatientName = patientName;
+                                    });
 
-                          _subscription =
-                              OrientationsService.addListenerOrientations(
-                                _controllerStream,
-                                uidPatient: selectedUid,
-                              );
-                        }
-                      },
-                      title:
-                          _selectedPatientName != null &&
-                              _selectedPatientName!.isNotEmpty
-                          ? _selectedPatientName!
-                          : "Paciente",
-                      titleColor: MyColors.myPrimary,
-                      buttonColor: Colors.white,
-                      buttonEdgeInsets: const EdgeInsets.symmetric(
-                        horizontal: 0,
-                        vertical: 15,
-                      ),
-                      borderColor: MyColors.myPrimary,
-                      borderWidth: 1,
-                      showBorder: true,
-                    ),
+                                    _subscription =
+                                        OrientationsService.addListenerOrientations(
+                                          _controllerStream,
+                                          typeUser: _typeUser,
+                                          uidPatient: selectedUid,
+                                        );
+                                  }
+                                },
+                                title:
+                                    _selectedPatientName != null &&
+                                        _selectedPatientName!.isNotEmpty
+                                    ? _selectedPatientName!
+                                    : "Paciente",
+                                titleColor: MyColors.myPrimary,
+                                buttonColor: Colors.white,
+                                buttonEdgeInsets: const EdgeInsets.symmetric(
+                                  horizontal: 0,
+                                  vertical: 15,
+                                ),
+                                borderColor: MyColors.myPrimary,
+                                borderWidth: 1,
+                                showBorder: true,
+                              ),
 
-                    const SizedBox(height: 10),
-                    Divider(color: Colors.grey.shade400),
+                              const SizedBox(height: 10),
+                              Divider(color: Colors.grey.shade400),
+                            ],
+                          ),
                     const SizedBox(width: 10),
                     Expanded(
                       flex: 1,
@@ -255,28 +282,32 @@ class _OrientationsViewState extends State<OrientationsView> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: SizedBox(
-                width: double.infinity,
-                child: CustomButton(
-                  onPressed: () async {
-                    Navigator.pushNamed(
-                      context,
-                      RouteGenerator.addOrientationsScreen,
-                    );
-                  },
-                  title: "ADICIONAR ORIENTAÇÃO",
-                  titleColor: Colors.white,
-                  titleSize: 16,
-                  buttonEdgeInsets: const EdgeInsets.symmetric(vertical: 20),
-                  buttonColor: MyColors.myPrimary,
-                  buttonBorderRadius: 0,
-                  isLoading: _isLoading,
-                  loadingColor: MyColors.myPrimary,
-                ),
-              ),
-            ),
+            _typeUser == "patient"
+                ? const SizedBox.shrink()
+                : Padding(
+                    padding: const EdgeInsets.all(0.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: CustomButton(
+                        onPressed: () async {
+                          Navigator.pushNamed(
+                            context,
+                            RouteGenerator.addOrientationsScreen,
+                          );
+                        },
+                        title: "ADICIONAR ORIENTAÇÃO",
+                        titleColor: Colors.white,
+                        titleSize: 16,
+                        buttonEdgeInsets: const EdgeInsets.symmetric(
+                          vertical: 20,
+                        ),
+                        buttonColor: MyColors.myPrimary,
+                        buttonBorderRadius: 0,
+                        isLoading: _isLoading,
+                        loadingColor: MyColors.myPrimary,
+                      ),
+                    ),
+                  ),
           ],
         ),
       ),
