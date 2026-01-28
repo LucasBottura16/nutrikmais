@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/orientations_screen/orientations_service.dart';
+import 'package:nutrikmais/bioimpedance_screen/bioimpedance_service.dart';
 
-/// Shows a modal with a list of patients (from Orientations collection) and returns
+/// Shows a modal with a list of patients (from Bioimpedance collection) and returns
 /// the selected patient's uid as String. Returns null if cancelled.
 Future<String?> showPatientSelectorDialog(BuildContext context) async {
   try {
-    // Fetch all orientations for this nutritionist and extract unique patients
+    // Fetch all bioimpedances for this nutritionist and extract unique patients
     final docs = await FirebaseFirestore.instance
-        .collection('Orientations')
+        .collection('Bioimpedance')
         .where(
           'uidNutritionist',
-          isEqualTo: OrientationsService.auth.currentUser?.uid,
+          isEqualTo: BioimpedanceService.auth.currentUser?.uid,
         )
         .get();
 

@@ -25,11 +25,13 @@ class _OrientationsViewState extends State<OrientationsView> {
   StreamSubscription<QuerySnapshot>? _subscription;
   String? _selectedPatientName;
   String _typeUser = "";
+  String _uidAccount = "";
 
   _verifyAccount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _typeUser = prefs.getString('typeUser') ?? '';
+      _uidAccount = prefs.getString('uidAccount') ?? '';
     });
   }
 
@@ -45,6 +47,7 @@ class _OrientationsViewState extends State<OrientationsView> {
     _subscription = OrientationsService.addListenerOrientations(
       _controllerStream,
       typeUser: _typeUser,
+      uidAccount: _uidAccount,
     );
   }
 
@@ -107,7 +110,7 @@ class _OrientationsViewState extends State<OrientationsView> {
                                     final doc = await FirebaseFirestore.instance
                                         .collection('Orientations')
                                         .where(
-                                          'uidPatient',
+                                          'uidAccount',
                                           isEqualTo: selectedUid,
                                         )
                                         .limit(1)
@@ -129,7 +132,7 @@ class _OrientationsViewState extends State<OrientationsView> {
                                         OrientationsService.addListenerOrientations(
                                           _controllerStream,
                                           typeUser: _typeUser,
-                                          uidPatient: selectedUid,
+                                          uidAccount: selectedUid,
                                         );
                                   }
                                 },

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class OrientationsService {
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -8,17 +9,17 @@ class OrientationsService {
 
   static StreamSubscription<QuerySnapshot> addListenerOrientations(
     StreamController<QuerySnapshot> controllerStream, {
-    String? uidPatient,
+    String? uidAccount,
     String? typeUser,
   }) {
     Query collection = firestore.collection('Orientations');
 
     Query query;
-    
+
     if (typeUser == "patient") {
-      // Se for paciente, busca pelas orientações do paciente
+      debugPrint('Buscando orientações para o paciente: $uidAccount');
       query = collection
-          .where('uidPatient', isEqualTo: auth.currentUser?.uid)
+          .where('uidAccount', isEqualTo: uidAccount)
           .orderBy('orientationsUpdatedAt', descending: false);
     } else {
       // Se for nutricionista, busca pelas orientações do nutricionista
@@ -26,9 +27,9 @@ class OrientationsService {
           .where('uidNutritionist', isEqualTo: auth.currentUser?.uid)
           .orderBy('orientationsUpdatedAt', descending: false);
 
-      if (uidPatient != null && uidPatient.isNotEmpty) {
+      if (uidAccount != null && uidAccount.isNotEmpty) {
         query = query
-            .where('uidPatient', isEqualTo: uidPatient)
+            .where('uidAccount', isEqualTo: uidAccount)
             .orderBy('orientationsUpdatedAt', descending: false);
       }
     }

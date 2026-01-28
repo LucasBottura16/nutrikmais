@@ -13,6 +13,7 @@ class ConsultationsServices {
     StreamController<QuerySnapshot> controllerStream,
     String date, {
     String? typeUser,
+    String? uidAccount,
   }) async {
     // cancel previous subscription if exists
     try {
@@ -24,7 +25,7 @@ class ConsultationsServices {
     if (typeUser == "patient") {
       // Se for paciente, busca pelas consultas do paciente
       stream = stream
-          .where("uidPatient", isEqualTo: auth.currentUser?.uid)
+          .where("uidAccount", isEqualTo: uidAccount)
           .where("dateConsultation", isEqualTo: date)
           .orderBy("timeConsultation");
     } else {

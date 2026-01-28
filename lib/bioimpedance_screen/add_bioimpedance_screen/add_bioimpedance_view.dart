@@ -348,7 +348,7 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                   try {
                     await _service.completedRegister(
                       (_selectedConsultation!.data()
-                          as Map<String, dynamic>)['uidPatient'],
+                          as Map<String, dynamic>)['uidAccount'],
                       (_selectedConsultation!.data()
                           as Map<String, dynamic>)['patient'],
                       _bioimpedanceImages,

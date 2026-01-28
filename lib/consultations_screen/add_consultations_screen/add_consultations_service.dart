@@ -104,7 +104,7 @@ class AddConsultationsService {
 
   Future<void> createConsultation(
     BuildContext context,
-    String uidPatient,
+    String uidAccount,
     String patient,
     String photo,
     String dateConsultation,
@@ -114,7 +114,7 @@ class AddConsultationsService {
     String serviceType,
     String place,
   ) async {
-    if (uidPatient.isEmpty ||
+    if (uidAccount.isEmpty ||
         patient.isEmpty ||
         photo.isEmpty ||
         dateConsultation.isEmpty ||
@@ -138,7 +138,7 @@ class AddConsultationsService {
       );
     } else {
       await completedRegister(
-        uidPatient,
+        uidAccount,
         patient,
         photo,
         dateConsultation,
@@ -155,7 +155,7 @@ class AddConsultationsService {
   }
 
   Future<void> completedRegister(
-    String uidPatient,
+    String uidAccount,
     String patient,
     String photo,
     String dateConsultation,
@@ -172,7 +172,9 @@ class AddConsultationsService {
     String nameNutritionist = prefs.getString('nameLogged') ?? '';
     String uidNutritionist = prefs.getString('uidLogged') ?? '';
 
-    consultations.uidPatient = uidPatient;
+    debugPrint('UID Account: $uidAccount');
+
+    consultations.uidAccount = uidAccount;
     consultations.patient = patient;
     consultations.photo = photo;
     consultations.dateConsultation = dateConsultation;

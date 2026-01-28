@@ -300,7 +300,7 @@ class _AddConsultationsViewState extends State<AddConsultationsView> {
 
                     await AddConsultationsService().createConsultation(
                       context,
-                      _selectedPatient!['uidPatient'],
+                      _selectedPatient!['uidAccount'],
                       _selectedPatient!['patient'],
                       _selectedPatient!['photo'],
                       selectedDateEnd != null

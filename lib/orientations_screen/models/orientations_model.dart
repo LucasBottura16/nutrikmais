@@ -4,7 +4,7 @@ class DBOrientations {
   String? _uidOrientations;
   String? _orientationsUpdatedAt;
   String? _uidNutritionist;
-  String? _uidPatient;
+  String? _uidAccount;
   String? _patientName;
   List<String>? _orientations;
 
@@ -17,7 +17,7 @@ class DBOrientations {
     orientations = List<String>.from(documentSnapshot['orientations']);
     orientationsUpdatedAt = documentSnapshot['orientationsUpdatedAt'];
     uidNutritionist = documentSnapshot['uidNutritionist'];
-    uidPatient = documentSnapshot['uidPatient'];
+    uidAccount = documentSnapshot['uidAccount'];
     patientName = documentSnapshot['patientName'];
   }
 
@@ -28,7 +28,7 @@ class DBOrientations {
         'orientations': _orientations,
         'orientationsUpdatedAt': _orientationsUpdatedAt,
         'uidNutritionist': _uidNutritionist,
-        'uidPatient': _uidPatient,
+        'uidAccount': _uidAccount,
         'patientName': _patientName,
       };
     }
@@ -61,8 +61,8 @@ class DBOrientations {
     _uidNutritionist = value;
   }
 
-  String get uidPatient => _uidPatient!;
-  set uidPatient(String? value) {
-    _uidPatient = value;
+  String get uidAccount => _uidAccount!;
+  set uidAccount(String? value) {
+    _uidAccount = value;
   }
 }

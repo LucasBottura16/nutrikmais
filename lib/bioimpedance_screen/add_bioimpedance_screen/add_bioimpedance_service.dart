@@ -76,7 +76,7 @@ class AddBioimpedanceService {
   }
 
   Future<void> completedRegister(
-    String uidPatient,
+    String uidAccount,
     String patient,
     List<String>? bioimpedanceImages,
   ) async {
@@ -91,13 +91,13 @@ class AddBioimpedanceService {
       if (bioimpedanceImages != null && bioimpedanceImages.isNotEmpty) {
         imageUrls = await uploadBioimpedanceImages(
           bioimpedanceImages,
-          uidPatient,
+          uidAccount,
           uidBioimpedance,
         );
       }
 
       DBBioimpedance bioimpedanceData = DBBioimpedance();
-      bioimpedanceData.uidPatient = uidPatient;
+      bioimpedanceData.uidAccount = uidAccount;
       bioimpedanceData.patientName = patient;
       bioimpedanceData.uidNutritionist = uidNutritionist;
       bioimpedanceData.bioimpedanceUpdatedAt = DateFormat(

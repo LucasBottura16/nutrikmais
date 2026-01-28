@@ -110,8 +110,12 @@ class _ModalPatientViewState extends State<ModalPatientView> {
                     RegExp(r'[^0-9]'),
                     '',
                   );
+
+                  final message = widget.patient.stateAccount == 'pending'
+                      ? 'Olá ${widget.patient.patient}, seu codigo para criação é de conta é ${widget.patient.codePatient}.'
+                      : 'Olá ${widget.patient.patient}, gostaria de entrar em contato com você.';
                   final url =
-                      'whatsapp://send?phone=55$cleanPhoneNumber&text=Olá, ${widget.patient.patient}!';
+                      'whatsapp://send?phone=55$cleanPhoneNumber&text=$message';
                   await launchUrl(Uri.parse(url));
                 },
                 style: ButtonStyle(

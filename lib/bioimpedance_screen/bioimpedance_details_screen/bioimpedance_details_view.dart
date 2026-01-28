@@ -3,6 +3,7 @@ import 'package:nutrikmais/bioimpedance_screen/bioimpedance_details_screen/bioim
 import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BioimpedanceDetailsView extends StatefulWidget {
   const BioimpedanceDetailsView({super.key, required this.bioimpedanceData});
@@ -16,11 +17,20 @@ class BioimpedanceDetailsView extends StatefulWidget {
 
 class _BioimpedanceDetailsViewState extends State<BioimpedanceDetailsView> {
   late List<String> _images;
+  String _userType = "";
 
   @override
   void initState() {
     super.initState();
     _images = List<String>.from(widget.bioimpedanceData.bioimpedanceImages);
+    _loadUserType();
+  }
+
+  Future<void> _loadUserType() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _userType = prefs.getString('typeUser') ?? '';
+    });
   }
 
   Future<void> _confirmAndDelete(String imageUrl) async {
@@ -143,17 +153,19 @@ class _BioimpedanceDetailsViewState extends State<BioimpedanceDetailsView> {
                             Positioned(
                               top: 4,
                               right: 4,
-                              child: IconButton(
-                                onPressed: () => _confirmAndDelete(url),
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.white,
-                                ),
-                                style: IconButton.styleFrom(
-                                  backgroundColor: Colors.red,
-                                ),
-                                tooltip: 'Remover',
-                              ),
+                              child: _userType == "patient"
+                                  ? const SizedBox.shrink()
+                                  : IconButton(
+                                      onPressed: () => _confirmAndDelete(url),
+                                      icon: const Icon(
+                                        Icons.delete,
+                                        color: Colors.white,
+                                      ),
+                                      style: IconButton.styleFrom(
+                                        backgroundColor: Colors.red,
+                                      ),
+                                      tooltip: 'Remover',
+                                    ),
                             ),
                           ],
                         );

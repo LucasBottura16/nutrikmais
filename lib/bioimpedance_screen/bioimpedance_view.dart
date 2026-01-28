@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/bioimpedance_screen/bioimpedance_service.dart';
 import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
-import 'package:nutrikmais/orientations_screen/patient_selector_modal.dart';
+import 'package:nutrikmais/bioimpedance_screen/patient_selector_modal.dart';
 import 'package:nutrikmais/route_generator.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
@@ -27,11 +27,13 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
   String? _selectedPatientUid;
 
   String _typeUser = "";
+  String _uidAccount = "";
 
   _verifyAccount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _typeUser = prefs.getString('typeUser') ?? '';
+      _uidAccount = prefs.getString('uidAccount') ?? '';
     });
   }
 
@@ -47,6 +49,7 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
     _subscription = BioimpedanceService.addListenerBioimpedances(
       _controllerStream,
       typeUser: _typeUser,
+      uidAccount: _uidAccount,
     );
   }
 
@@ -133,7 +136,7 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
                                     _subscription =
                                         BioimpedanceService.addListenerBioimpedances(
                                           _controllerStream,
-                                          uidPatient: selectedUid,
+                                          uidAccount: selectedUid,
                                           typeUser: _typeUser,
                                         );
                                   }
@@ -308,7 +311,7 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
                           _subscription =
                               BioimpedanceService.addListenerBioimpedances(
                                 _controllerStream,
-                                uidPatient: _selectedPatientUid,
+                                uidAccount: _selectedPatientUid,
                                 typeUser: _typeUser,
                               );
                         },

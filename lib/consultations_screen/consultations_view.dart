@@ -28,13 +28,16 @@ class _ConsultationsViewState extends State<ConsultationsView> {
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
   CalendarFormat _calendarFormat = CalendarFormat.month;
-  String _typeUser = "";
   Map<DateTime, List<dynamic>> _events = {};
+
+  String _typeUser = "";
+  String _uidAccount = "";
 
   _verifyAccount() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _typeUser = prefs.getString('typeUser') ?? '';
+      _uidAccount = prefs.getString('uidAccount') ?? '';
     });
   }
 
@@ -52,34 +55,40 @@ class _ConsultationsViewState extends State<ConsultationsView> {
       _controllerStream,
       DateFormat('dd/MM/yyyy').format(_selectedDay),
       typeUser: _typeUser,
+      uidAccount: _uidAccount,
     );
   }
 
   Future<void> _loadMonthEvents(DateTime month) async {
     final firstDay = DateTime(month.year, month.month, 1);
     final lastDay = DateTime(month.year, month.month + 1, 0);
-    
+
     Query query = FirebaseFirestore.instance.collection('Consultations');
-    
+
     if (_typeUser == "patient") {
-      query = query.where('uidPatient', isEqualTo: FirebaseAuth.instance.currentUser?.uid);
+      query = query.where('uidAccount', isEqualTo: _uidAccount);
     } else {
-      query = query.where('uidNutritionist', isEqualTo: FirebaseAuth.instance.currentUser?.uid);
+      query = query.where(
+        'uidNutritionist',
+        isEqualTo: FirebaseAuth.instance.currentUser?.uid,
+      );
     }
-    
+
     final snapshot = await query.get();
     final Map<DateTime, List<dynamic>> events = {};
-    
+
     for (var doc in snapshot.docs) {
       final data = doc.data() as Map<String, dynamic>;
       final dateStr = data['dateConsultation'] as String?;
-      
+
       if (dateStr != null) {
         try {
           final date = DateFormat('dd/MM/yyyy').parse(dateStr);
           final normalizedDate = DateTime(date.year, date.month, date.day);
-          
-          if (normalizedDate.isAfter(firstDay.subtract(const Duration(days: 1))) &&
+
+          if (normalizedDate.isAfter(
+                firstDay.subtract(const Duration(days: 1)),
+              ) &&
               normalizedDate.isBefore(lastDay.add(const Duration(days: 1)))) {
             if (events[normalizedDate] == null) {
               events[normalizedDate] = [];
@@ -91,7 +100,7 @@ class _ConsultationsViewState extends State<ConsultationsView> {
         }
       }
     }
-    
+
     setState(() {
       _events = events;
     });
@@ -143,6 +152,7 @@ class _ConsultationsViewState extends State<ConsultationsView> {
                   _controllerStream,
                   DateFormat('dd/MM/yyyy').format(_selectedDay),
                   typeUser: _typeUser,
+                  uidAccount: _uidAccount,
                 ).ignore();
               },
               onFormatChanged: (format) {

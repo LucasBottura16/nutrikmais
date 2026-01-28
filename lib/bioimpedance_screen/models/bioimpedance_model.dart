@@ -4,7 +4,7 @@ class DBBioimpedance {
   String? _uidBioimpedance;
   String? _bioimpedanceUpdatedAt;
   String? _uidNutritionist;
-  String? _uidPatient;
+  String? _uidAccount;
   String? _patientName;
   List<String>? _bioimpedanceImages;
 
@@ -19,7 +19,7 @@ class DBBioimpedance {
     );
     bioimpedanceUpdatedAt = documentSnapshot['bioimpedanceUpdatedAt'];
     uidNutritionist = documentSnapshot['uidNutritionist'];
-    uidPatient = documentSnapshot['uidPatient'];
+    uidAccount = documentSnapshot['uidAccount'];
     patientName = documentSnapshot['patientName'];
   }
 
@@ -30,7 +30,7 @@ class DBBioimpedance {
         'bioimpedanceImages': _bioimpedanceImages,
         'bioimpedanceUpdatedAt': _bioimpedanceUpdatedAt,
         'uidNutritionist': _uidNutritionist,
-        'uidPatient': _uidPatient,
+        'uidAccount': _uidAccount,
         'patientName': _patientName,
       };
     }
@@ -63,8 +63,8 @@ class DBBioimpedance {
     _uidNutritionist = value;
   }
 
-  String get uidPatient => _uidPatient!;
-  set uidPatient(String? value) {
-    _uidPatient = value;
+  String get uidAccount => _uidAccount!;
+  set uidAccount(String? value) {
+    _uidAccount = value;
   }
 }

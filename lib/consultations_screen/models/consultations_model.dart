@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DBConsultationsModel {
   String? _uidConsultation;
-  String? _uidPatient;
+  String? _uidAccount;
   String? _patient;
   String? _photo;
   String? _dateConsultation;
@@ -19,7 +19,7 @@ class DBConsultationsModel {
 
   DBConsultationsModel.fromDocumentSnapshot(DocumentSnapshot documentSnapshot) {
     uidConsultation = documentSnapshot["uidConsultation"];
-    uidPatient = documentSnapshot["uidPatient"];
+    uidAccount = documentSnapshot["uidAccount"];
     patient = documentSnapshot["patient"];
     photo = documentSnapshot["photo"];
     dateConsultation = documentSnapshot["dateConsultation"];
@@ -36,7 +36,7 @@ class DBConsultationsModel {
   Map<String, dynamic> toMap(String uidConsultation) {
     var map = <String, dynamic>{
       'uidConsultation': uidConsultation,
-      'uidPatient': uidPatient,
+      'uidAccount': uidAccount,
       'patient': patient,
       'photo': photo,
       'dateConsultation': dateConsultation,
@@ -67,9 +67,9 @@ class DBConsultationsModel {
     _uidConsultation = value;
   }
 
-  String? get uidPatient => _uidPatient!;
-  set uidPatient(String? value) {
-    _uidPatient = value;
+  String? get uidAccount => _uidAccount!;
+  set uidAccount(String? value) {
+    _uidAccount = value;
   }
 
   String? get patient => _patient!;

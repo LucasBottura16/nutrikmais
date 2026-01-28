@@ -28,11 +28,11 @@ class AddOrientationsService {
 
   Future<void> createOrientation(
     BuildContext context,
-    String uidPatient,
+    String uidAccount,
     String patient,
     List<String>? orientations,
   ) async {
-    if (uidPatient.isEmpty || patient.isEmpty || orientations == null) {
+    if (uidAccount.isEmpty || patient.isEmpty || orientations == null) {
       showDialog(
         context: context,
         builder: (context) {
@@ -47,7 +47,7 @@ class AddOrientationsService {
         },
       );
     } else {
-      await completedRegister(uidPatient, patient, orientations);
+      await completedRegister(uidAccount, patient, orientations);
 
       if (!context.mounted) return;
       Navigator.pop(context);
@@ -55,7 +55,7 @@ class AddOrientationsService {
   }
 
   Future<void> completedRegister(
-    String uidPatient,
+    String uidAccount,
     String patient,
     List<String>? orientations,
   ) async {
@@ -64,7 +64,7 @@ class AddOrientationsService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String uidNutritionist = prefs.getString('uidLogged') ?? '';
 
-    orientationData.uidPatient = uidPatient;
+    orientationData.uidAccount = uidAccount;
     orientationData.patientName = patient;
     orientationData.uidNutritionist = uidNutritionist;
     orientationData.orientationsUpdatedAt = DateFormat(
