@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nutrikmais/utils/app_bar.dart';
 import 'package:nutrikmais/utils/colors.dart';
 import 'package:nutrikmais/bioimpedance_screen/add_bioimpedance_screen/add_bioimpedance_service.dart';
+import 'package:nutrikmais/utils/scheduled_consultation_selector_modal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nutrikmais/utils/customs_components/custom_button.dart';
 import 'package:image_picker/image_picker.dart';
@@ -50,37 +51,9 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                                 .getScheduledConsultations();
 
                             final selected =
-                                await showModalBottomSheet<
-                                  QueryDocumentSnapshot
-                                >(
-                                  context: context,
-                                  builder: (context) {
-                                    return ListView.builder(
-                                      itemCount: consultations.length,
-                                      itemBuilder: (context, index) {
-                                        final consultation =
-                                            consultations[index];
-                                        return ListTile(
-                                          title: Text(
-                                            (consultation.data()
-                                                as Map<
-                                                  String,
-                                                  dynamic
-                                                >)['patient'],
-                                          ),
-                                          subtitle: Text(
-                                            '${(consultation.data() as Map<String, dynamic>)['dateConsultation']}  ${(consultation.data() as Map<String, dynamic>)['timeConsultation']}',
-                                          ),
-                                          onTap: () {
-                                            Navigator.pop(
-                                              context,
-                                              consultation,
-                                            );
-                                          },
-                                        );
-                                      },
-                                    );
-                                  },
+                                await showScheduledConsultationSelectorModal(
+                                  context,
+                                  consultations,
                                 );
 
                             if (selected != null) {
@@ -90,29 +63,96 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                             }
                           },
                           child: Card(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    ((_selectedConsultation!.data()
-                                            as Map<
-                                              String,
-                                              dynamic
-                                            >)['patient']) ??
-                                        '',
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    '${(_selectedConsultation!.data() as Map<String, dynamic>)['serviceName'] ?? ''} - ${(_selectedConsultation!.data() as Map<String, dynamic>)['place'] ?? ''}',
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    '${(_selectedConsultation!.data() as Map<String, dynamic>)['dateConsultation'] ?? ''}  ${(_selectedConsultation!.data() as Map<String, dynamic>)['timeConsultation'] ?? ''}',
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              ((_selectedConsultation!.data()
+                                                      as Map<
+                                                        String,
+                                                        dynamic
+                                                      >)['patient']) ??
+                                                  '',
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.access_time,
+                                                  size: 14,
+                                                  color: Colors.grey,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Text(
+                                                  '${(_selectedConsultation!.data() as Map<String, dynamic>)['dateConsultation'] ?? ''}  ${(_selectedConsultation!.data() as Map<String, dynamic>)['timeConsultation'] ?? ''}',
+                                                  style: const TextStyle(
+                                                    fontSize: 12,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 6),
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  Icons.location_on,
+                                                  size: 14,
+                                                  color: Colors.grey,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Expanded(
+                                                  child: Text(
+                                                    '${(_selectedConsultation!.data() as Map<String, dynamic>)['serviceName'] ?? ''} - ${(_selectedConsultation!.data() as Map<String, dynamic>)['place'] ?? ''}',
+                                                    style: const TextStyle(
+                                                      fontSize: 12,
+                                                      color: Colors.grey,
+                                                    ),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 40,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: MyColors.myPrimary.withValues(
+                                            alpha: 0.2,
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            8,
+                                          ),
+                                        ),
+                                        child: const Icon(
+                                          Icons.check_circle,
+                                          color: MyColors.myPrimary,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -125,37 +165,9 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                                 .getScheduledConsultations();
 
                             final selected =
-                                await showModalBottomSheet<
-                                  QueryDocumentSnapshot
-                                >(
-                                  context: context,
-                                  builder: (context) {
-                                    return ListView.builder(
-                                      itemCount: consultations.length,
-                                      itemBuilder: (context, index) {
-                                        final consultation =
-                                            consultations[index];
-                                        return ListTile(
-                                          title: Text(
-                                            (consultation.data()
-                                                as Map<
-                                                  String,
-                                                  dynamic
-                                                >)['patient'],
-                                          ),
-                                          subtitle: Text(
-                                            '${(consultation.data() as Map<String, dynamic>)['dateConsultation']}  ${(consultation.data() as Map<String, dynamic>)['timeConsultation']}',
-                                          ),
-                                          onTap: () {
-                                            Navigator.pop(
-                                              context,
-                                              consultation,
-                                            );
-                                          },
-                                        );
-                                      },
-                                    );
-                                  },
+                                await showScheduledConsultationSelectorModal(
+                                  context,
+                                  consultations,
                                 );
 
                             if (selected != null) {
@@ -165,16 +177,26 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                             }
                           },
                           child: Card(
+                            elevation: 2,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                              padding: const EdgeInsets.all(16.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Selecione uma consulta",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
+                                      fontSize: 16,
                                     ),
+                                  ),
+                                  const Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: MyColors.myPrimary,
                                   ),
                                 ],
                               ),
@@ -209,6 +231,7 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                       }
                     },
                     title: "Selecionar Imagens",
+                    titleColor: Colors.white,
                     icon: Icons.add_photo_alternate,
                     iconColor: Colors.white,
                     buttonColor: MyColors.myPrimary,

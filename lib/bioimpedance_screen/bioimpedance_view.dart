@@ -66,7 +66,7 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "bioimpedância",
+        title: "Bioimpedância",
         backgroundColor: MyColors.myPrimary,
       ),
       drawer: MyDrawer(screen: "bioimpedance_screen"),
