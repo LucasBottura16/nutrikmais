@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/components/add_services_modal.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/models/profile_services_model.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/profile_services_service.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_loading_data.dart';
 
 class ProfileServicesView extends StatefulWidget {
   const ProfileServicesView({super.key});

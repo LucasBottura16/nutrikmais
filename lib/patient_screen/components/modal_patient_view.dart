@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
-import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ModalPatientView extends StatefulWidget {

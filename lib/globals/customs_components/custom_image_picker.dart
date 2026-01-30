@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import '../colors.dart';
+import '../configs/colors.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ImageSelectionButton extends StatelessWidget {

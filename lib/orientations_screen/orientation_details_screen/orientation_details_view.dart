@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/orientations_screen/models/orientations_model.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
 
 class OrientationDetailsView extends StatefulWidget {
   const OrientationDetailsView({super.key, required this.orientationData});

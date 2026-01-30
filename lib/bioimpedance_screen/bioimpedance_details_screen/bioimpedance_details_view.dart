@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/bioimpedance_screen/bioimpedance_details_screen/bioimpedance_details_service.dart';
 import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/hooks/use_user_type.dart';
 
 class BioimpedanceDetailsView extends StatefulWidget {
   const BioimpedanceDetailsView({super.key, required this.bioimpedanceData});
@@ -27,9 +27,9 @@ class _BioimpedanceDetailsViewState extends State<BioimpedanceDetailsView> {
   }
 
   Future<void> _loadUserType() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final userPrefs = await useUserPreferences();
     setState(() {
-      _userType = prefs.getString('typeUser') ?? '';
+      _userType = userPrefs.typeUser;
     });
   }
 

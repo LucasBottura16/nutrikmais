@@ -5,12 +5,12 @@ import 'package:nutrikmais/orientations_screen/models/orientations_model.dart';
 import 'package:nutrikmais/orientations_screen/orientations_service.dart';
 import 'package:nutrikmais/orientations_screen/patient_selector_modal.dart';
 import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
-import 'package:nutrikmais/utils/my_drawer.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_loading_data.dart';
+import 'package:nutrikmais/globals/configs/my_drawer.dart';
+import 'package:nutrikmais/globals/hooks/use_user_type.dart';
 
 class OrientationsView extends StatefulWidget {
   const OrientationsView({super.key});
@@ -28,10 +28,10 @@ class _OrientationsViewState extends State<OrientationsView> {
   String _uidAccount = "";
 
   _verifyAccount() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final userPrefs = await useUserPreferences();
     setState(() {
-      _typeUser = prefs.getString('typeUser') ?? '';
-      _uidAccount = prefs.getString('uidAccount') ?? '';
+      _typeUser = userPrefs.typeUser;
+      _uidAccount = userPrefs.uidAccount;
     });
   }
 

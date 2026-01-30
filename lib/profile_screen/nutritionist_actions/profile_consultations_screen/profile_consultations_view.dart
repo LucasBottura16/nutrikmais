@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_consultations_screen/profile_consultations_service.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_loading_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 

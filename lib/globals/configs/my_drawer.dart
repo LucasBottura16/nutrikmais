@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../route_generator.dart';
+import '../../route_generator.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({super.key, required this.screen});

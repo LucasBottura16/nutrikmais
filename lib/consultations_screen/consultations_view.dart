@@ -7,11 +7,11 @@ import 'package:nutrikmais/consultations_screen/consultations_services.dart';
 import 'package:nutrikmais/consultations_screen/models/consultations_model.dart';
 import 'package:nutrikmais/consultations_screen/consultation_detail_dialog.dart';
 import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
-import 'package:nutrikmais/utils/my_drawer.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_loading_data.dart';
+import 'package:nutrikmais/globals/configs/my_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 

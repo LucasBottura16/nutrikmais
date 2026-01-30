@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/login_screen/login_service.dart';
 import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_input_field.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});

@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
 
-Future<QueryDocumentSnapshot?> showScheduledConsultationSelectorModal(
+Future<QueryDocumentSnapshot?> customSelectPatientModal(
   BuildContext context,
   List<QueryDocumentSnapshot> consultations, {
   String title = 'Selecionar Consulta',

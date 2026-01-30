@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
 
 class CustomLoadingData extends StatelessWidget {
   final String nameData;

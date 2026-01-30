@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/patient_actions/profile_infos_patient_screen/profile_infos_patient_service.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_input_field.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileInfosPatientView extends StatefulWidget {

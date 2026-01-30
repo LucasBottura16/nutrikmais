@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'add_consultations_service.dart';
-import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
 
 Future<QueryDocumentSnapshot?> showPatientSelectorDialog(BuildContext context) {
   return showDialog<QueryDocumentSnapshot?>(

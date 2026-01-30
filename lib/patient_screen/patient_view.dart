@@ -5,11 +5,11 @@ import 'package:nutrikmais/patient_screen/components/modal_patient_view.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
 import 'package:nutrikmais/patient_screen/patient_service.dart';
 import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
-import 'package:nutrikmais/utils/my_drawer.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_loading_data.dart';
+import 'package:nutrikmais/globals/configs/my_drawer.dart';
 
 class PatientView extends StatefulWidget {
   const PatientView({super.key});

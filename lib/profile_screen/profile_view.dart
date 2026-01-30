@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/profile_service.dart';
 import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_image_picker.dart';
-import 'package:nutrikmais/utils/my_drawer.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_image_picker.dart';
+import 'package:nutrikmais/globals/configs/my_drawer.dart';
+import 'package:nutrikmais/globals/hooks/use_user_type.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -22,16 +22,16 @@ class _ProfileViewState extends State<ProfileView> {
   String _uid = "";
 
   _verifyAccount() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final userPrefs = await useUserPreferences();
     setState(() {
-      _nome = prefs.getString('nameLogged') ?? '';
-      _pickerValue = prefs.getString('photoLogged') ?? '';
-      _typeUser = prefs.getString('typeUser') ?? '';
-      _crnNutritionist = prefs.getString('crnNutritionist') ?? '';
-      _phone = prefs.getString('phone') ?? '';
-      _uid = prefs.getString('typeUser') == "nutritionist"
-          ? prefs.getString('uidLogged') ?? ""
-          : prefs.getString('uidAccount') ?? "";
+      _nome = userPrefs.nameLogged;
+      _pickerValue = userPrefs.photoLogged;
+      _typeUser = userPrefs.typeUser;
+      _crnNutritionist = userPrefs.crnNutritionist;
+      _phone = userPrefs.phone;
+      _uid = userPrefs.typeUser == "nutritionist"
+          ? userPrefs.uidLogged
+          : userPrefs.uidAccount;
     });
   }
 

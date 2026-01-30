@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/create_account_screen/create_account_service.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_dropdown.dart';
-import 'package:nutrikmais/utils/customs_components/custom_input_field.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_dropdown.dart';
+import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
 import 'package:nutrikmais/utils/masks.dart';
-import 'package:nutrikmais/utils/customs_components/customs_multidropdown.dart';
+import 'package:nutrikmais/globals/customs_components/customs_multidropdown.dart';
 
 class FormNutritionist extends StatefulWidget {
   const FormNutritionist({super.key});

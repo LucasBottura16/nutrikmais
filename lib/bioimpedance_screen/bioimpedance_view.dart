@@ -5,12 +5,12 @@ import 'package:nutrikmais/bioimpedance_screen/bioimpedance_service.dart';
 import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
 import 'package:nutrikmais/bioimpedance_screen/patient_selector_modal.dart';
 import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
-import 'package:nutrikmais/utils/customs_components/custom_button.dart';
-import 'package:nutrikmais/utils/customs_components/custom_loading_data.dart';
-import 'package:nutrikmais/utils/my_drawer.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs_components/custom_loading_data.dart';
+import 'package:nutrikmais/globals/configs/my_drawer.dart';
+import 'package:nutrikmais/globals/hooks/use_user_type.dart';
 
 class BioimpedanceView extends StatefulWidget {
   const BioimpedanceView({super.key});
@@ -30,10 +30,10 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
   String _uidAccount = "";
 
   _verifyAccount() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final userPrefs = await useUserPreferences();
     setState(() {
-      _typeUser = prefs.getString('typeUser') ?? '';
-      _uidAccount = prefs.getString('uidAccount') ?? '';
+      _typeUser = userPrefs.typeUser;
+      _uidAccount = userPrefs.uidAccount;
     });
   }
 

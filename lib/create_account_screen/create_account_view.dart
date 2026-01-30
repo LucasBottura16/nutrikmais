@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/create_account_screen/components/form_nutritionist.dart';
 import 'package:nutrikmais/create_account_screen/components/form_patient.dart';
-import 'package:nutrikmais/utils/app_bar.dart';
-import 'package:nutrikmais/utils/colors.dart';
+import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/colors.dart';
 
 class CreateAccountView extends StatefulWidget {
   const CreateAccountView({super.key});
