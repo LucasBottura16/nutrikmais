@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/patient_screen/add_pacient_screen/add_patient_service.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
-import 'package:nutrikmais/globals/customs_components/custom_dropdown.dart';
-import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_dropdown.dart';
+import 'package:nutrikmais/globals/customs/components/custom_input_field.dart';
 import 'package:nutrikmais/utils/masks.dart';
 
 class AddPatientView extends StatefulWidget {

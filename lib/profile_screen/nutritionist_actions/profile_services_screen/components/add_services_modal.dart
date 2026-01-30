@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_services_screen/profile_services_service.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
-import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_input_field.dart';
 import 'package:nutrikmais/utils/masks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

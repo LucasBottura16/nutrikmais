@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:nutrikmais/create_account_screen/create_account_service.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
-import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_input_field.dart';
 import 'package:nutrikmais/utils/masks.dart';
 
 class FormPatient extends StatefulWidget {

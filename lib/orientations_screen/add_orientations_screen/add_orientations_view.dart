@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_select_patient_modal.dart';
+import 'package:nutrikmais/globals/customs/Widgets/select_patient_modal.dart';
 import 'package:nutrikmais/orientations_screen/add_orientations_screen/add_orientations_service.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
-import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_input_field.dart';
 
 class AddOrientationsView extends StatefulWidget {
   const AddOrientationsView({super.key});
@@ -50,7 +50,7 @@ class _AddOrientationsViewState extends State<AddOrientationsView> {
                             final consultations = await _service
                                 .getScheduledConsultations();
 
-                            final selected = await customSelectPatientModal(
+                            final selected = await selectPatientModal(
                               context,
                               consultations,
                             );
@@ -163,7 +163,7 @@ class _AddOrientationsViewState extends State<AddOrientationsView> {
                             final consultations = await _service
                                 .getScheduledConsultations();
 
-                            final selected = await customSelectPatientModal(
+                            final selected = await selectPatientModal(
                               context,
                               consultations,
                             );

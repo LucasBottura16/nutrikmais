@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/create_account_screen/models/create_account_model.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
-import 'package:nutrikmais/route_generator.dart';
+import 'package:nutrikmais/globals/configs/route_generator.dart';
 
 class CreateAccountService {
   static FirebaseAuth auth = FirebaseAuth.instance;

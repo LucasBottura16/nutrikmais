@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/nutritionist_actions/profile_infos_screen/profile_infos_service.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
-import 'package:nutrikmais/globals/customs_components/custom_dropdown.dart';
-import 'package:nutrikmais/globals/customs_components/custom_input_field.dart';
-import 'package:nutrikmais/globals/customs_components/customs_multidropdown.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_dropdown.dart';
+import 'package:nutrikmais/globals/customs/components/custom_input_field.dart';
+import 'package:nutrikmais/globals/customs/components/customs_multidropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileInfosView extends StatefulWidget {

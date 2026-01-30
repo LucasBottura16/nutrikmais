@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/profile_service.dart';
-import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/route_generator.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_image_picker.dart';
-import 'package:nutrikmais/globals/configs/my_drawer.dart';
+import 'package:nutrikmais/globals/customs/components/custom_image_picker.dart';
+import 'package:nutrikmais/globals/customs/Widgets/my_drawer.dart';
 import 'package:nutrikmais/globals/hooks/use_user_type.dart';
 
 class ProfileView extends StatefulWidget {

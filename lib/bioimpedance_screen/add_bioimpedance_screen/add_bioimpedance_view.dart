@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
 import 'package:nutrikmais/bioimpedance_screen/add_bioimpedance_screen/add_bioimpedance_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:nutrikmais/globals/customs_components/custom_select_patient_modal.dart';
+import 'package:nutrikmais/globals/customs/Widgets/select_patient_modal.dart';
 
 class AddBioimpedanceView extends StatefulWidget {
   const AddBioimpedanceView({super.key});
@@ -50,7 +50,7 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                             final consultations = await _service
                                 .getScheduledConsultations();
 
-                            final selected = await customSelectPatientModal(
+                            final selected = await selectPatientModal(
                               context,
                               consultations,
                             );
@@ -163,7 +163,7 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                             final consultations = await _service
                                 .getScheduledConsultations();
 
-                            final selected = await customSelectPatientModal(
+                            final selected = await selectPatientModal(
                               context,
                               consultations,
                             );

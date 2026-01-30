@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/home_screen/home_service.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/configs/my_drawer.dart';
+import 'package:nutrikmais/globals/customs/Widgets/my_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeView extends StatefulWidget {

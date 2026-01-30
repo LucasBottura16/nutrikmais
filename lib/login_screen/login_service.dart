@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/login_screen/components/login_error_modal.dart';
-import 'package:nutrikmais/route_generator.dart';
+import 'package:nutrikmais/globals/configs/route_generator.dart';
 
 class LoginService {
   static FirebaseAuth auth = FirebaseAuth.instance;

@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrikmais/firebase_options.dart';
+import 'package:nutrikmais/globals/configs/firebase_options.dart';
 import 'package:nutrikmais/home_screen/home_view.dart';
 import 'package:nutrikmais/login_screen/login_view.dart';
-import 'package:nutrikmais/route_generator.dart';
+import 'package:nutrikmais/globals/configs/route_generator.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() async {

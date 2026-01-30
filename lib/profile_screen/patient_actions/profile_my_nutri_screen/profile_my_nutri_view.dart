@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/profile_screen/patient_actions/profile_my_nutri_screen/profile_my_nutri_service.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 
 class ProfileMyNutriView extends StatefulWidget {
   const ProfileMyNutriView({super.key});

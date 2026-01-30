@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/consultations_screen/consultations_services.dart';
 import 'package:nutrikmais/consultations_screen/models/consultations_model.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> showConsultationDetailDialog(

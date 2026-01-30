@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:nutrikmais/bioimpedance_screen/bioimpedance_service.dart';
 import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
 import 'package:nutrikmais/bioimpedance_screen/patient_selector_modal.dart';
-import 'package:nutrikmais/route_generator.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/configs/route_generator.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
-import 'package:nutrikmais/globals/customs_components/custom_button.dart';
-import 'package:nutrikmais/globals/customs_components/custom_loading_data.dart';
-import 'package:nutrikmais/globals/configs/my_drawer.dart';
+import 'package:nutrikmais/globals/customs/components/custom_button.dart';
+import 'package:nutrikmais/globals/customs/components/custom_loading_data.dart';
+import 'package:nutrikmais/globals/customs/Widgets/my_drawer.dart';
 import 'package:nutrikmais/globals/hooks/use_user_type.dart';
 
 class BioimpedanceView extends StatefulWidget {

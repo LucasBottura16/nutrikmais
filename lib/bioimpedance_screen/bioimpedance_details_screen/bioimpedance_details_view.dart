@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/bioimpedance_screen/bioimpedance_details_screen/bioimpedance_details_service.dart';
 import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
-import 'package:nutrikmais/globals/configs/app_bar.dart';
+import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
 import 'package:nutrikmais/globals/hooks/use_user_type.dart';
 
