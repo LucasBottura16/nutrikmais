@@ -1,0 +1,11 @@
+[
+  {
+    "origin": [
+      "https://app.nutrikmais.com.br",
+      "http://localhost:*"
+    ],
+    "method": ["GET", "HEAD"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": ["Content-Type"]
+  }
+]
