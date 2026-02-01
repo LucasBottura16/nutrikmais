@@ -18,20 +18,16 @@ class _ModalPatientViewState extends State<ModalPatientView> {
     return Center(
       child: SingleChildScrollView(
         child: AlertDialog(
-          title: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Row(
-              children: [
-                Icon(Icons.backspace_rounded, size: 20),
-                SizedBox(width: 10),
-                Text(
-                  "FECHAR",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                ),
-              ],
-            ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(Icons.close, size: 26),
+              ),
+            ],
           ),
           content: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
