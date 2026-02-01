@@ -3,10 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/bioimpedance_screen/bioimpedance_service.dart';
 import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
-import 'package:nutrikmais/bioimpedance_screen/patient_selector_modal.dart';
 import 'package:nutrikmais/globals/configs/route_generator.dart';
 import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/globals/customs/Widgets/select_patient_modal.dart';
 import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:nutrikmais/globals/customs/components/custom_loading_data.dart';
 import 'package:nutrikmais/globals/customs/Widgets/my_drawer.dart';
@@ -80,87 +80,91 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
-                      "bioimpedâncias",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "bioimpedâncias",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        _typeUser == "patient"
+                            ? const SizedBox.shrink()
+                            : Stack(
+                                children: [
+                                  IconButton(
+                                    onPressed: () async {
+                                      final selectedUid =
+                                          await selectPatientModal(context);
+                                      if (selectedUid == null) return;
+
+                                      _subscription?.cancel();
+                                      if (selectedUid.isEmpty) {
+                                        setState(() {
+                                          _selectedPatientName = null;
+                                          _selectedPatientUid = null;
+                                        });
+                                        _subscription =
+                                            BioimpedanceService.addListenerBioimpedances(
+                                              _controllerStream,
+                                              typeUser: _typeUser,
+                                            );
+                                      } else {
+                                        final doc = await FirebaseFirestore
+                                            .instance
+                                            .collection('Bioimpedance')
+                                            .where(
+                                              'uidPatient',
+                                              isEqualTo: selectedUid,
+                                            )
+                                            .limit(1)
+                                            .get();
+                                        final patientName = doc.docs.isNotEmpty
+                                            ? (doc.docs.first
+                                                          .data()['patientName'] ??
+                                                      doc.docs.first
+                                                          .data()['patient'] ??
+                                                      '')
+                                                  .toString()
+                                            : '';
+
+                                        setState(() {
+                                          _selectedPatientName = patientName;
+                                          _selectedPatientUid = selectedUid;
+                                        });
+
+                                        _subscription =
+                                            BioimpedanceService.addListenerBioimpedances(
+                                              _controllerStream,
+                                              uidAccount: selectedUid,
+                                              typeUser: _typeUser,
+                                            );
+                                      }
+                                    },
+                                    icon: const Icon(Icons.filter_alt_outlined),
+                                  ),
+                                  if (_selectedPatientUid != null &&
+                                      _selectedPatientUid!.isNotEmpty)
+                                    Positioned(
+                                      right: 8,
+                                      top: 8,
+                                      child: Container(
+                                        width: 8,
+                                        height: 8,
+                                        decoration: const BoxDecoration(
+                                          color: MyColors.myPrimary,
+                                          shape: BoxShape.circle,
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                      ],
                     ),
                     const SizedBox(height: 10),
-                    _typeUser == "patient"
-                        ? const SizedBox.shrink()
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              CustomButton(
-                                onPressed: () async {
-                                  final selectedUid =
-                                      await showPatientSelectorDialog(context);
-                                  if (selectedUid == null) return;
-
-                                  _subscription?.cancel();
-                                  if (selectedUid.isEmpty) {
-                                    setState(() {
-                                      _selectedPatientName = null;
-                                      _selectedPatientUid = null;
-                                    });
-                                    _subscription =
-                                        BioimpedanceService.addListenerBioimpedances(
-                                          _controllerStream,
-                                          typeUser: _typeUser,
-                                        );
-                                  } else {
-                                    final doc = await FirebaseFirestore.instance
-                                        .collection('Bioimpedance')
-                                        .where(
-                                          'uidPatient',
-                                          isEqualTo: selectedUid,
-                                        )
-                                        .limit(1)
-                                        .get();
-                                    final patientName = doc.docs.isNotEmpty
-                                        ? (doc.docs.first
-                                                      .data()['patientName'] ??
-                                                  doc.docs.first
-                                                      .data()['patient'] ??
-                                                  '')
-                                              .toString()
-                                        : '';
-
-                                    setState(() {
-                                      _selectedPatientName = patientName;
-                                      _selectedPatientUid = selectedUid;
-                                    });
-
-                                    _subscription =
-                                        BioimpedanceService.addListenerBioimpedances(
-                                          _controllerStream,
-                                          uidAccount: selectedUid,
-                                          typeUser: _typeUser,
-                                        );
-                                  }
-                                },
-                                title:
-                                    _selectedPatientName != null &&
-                                        _selectedPatientName!.isNotEmpty
-                                    ? _selectedPatientName!
-                                    : "Paciente",
-                                titleColor: MyColors.myPrimary,
-                                buttonColor: Colors.white,
-                                buttonEdgeInsets: const EdgeInsets.symmetric(
-                                  horizontal: 0,
-                                  vertical: 15,
-                                ),
-                                borderColor: MyColors.myPrimary,
-                                borderWidth: 1,
-                                showBorder: true,
-                              ),
-
-                              const SizedBox(height: 10),
-                              Divider(color: Colors.grey.shade400),
-                            ],
-                          ),
+                    Divider(color: Colors.grey.shade400),
 
                     const SizedBox(width: 10),
                     Expanded(

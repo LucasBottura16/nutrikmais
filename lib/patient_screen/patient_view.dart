@@ -10,6 +10,7 @@ import 'package:nutrikmais/globals/configs/colors.dart';
 import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:nutrikmais/globals/customs/components/custom_loading_data.dart';
 import 'package:nutrikmais/globals/customs/Widgets/my_drawer.dart';
+import 'package:nutrikmais/globals/customs/Widgets/select_patient_modal.dart';
 
 class PatientView extends StatefulWidget {
   const PatientView({super.key});
@@ -22,6 +23,7 @@ class _PatientViewState extends State<PatientView> {
   late StreamController<QuerySnapshot> _controllerStream;
 
   final bool _isLoading = false;
+  String _filterPatientUid = ''; // State para filtro de paciente
 
   _modalPatient(patient) {
     showDialog(
@@ -74,9 +76,36 @@ class _PatientViewState extends State<PatientView> {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.filter_alt_outlined),
+                        Stack(
+                          children: [
+                            IconButton(
+                              onPressed: () async {
+                                final selectedUid = await selectPatientModal(
+                                  context,
+                                  showAllPatients: true,
+                                );
+                                if (selectedUid != null) {
+                                  setState(() {
+                                    _filterPatientUid = selectedUid;
+                                  });
+                                }
+                              },
+                              icon: const Icon(Icons.filter_alt_outlined),
+                            ),
+                            if (_filterPatientUid.isNotEmpty)
+                              Positioned(
+                                right: 8,
+                                top: 8,
+                                child: Container(
+                                  width: 8,
+                                  height: 8,
+                                  decoration: const BoxDecoration(
+                                    color: MyColors.myPrimary,
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                              ),
+                          ],
                         ),
                       ],
                     ),
@@ -111,14 +140,35 @@ class _PatientViewState extends State<PatientView> {
                                 );
                               }
 
+                              // Filtrar pacientes se um filtro está ativo
+                              List<DocumentSnapshot> filteredDocs =
+                                  querySnapshot.docs;
+                              if (_filterPatientUid.isNotEmpty) {
+                                filteredDocs = querySnapshot.docs.where((doc) {
+                                  final data =
+                                      doc.data() as Map<String, dynamic>;
+                                  final uidAccount = data['uidAccount'] ?? '';
+                                  return uidAccount == _filterPatientUid;
+                                }).toList();
+                              }
+
+                              if (filteredDocs.isEmpty) {
+                                return const Center(
+                                  child: Text(
+                                    "Nenhum paciente corresponde ao filtro!",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                );
+                              }
+
                               return ListView.builder(
-                                itemCount: querySnapshot.docs.length,
+                                itemCount: filteredDocs.length,
                                 itemBuilder: (context, index) {
-                                  List<DocumentSnapshot> patient = querySnapshot
-                                      .docs
-                                      .toList();
                                   DocumentSnapshot documentSnapshot =
-                                      patient[index];
+                                      filteredDocs[index];
 
                                   DBPatientModel myPatient =
                                       DBPatientModel.fromDocumentSnapshotPatients(
@@ -168,6 +218,29 @@ class _PatientViewState extends State<PatientView> {
                                                           FontWeight.w600,
                                                       color: MyColors.myPrimary,
                                                     ),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        "conta: ${myPatient.stateAccount}",
+                                                        style: const TextStyle(
+                                                          fontSize: 13,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors.grey,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(width: 10),
+                                                      Text(
+                                                        "Idade: ${myPatient.age} anos",
+                                                        style: const TextStyle(
+                                                          fontSize: 13,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors.grey,
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                   Text(
                                                     "Última Consulta: ${myPatient.lastschedule}",

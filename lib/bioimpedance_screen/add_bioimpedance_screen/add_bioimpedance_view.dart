@@ -7,7 +7,7 @@ import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:nutrikmais/globals/customs/Widgets/select_patient_modal.dart';
+import 'package:nutrikmais/globals/customs/Widgets/select_schedule_patient_modal.dart';
 
 class AddBioimpedanceView extends StatefulWidget {
   const AddBioimpedanceView({super.key});
@@ -50,7 +50,7 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                             final consultations = await _service
                                 .getScheduledConsultations();
 
-                            final selected = await selectPatientModal(
+                            final selected = await selectSchedulePatientModal(
                               context,
                               consultations,
                             );
@@ -163,7 +163,7 @@ class _AddBioimpedanceViewState extends State<AddBioimpedanceView> {
                             final consultations = await _service
                                 .getScheduledConsultations();
 
-                            final selected = await selectPatientModal(
+                            final selected = await selectSchedulePatientModal(
                               context,
                               consultations,
                             );

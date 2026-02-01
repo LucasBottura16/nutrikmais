@@ -134,7 +134,7 @@ class _ModalPatientViewState extends State<ModalPatientView> {
                   ),
                 ),
                 child: const Text(
-                  "CHMAMAR NO WHATSAPP",
+                  "CHAMAR NO WHATSAPP",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
