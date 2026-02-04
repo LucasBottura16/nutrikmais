@@ -41,7 +41,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
         const SizedBox(height: 10),
         CustomInputField(
           controller: _controllerNutritionist,
-          labelText: "NOME DO NUTRICIONISTA",
+          labelText: "NOME COMPLETO",
           hintText: "Digite seu nome",
         ),
         CustomInputField(

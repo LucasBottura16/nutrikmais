@@ -241,25 +241,31 @@ class _MyDrawerState extends State<MyDrawer> {
                     ),
                   ),
                   Card(
-                    color: _currentScreen == "food_plan_screem"
+                    color: _currentScreen == "eating_plans_screen"
                         ? MyColors.myPrimary
                         : Colors.white,
                     child: ListTile(
                       leading: Icon(
                         Icons.fastfood,
-                        color: _currentScreen == "food_plan_screem"
+                        color: _currentScreen == "eating_plans_screen"
                             ? Colors.white
                             : MyColors.myPrimary,
                       ),
                       title: Text(
-                        'Plano Alimentar',
+                        'Planos Alimentares',
                         style: TextStyle(
-                          color: _currentScreen == "food_plan_screem"
+                          color: _currentScreen == "eating_plans_screen"
                               ? Colors.white
                               : MyColors.myPrimary,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          RouteGenerator.eatingPlansScreen,
+                          (_) => false,
+                        );
+                      },
                     ),
                   ),
                   Card(

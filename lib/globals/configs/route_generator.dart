@@ -6,6 +6,10 @@ import 'package:nutrikmais/bioimpedance_screen/models/bioimpedance_model.dart';
 import 'package:nutrikmais/consultations_screen/add_consultations_screen/add_consultations_view.dart';
 import 'package:nutrikmais/consultations_screen/consultations_view.dart';
 import 'package:nutrikmais/create_account_screen/create_account_view.dart';
+import 'package:nutrikmais/eating_plans_screen/add_eating_plans_screen/add_eating_plans_view.dart';
+import 'package:nutrikmais/eating_plans_screen/eating_plan_details_screen/eating_plan_details_view.dart';
+import 'package:nutrikmais/eating_plans_screen/eating_plans_view.dart';
+import 'package:nutrikmais/eating_plans_screen/models/eating_plans_model.dart';
 import 'package:nutrikmais/orientations_screen/add_orientations_screen/add_orientations_view.dart';
 import 'package:nutrikmais/orientations_screen/models/orientations_model.dart';
 import 'package:nutrikmais/orientations_screen/orientation_details_screen/orientation_details_view.dart';
@@ -52,6 +56,9 @@ class RouteGenerator {
   static const String addBioimpedanceScreen = "/add_bioimpedance_screen";
   static const String bioimpedanceDetailsScreen =
       "/bioimpedance_details_screen";
+  static const String eatingPlansScreen = "/eating_plans_screen";
+  static const String addEatingPlansScreen = "/add_eating_plans_screen";
+  static const String eatingPlanDetailsScreen = "/eating_plan_details_screen";
 
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -114,6 +121,17 @@ class RouteGenerator {
             bioimpedanceData: settings.arguments as DBBioimpedance,
           ),
         );
+      case eatingPlansScreen:
+        return MaterialPageRoute(builder: (_) => const EatingPlansView());
+      case addEatingPlansScreen:
+        return MaterialPageRoute(builder: (_) => const AddEatingPlansView());
+      case eatingPlanDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => EatingPlanDetailsView(
+            eatingPlanData: settings.arguments as DBEatingPlans,
+          ),
+        );
+
       default:
         _errorRoute();
     }
