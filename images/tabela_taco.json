@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "numero_do_alimento": 1,
         "categoria": "Cereais e derivados",
@@ -760,7 +760,7 @@
     {
         "numero_do_alimento": 26,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Cereal matinal, milho, a  car",
+        "descricao_dos_alimentos": "Cereal matinal, milho, açúcar",
         "umidade_(%)": "4,3",
         "energia_(kcal)": "377",
         "energia_(kj)": "1576",
@@ -792,7 +792,7 @@
     {
         "numero_do_alimento": 27,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Creme de arroz, p ",
+        "descricao_dos_alimentos": "Creme de arroz, pó",
         "umidade_(%)": "7,3",
         "energia_(kcal)": "386",
         "energia_(kj)": "1615",
@@ -822,7 +822,7 @@
     {
         "numero_do_alimento": 28,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Creme de milho, p ",
+        "descricao_dos_alimentos": "Creme de milho, pó",
         "umidade_(%)": "5,7",
         "energia_(kcal)": "333",
         "energia_(kj)": "1393",
@@ -1066,7 +1066,7 @@
     {
         "numero_do_alimento": 36,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Farinha, l ctea, de cereais",
+        "descricao_dos_alimentos": "Farinha, láctea, de cereais",
         "umidade_(%)": "2,7",
         "energia_(kcal)": "415",
         "energia_(kj)": "1736",
@@ -1276,7 +1276,7 @@
     {
         "numero_do_alimento": 43,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Milho, fub , cru",
+        "descricao_dos_alimentos": "Milho, fubá, cru",
         "umidade_(%)": "11,5",
         "energia_(kcal)": "353",
         "energia_(kj)": "1479",
@@ -1372,7 +1372,7 @@
     {
         "numero_do_alimento": 46,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Mingau tradicional, p ",
+        "descricao_dos_alimentos": "Mingau tradicional, pó",
         "umidade_(%)": "8,1",
         "energia_(kcal)": "373",
         "energia_(kj)": "1562",
@@ -1402,7 +1402,7 @@
     {
         "numero_do_alimento": 47,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Pamonha, barra para cozimento, pr -cozida",
+        "descricao_dos_alimentos": "Pamonha, barra para cozimento, pré-cozida",
         "umidade_(%)": "61,3",
         "energia_(kcal)": "171",
         "energia_(kj)": "716",
@@ -1432,7 +1432,7 @@
     {
         "numero_do_alimento": 48,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "P o, aveia, forma",
+        "descricao_dos_alimentos": "Pão, aveia, forma",
         "umidade_(%)": "19,9",
         "energia_(kcal)": "343",
         "energia_(kj)": "1435",
@@ -1464,7 +1464,7 @@
     {
         "numero_do_alimento": 49,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "P o, de soja",
+        "descricao_dos_alimentos": "Pão, de soja",
         "umidade_(%)": "26,0",
         "energia_(kcal)": "309",
         "energia_(kj)": "1292",
@@ -1494,7 +1494,7 @@
     {
         "numero_do_alimento": 50,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "P o, gl ten, forma",
+        "descricao_dos_alimentos": "Pão, glúten, forma",
         "umidade_(%)": "40,7",
         "energia_(kcal)": "253",
         "energia_(kj)": "1059",
@@ -1524,7 +1524,7 @@
     {
         "numero_do_alimento": 51,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "P o, milho, forma",
+        "descricao_dos_alimentos": "Pão, milho, forma",
         "umidade_(%)": "30,4",
         "energia_(kcal)": "292",
         "energia_(kj)": "1222",
@@ -1554,7 +1554,7 @@
     {
         "numero_do_alimento": 52,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "P o, trigo, forma, integral",
+        "descricao_dos_alimentos": "Pão, trigo, forma, integral",
         "umidade_(%)": "34,7",
         "energia_(kcal)": "253",
         "energia_(kj)": "1059",
@@ -1584,7 +1584,7 @@
     {
         "numero_do_alimento": 53,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "P o, trigo, franc s",
+        "descricao_dos_alimentos": "Pão, trigo, francês",
         "umidade_(%)": "28,5",
         "energia_(kcal)": "300",
         "energia_(kj)": "1254",
@@ -1614,7 +1614,7 @@
     {
         "numero_do_alimento": 54,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "P o, trigo, sovado",
+        "descricao_dos_alimentos": "Pão, trigo, sovado",
         "umidade_(%)": "25,8",
         "energia_(kcal)": "311",
         "energia_(kj)": "1301",
@@ -1825,7 +1825,7 @@
     {
         "numero_do_alimento": 61,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Pipoca, com  leo de soja, sem sal",
+        "descricao_dos_alimentos": "Pipoca, com óleo de soja, sem sal",
         "umidade_(%)": "2,8",
         "energia_(kcal)": "448",
         "energia_(kj)": "1876",
@@ -1855,7 +1855,7 @@
     {
         "numero_do_alimento": 62,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Polenta, pr -cozida",
+        "descricao_dos_alimentos": "Polenta, pré-cozida",
         "umidade_(%)": "72,7",
         "energia_(kcal)": "103",
         "energia_(kj)": "430",
@@ -1885,7 +1885,7 @@
     {
         "numero_do_alimento": 63,
         "categoria": "Cereais e derivados",
-        "descricao_dos_alimentos": "Torrada, p o franc s",
+        "descricao_dos_alimentos": "Torrada, pão francês",
         "umidade_(%)": "9,0",
         "energia_(kcal)": "377",
         "energia_(kj)": "1579",
@@ -1914,8 +1914,8 @@
     },
     {
         "numero_do_alimento": 64,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Ab bora, cabotian, cozida",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Abóbora, cabotian, cozida",
         "umidade_(%)": "86,4",
         "energia_(kcal)": "48",
         "energia_(kj)": "201",
@@ -1944,8 +1944,8 @@
     },
     {
         "numero_do_alimento": 65,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Ab bora, cabotian, crua",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Abóbora, cabotian, crua",
         "umidade_(%)": "88,5",
         "energia_(kcal)": "39",
         "energia_(kj)": "161",
@@ -1976,8 +1976,8 @@
     },
     {
         "numero_do_alimento": 66,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Ab bora, menina brasileira, crua",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Abóbora, menina brasileira, crua",
         "umidade_(%)": "95,7",
         "energia_(kcal)": "14",
         "energia_(kj)": "57",
@@ -2008,8 +2008,8 @@
     },
     {
         "numero_do_alimento": 67,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Ab bora, moranga, crua",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Abóbora, moranga, crua",
         "umidade_(%)": "95,9",
         "energia_(kcal)": "12",
         "energia_(kj)": "52",
@@ -2040,8 +2040,8 @@
     },
     {
         "numero_do_alimento": 68,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Ab bora, moranga, refogada",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Abóbora, moranga, refogada",
         "umidade_(%)": "92,5",
         "energia_(kcal)": "29",
         "energia_(kj)": "121",
@@ -2072,8 +2072,8 @@
     },
     {
         "numero_do_alimento": 69,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Ab bora, pesco o, crua",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Abóbora, pescoço, crua",
         "umidade_(%)": "92,5",
         "energia_(kcal)": "24",
         "energia_(kj)": "102",
@@ -2102,7 +2102,7 @@
     },
     {
         "numero_do_alimento": 70,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Abobrinha, italiana, cozida",
         "umidade_(%)": "95,3",
         "energia_(kcal)": "15",
@@ -2132,7 +2132,7 @@
     },
     {
         "numero_do_alimento": 71,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Abobrinha, italiana, crua",
         "umidade_(%)": "93,9",
         "energia_(kcal)": "19",
@@ -2164,7 +2164,7 @@
     },
     {
         "numero_do_alimento": 72,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Abobrinha, italiana, refogada",
         "umidade_(%)": "93,5",
         "energia_(kcal)": "24",
@@ -2196,7 +2196,7 @@
     },
     {
         "numero_do_alimento": 73,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Abobrinha, paulista, crua",
         "umidade_(%)": "90,9",
         "energia_(kcal)": "31",
@@ -2226,7 +2226,7 @@
     },
     {
         "numero_do_alimento": 74,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Acelga, crua",
         "umidade_(%)": "93,2",
         "energia_(kcal)": "21",
@@ -2256,7 +2256,7 @@
     },
     {
         "numero_do_alimento": 75,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Agri o, cru",
         "umidade_(%)": "93,9",
         "energia_(kcal)": "17",
@@ -2288,7 +2288,7 @@
     },
     {
         "numero_do_alimento": 76,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Aipo, cru",
         "umidade_(%)": "93,8",
         "energia_(kcal)": "19",
@@ -2320,7 +2320,7 @@
     },
     {
         "numero_do_alimento": 77,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Alface, americana, crua",
         "umidade_(%)": "97,2",
         "energia_(kcal)": "9",
@@ -2350,7 +2350,7 @@
     },
     {
         "numero_do_alimento": 78,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Alface, crespa, crua",
         "umidade_(%)": "96,1",
         "energia_(kcal)": "11",
@@ -2382,7 +2382,7 @@
     },
     {
         "numero_do_alimento": 79,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Alface, lisa, crua",
         "umidade_(%)": "95,0",
         "energia_(kcal)": "14",
@@ -2414,7 +2414,7 @@
     },
     {
         "numero_do_alimento": 80,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Alface, roxa, crua",
         "umidade_(%)": "95,7",
         "energia_(kcal)": "13",
@@ -2446,7 +2446,7 @@
     },
     {
         "numero_do_alimento": 81,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Alfavaca, crua",
         "umidade_(%)": "90,2",
         "energia_(kcal)": "29",
@@ -2476,7 +2476,7 @@
     },
     {
         "numero_do_alimento": 82,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Alho, cru",
         "umidade_(%)": "67,5",
         "energia_(kcal)": "113",
@@ -2506,8 +2506,8 @@
     },
     {
         "numero_do_alimento": 83,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Alho-por , cru",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Alho-poró cru",
         "umidade_(%)": "91,0",
         "energia_(kcal)": "32",
         "energia_(kj)": "132",
@@ -2538,7 +2538,7 @@
     },
     {
         "numero_do_alimento": 84,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Almeir o, cru",
         "umidade_(%)": "93,7",
         "energia_(kcal)": "18",
@@ -2570,7 +2570,7 @@
     },
     {
         "numero_do_alimento": 85,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Almeir o, refogado",
         "umidade_(%)": "86,5",
         "energia_(kcal)": "65",
@@ -2600,7 +2600,7 @@
     },
     {
         "numero_do_alimento": 86,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, baroa, cozida",
         "umidade_(%)": "79,3",
         "energia_(kcal)": "80",
@@ -2630,7 +2630,7 @@
     },
     {
         "numero_do_alimento": 87,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, baroa, crua",
         "umidade_(%)": "73,7",
         "energia_(kcal)": "101",
@@ -2662,7 +2662,7 @@
     },
     {
         "numero_do_alimento": 88,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, doce, cozida",
         "umidade_(%)": "80,4",
         "energia_(kcal)": "77",
@@ -2692,7 +2692,7 @@
     },
     {
         "numero_do_alimento": 89,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, doce, crua",
         "umidade_(%)": "69,5",
         "energia_(kcal)": "118",
@@ -2722,7 +2722,7 @@
     },
     {
         "numero_do_alimento": 90,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, frita, tipo chips, industrializada",
         "umidade_(%)": "2,7",
         "energia_(kcal)": "543",
@@ -2752,7 +2752,7 @@
     },
     {
         "numero_do_alimento": 91,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, inglesa, cozida",
         "umidade_(%)": "86,4",
         "energia_(kcal)": "52",
@@ -2782,7 +2782,7 @@
     },
     {
         "numero_do_alimento": 92,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, inglesa, crua",
         "umidade_(%)": "82,9",
         "energia_(kcal)": "64",
@@ -2812,7 +2812,7 @@
     },
     {
         "numero_do_alimento": 93,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, inglesa, frita",
         "umidade_(%)": "44,1",
         "energia_(kcal)": "267",
@@ -2842,7 +2842,7 @@
     },
     {
         "numero_do_alimento": 94,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Batata, inglesa, saut ",
         "umidade_(%)": "83,1",
         "energia_(kcal)": "68",
@@ -2872,7 +2872,7 @@
     },
     {
         "numero_do_alimento": 95,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Berinjela, cozida",
         "umidade_(%)": "94,4",
         "energia_(kcal)": "19",
@@ -2902,7 +2902,7 @@
     },
     {
         "numero_do_alimento": 96,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Berinjela, crua",
         "umidade_(%)": "93,8",
         "energia_(kcal)": "20",
@@ -2934,7 +2934,7 @@
     },
     {
         "numero_do_alimento": 97,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Beterraba, cozida",
         "umidade_(%)": "90,6",
         "energia_(kcal)": "32",
@@ -2964,7 +2964,7 @@
     },
     {
         "numero_do_alimento": 98,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Beterraba, crua",
         "umidade_(%)": "86,0",
         "energia_(kcal)": "49",
@@ -2994,7 +2994,7 @@
     },
     {
         "numero_do_alimento": 99,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Biscoito, polvilho doce",
         "umidade_(%)": "5,4",
         "energia_(kcal)": "438",
@@ -3024,7 +3024,7 @@
     },
     {
         "numero_do_alimento": 100,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Br colis, cozido",
         "umidade_(%)": "92,6",
         "energia_(kcal)": "25",
@@ -3054,7 +3054,7 @@
     },
     {
         "numero_do_alimento": 101,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Br colis, cru",
         "umidade_(%)": "91,2",
         "energia_(kcal)": "25",
@@ -3086,8 +3086,8 @@
     },
     {
         "numero_do_alimento": 102,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Car , cozido",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Caruru cozido",
         "umidade_(%)": "78,9",
         "energia_(kcal)": "78",
         "energia_(kj)": "325",
@@ -3116,8 +3116,8 @@
     },
     {
         "numero_do_alimento": 103,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Car , cru",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Caruru cru",
         "umidade_(%)": "73,7",
         "energia_(kcal)": "96",
         "energia_(kj)": "400",
@@ -3146,7 +3146,7 @@
     },
     {
         "numero_do_alimento": 104,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Caruru, cru",
         "umidade_(%)": "87,6",
         "energia_(kcal)": "34",
@@ -3178,7 +3178,7 @@
     },
     {
         "numero_do_alimento": 105,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Catalonha, crua",
         "umidade_(%)": "91,8",
         "energia_(kcal)": "24",
@@ -3208,7 +3208,7 @@
     },
     {
         "numero_do_alimento": 106,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Catalonha, refogada",
         "umidade_(%)": "87,4",
         "energia_(kcal)": "63",
@@ -3240,7 +3240,7 @@
     },
     {
         "numero_do_alimento": 107,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Cebola, crua",
         "umidade_(%)": "88,9",
         "energia_(kcal)": "39",
@@ -3270,7 +3270,7 @@
     },
     {
         "numero_do_alimento": 108,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Cebolinha, crua",
         "umidade_(%)": "93,9",
         "energia_(kcal)": "20",
@@ -3302,7 +3302,7 @@
     },
     {
         "numero_do_alimento": 109,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Cenoura, cozida",
         "umidade_(%)": "91,7",
         "energia_(kcal)": "30",
@@ -3334,7 +3334,7 @@
     },
     {
         "numero_do_alimento": 110,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Cenoura, crua",
         "umidade_(%)": "90,1",
         "energia_(kcal)": "34",
@@ -3366,8 +3366,8 @@
     },
     {
         "numero_do_alimento": 111,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Chic ria, crua",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Chicória, crua",
         "umidade_(%)": "95,1",
         "energia_(kcal)": "14",
         "energia_(kj)": "58",
@@ -3396,7 +3396,7 @@
     },
     {
         "numero_do_alimento": 112,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Chuchu, cozido",
         "umidade_(%)": "94,6",
         "energia_(kcal)": "19",
@@ -3426,7 +3426,7 @@
     },
     {
         "numero_do_alimento": 113,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Chuchu, cru",
         "umidade_(%)": "94,8",
         "energia_(kcal)": "17",
@@ -3458,7 +3458,7 @@
     },
     {
         "numero_do_alimento": 114,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Coentro, folhas desidratadas",
         "umidade_(%)": "10,6",
         "energia_(kcal)": "309",
@@ -3488,7 +3488,7 @@
     },
     {
         "numero_do_alimento": 115,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Couve, manteiga, crua",
         "umidade_(%)": "90,9",
         "energia_(kcal)": "27",
@@ -3520,7 +3520,7 @@
     },
     {
         "numero_do_alimento": 116,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Couve, manteiga, refogada ",
         "umidade_(%)": "81,5",
         "energia_(kcal)": "90",
@@ -3552,7 +3552,7 @@
     },
     {
         "numero_do_alimento": 117,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Couve-flor, crua",
         "umidade_(%)": "92,8",
         "energia_(kcal)": "23",
@@ -3584,7 +3584,7 @@
     },
     {
         "numero_do_alimento": 118,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Couve-flor, cozida",
         "umidade_(%)": "94,3",
         "energia_(kcal)": "19",
@@ -3614,7 +3614,7 @@
     },
     {
         "numero_do_alimento": 119,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Espinafre, Nova Zel ndia, cru",
         "umidade_(%)": "94,0",
         "energia_(kcal)": "16",
@@ -3646,7 +3646,7 @@
     },
     {
         "numero_do_alimento": 120,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Espinafre, Nova Zel ndia, refogado",
         "umidade_(%)": "86,6",
         "energia_(kcal)": "67",
@@ -3678,7 +3678,7 @@
     },
     {
         "numero_do_alimento": 121,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Farinha, de mandioca, crua",
         "umidade_(%)": "9,4",
         "energia_(kcal)": "361",
@@ -3708,7 +3708,7 @@
     },
     {
         "numero_do_alimento": 122,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Farinha, de mandioca, torrada",
         "umidade_(%)": "8,3",
         "energia_(kcal)": "365",
@@ -3738,7 +3738,7 @@
     },
     {
         "numero_do_alimento": 123,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Farinha, de puba",
         "umidade_(%)": "9,8",
         "energia_(kcal)": "360",
@@ -3768,7 +3768,7 @@
     },
     {
         "numero_do_alimento": 124,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "F cula, de mandioca",
         "umidade_(%)": "17,8",
         "energia_(kcal)": "331",
@@ -3798,7 +3798,7 @@
     },
     {
         "numero_do_alimento": 125,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Feijão, broto, cru",
         "umidade_(%)": "87,5",
         "energia_(kcal)": "39",
@@ -3828,7 +3828,7 @@
     },
     {
         "numero_do_alimento": 126,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Inhame, cru",
         "umidade_(%)": "73,3",
         "energia_(kcal)": "97",
@@ -3858,8 +3858,8 @@
     },
     {
         "numero_do_alimento": 127,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Jil , cru",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Jiló cru",
         "umidade_(%)": "91,6",
         "energia_(kcal)": "27",
         "energia_(kj)": "114",
@@ -3890,7 +3890,7 @@
     },
     {
         "numero_do_alimento": 128,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Jurubeba, crua",
         "umidade_(%)": "66,6",
         "energia_(kcal)": "126",
@@ -3920,7 +3920,7 @@
     },
     {
         "numero_do_alimento": 129,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Mandioca, cozida",
         "umidade_(%)": "68,7",
         "energia_(kcal)": "125",
@@ -3950,7 +3950,7 @@
     },
     {
         "numero_do_alimento": 130,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Mandioca, crua",
         "umidade_(%)": "61,8",
         "energia_(kcal)": "151",
@@ -3980,7 +3980,7 @@
     },
     {
         "numero_do_alimento": 131,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Mandioca, farofa, temperada",
         "umidade_(%)": "6,4",
         "energia_(kcal)": "406",
@@ -4010,7 +4010,7 @@
     },
     {
         "numero_do_alimento": 132,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Mandioca, frita",
         "umidade_(%)": "36,6",
         "energia_(kcal)": "300",
@@ -4040,7 +4040,7 @@
     },
     {
         "numero_do_alimento": 133,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Manjeric o, cru",
         "umidade_(%)": "93,0",
         "energia_(kcal)": "21",
@@ -4072,7 +4072,7 @@
     },
     {
         "numero_do_alimento": 134,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Maxixe, cru",
         "umidade_(%)": "95,1",
         "energia_(kcal)": "14",
@@ -4104,7 +4104,7 @@
     },
     {
         "numero_do_alimento": 135,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Mostarda, folha, crua",
         "umidade_(%)": "93,4",
         "energia_(kcal)": "18",
@@ -4134,7 +4134,7 @@
     },
     {
         "numero_do_alimento": 136,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Nhoque, batata, cozido",
         "umidade_(%)": "55,0",
         "energia_(kcal)": "181",
@@ -4164,7 +4164,7 @@
     },
     {
         "numero_do_alimento": 137,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Nabo, cru",
         "umidade_(%)": "93,8",
         "energia_(kcal)": "18",
@@ -4194,8 +4194,8 @@
     },
     {
         "numero_do_alimento": 138,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Palmito, ju ara, em conserva",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Palmito, juçara, em conserva",
         "umidade_(%)": "91,4",
         "energia_(kcal)": "23",
         "energia_(kj)": "97",
@@ -4224,7 +4224,7 @@
     },
     {
         "numero_do_alimento": 139,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Palmito, pupunha, em conserva",
         "umidade_(%)": "89,4",
         "energia_(kcal)": "29",
@@ -4254,8 +4254,8 @@
     },
     {
         "numero_do_alimento": 140,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "P o, de queijo, assado",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Pão, de queijo, assado",
         "umidade_(%)": "33,7",
         "energia_(kcal)": "363",
         "energia_(kj)": "1519",
@@ -4284,8 +4284,8 @@
     },
     {
         "numero_do_alimento": 141,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "P o, de queijo, cru",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Pão, de queijo, cru",
         "umidade_(%)": "41,8",
         "energia_(kcal)": "295",
         "energia_(kj)": "1232",
@@ -4314,7 +4314,7 @@
     },
     {
         "numero_do_alimento": 142,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Pepino, cru",
         "umidade_(%)": "96,8",
         "energia_(kcal)": "10",
@@ -4346,8 +4346,8 @@
     },
     {
         "numero_do_alimento": 143,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Piment o, amarelo, cru",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Pimentão, amarelo, cru",
         "umidade_(%)": "91,9",
         "energia_(kcal)": "28",
         "energia_(kj)": "117",
@@ -4378,8 +4378,8 @@
     },
     {
         "numero_do_alimento": 144,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Piment o, verde, cru",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Pimentão, verde, cru",
         "umidade_(%)": "93,5",
         "energia_(kcal)": "21",
         "energia_(kj)": "89",
@@ -4410,8 +4410,8 @@
     },
     {
         "numero_do_alimento": 145,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Piment o, vermelho, cru",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Pimentão, vermelho, cru",
         "umidade_(%)": "92,9",
         "energia_(kcal)": "23",
         "energia_(kj)": "97",
@@ -4442,7 +4442,7 @@
     },
     {
         "numero_do_alimento": 146,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Polvilho, doce",
         "umidade_(%)": "12,6",
         "energia_(kcal)": "351",
@@ -4472,7 +4472,7 @@
     },
     {
         "numero_do_alimento": 147,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Quiabo, cru",
         "umidade_(%)": "90,6",
         "energia_(kcal)": "30",
@@ -4504,7 +4504,7 @@
     },
     {
         "numero_do_alimento": 148,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Rabanete, cru",
         "umidade_(%)": "95,1",
         "energia_(kcal)": "14",
@@ -4534,7 +4534,7 @@
     },
     {
         "numero_do_alimento": 149,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Repolho, branco, cru",
         "umidade_(%)": "94,7",
         "energia_(kcal)": "17",
@@ -4566,7 +4566,7 @@
     },
     {
         "numero_do_alimento": 150,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Repolho, roxo, cru",
         "umidade_(%)": "90,1",
         "energia_(kcal)": "31",
@@ -4596,7 +4596,7 @@
     },
     {
         "numero_do_alimento": 151,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Repolho, roxo, refogado",
         "umidade_(%)": "88,7",
         "energia_(kcal)": "42",
@@ -4626,7 +4626,7 @@
     },
     {
         "numero_do_alimento": 152,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "R cula, crua",
         "umidade_(%)": "94,8",
         "energia_(kcal)": "13",
@@ -4658,7 +4658,7 @@
     },
     {
         "numero_do_alimento": 153,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Salsa, crua",
         "umidade_(%)": "88,7",
         "energia_(kcal)": "33",
@@ -4690,7 +4690,7 @@
     },
     {
         "numero_do_alimento": 154,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Seleta de legumes, enlatada",
         "umidade_(%)": "82,1",
         "energia_(kcal)": "57",
@@ -4722,7 +4722,7 @@
     },
     {
         "numero_do_alimento": 155,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Serralha, crua",
         "umidade_(%)": "90,2",
         "energia_(kcal)": "30",
@@ -4754,7 +4754,7 @@
     },
     {
         "numero_do_alimento": 156,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Taioba, crua",
         "umidade_(%)": "89,2",
         "energia_(kcal)": "34",
@@ -4786,7 +4786,7 @@
     },
     {
         "numero_do_alimento": 157,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Tomate, com semente, cru",
         "umidade_(%)": "95,1",
         "energia_(kcal)": "15",
@@ -4818,7 +4818,7 @@
     },
     {
         "numero_do_alimento": 158,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Tomate, extrato",
         "umidade_(%)": "79,7",
         "energia_(kcal)": "61",
@@ -4850,7 +4850,7 @@
     },
     {
         "numero_do_alimento": 159,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Tomate, molho industrializado",
         "umidade_(%)": "88,1",
         "energia_(kcal)": "38",
@@ -4882,8 +4882,8 @@
     },
     {
         "numero_do_alimento": 160,
-        "categoria": "Verduras, hortali as e derivados",
-        "descricao_dos_alimentos": "Tomate, pur ",
+        "categoria": "Verduras, hortaliças e derivados",
+        "descricao_dos_alimentos": "Tomate, purê",
         "umidade_(%)": "90,8",
         "energia_(kcal)": "28",
         "energia_(kj)": "117",
@@ -4914,7 +4914,7 @@
     },
     {
         "numero_do_alimento": 161,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Tomate, salada",
         "umidade_(%)": "93,6",
         "energia_(kcal)": "21",
@@ -4944,7 +4944,7 @@
     },
     {
         "numero_do_alimento": 162,
-        "categoria": "Verduras, hortali as e derivados",
+        "categoria": "Verduras, hortaliças e derivados",
         "descricao_dos_alimentos": "Vagem, crua",
         "umidade_(%)": "92,2",
         "energia_(kcal)": "25",
@@ -5099,7 +5099,7 @@
     {
         "numero_do_alimento": 167,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "A a , polpa, com xarope de guaran  e glucose",
+        "descricao_dos_alimentos": "Açaí, polpa, com xarope de guaraná e glucose",
         "umidade_(%)": "73,9",
         "energia_(kcal)": "110",
         "energia_(kj)": "461",
@@ -5129,7 +5129,7 @@
     {
         "numero_do_alimento": 168,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "A a , polpa, congelada",
+        "descricao_dos_alimentos": "Açaí, polpa, congelada",
         "umidade_(%)": "88,7",
         "energia_(kcal)": "58",
         "energia_(kj)": "243",
@@ -5315,7 +5315,7 @@
     {
         "numero_do_alimento": 174,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Atem ia, crua",
+        "descricao_dos_alimentos": "Atemoia, crua",
         "umidade_(%)": "72,7",
         "energia_(kcal)": "97",
         "energia_(kj)": "406",
@@ -5439,7 +5439,7 @@
     {
         "numero_do_alimento": 178,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Banana, ma  , crua",
+        "descricao_dos_alimentos": "Banana, maçã, crua",
         "umidade_(%)": "75,2",
         "energia_(kcal)": "87",
         "energia_(kj)": "363",
@@ -5657,7 +5657,7 @@
     {
         "numero_do_alimento": 185,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Caj , polpa, congelada",
+        "descricao_dos_alimentos": "Cajá polpa, congelada",
         "umidade_(%)": "92,4",
         "energia_(kcal)": "26",
         "energia_(kj)": "110",
@@ -5995,7 +5995,7 @@
     {
         "numero_do_alimento": 196,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Fruta-p o, crua",
+        "descricao_dos_alimentos": "Fruta-Pão, crua",
         "umidade_(%)": "80,9",
         "energia_(kcal)": "67",
         "energia_(kj)": "281",
@@ -6365,7 +6365,7 @@
     {
         "numero_do_alimento": 208,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Laranja, ba a, crua",
+        "descricao_dos_alimentos": "Laranja, baía, crua",
         "umidade_(%)": "87,1",
         "energia_(kcal)": "45",
         "energia_(kj)": "190",
@@ -6397,7 +6397,7 @@
     {
         "numero_do_alimento": 209,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Laranja, ba a, suco",
+        "descricao_dos_alimentos": "Laranja, baía, suco",
         "umidade_(%)": "90,2",
         "energia_(kcal)": "37",
         "energia_(kj)": "153",
@@ -6551,7 +6551,7 @@
     {
         "numero_do_alimento": 214,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Laranja, p ra, crua",
+        "descricao_dos_alimentos": "Laranja, pêra, crua",
         "umidade_(%)": "89,6",
         "energia_(kcal)": "37",
         "energia_(kj)": "154",
@@ -6583,7 +6583,7 @@
     {
         "numero_do_alimento": 215,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Laranja, p ra, suco",
+        "descricao_dos_alimentos": "Laranja, pêra, suco",
         "umidade_(%)": "91,3",
         "energia_(kcal)": "33",
         "energia_(kj)": "137",
@@ -6615,7 +6615,7 @@
     {
         "numero_do_alimento": 216,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Laranja, val ncia, crua",
+        "descricao_dos_alimentos": "Laranja, valência, crua",
         "umidade_(%)": "86,9",
         "energia_(kcal)": "46",
         "energia_(kj)": "193",
@@ -6645,7 +6645,7 @@
     {
         "numero_do_alimento": 217,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Laranja, val ncia, suco",
+        "descricao_dos_alimentos": "Laranja, valência, suco",
         "umidade_(%)": "90,5",
         "energia_(kcal)": "36",
         "energia_(kj)": "151",
@@ -6677,7 +6677,7 @@
     {
         "numero_do_alimento": 218,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Lim o, cravo, suco",
+        "descricao_dos_alimentos": "Limão, cravo, suco",
         "umidade_(%)": "94,2",
         "energia_(kcal)": "14",
         "energia_(kj)": "59",
@@ -6708,7 +6708,7 @@
     {
         "numero_do_alimento": 219,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Lim o, galego, suco",
+        "descricao_dos_alimentos": "Limão, galego, suco",
         "umidade_(%)": "91,8",
         "energia_(kcal)": "22",
         "energia_(kj)": "93",
@@ -6738,7 +6738,7 @@
     {
         "numero_do_alimento": 220,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Lim o, tahiti, cru",
+        "descricao_dos_alimentos": "Limão, tahiti, cru",
         "umidade_(%)": "87,4",
         "energia_(kcal)": "32",
         "energia_(kj)": "133",
@@ -6768,7 +6768,7 @@
     {
         "numero_do_alimento": 221,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Ma  , Argentina, com casca, crua",
+        "descricao_dos_alimentos": "Maçã, Argentina, com casca, crua",
         "umidade_(%)": "82,6",
         "energia_(kcal)": "63",
         "energia_(kj)": "262",
@@ -6798,7 +6798,7 @@
     {
         "numero_do_alimento": 222,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Ma  , Fuji, com casca, crua",
+        "descricao_dos_alimentos": "Maçã, Fuji, com casca, crua",
         "umidade_(%)": "84,3",
         "energia_(kcal)": "56",
         "energia_(kj)": "232",
@@ -6862,7 +6862,7 @@
     {
         "numero_do_alimento": 224,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": " Mam o, doce em calda, drenado",
+        "descricao_dos_alimentos": " Mamão, doce em calda, drenado",
         "umidade_(%)": "45,5",
         "energia_(kcal)": "196",
         "energia_(kj)": "819",
@@ -6892,7 +6892,7 @@
     {
         "numero_do_alimento": 225,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Mam o, Formosa, cru",
+        "descricao_dos_alimentos": "Mamão, Formosa, cru",
         "umidade_(%)": "86,9",
         "energia_(kcal)": "45",
         "energia_(kj)": "190",
@@ -6924,7 +6924,7 @@
     {
         "numero_do_alimento": 226,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Mam o, Papaia, cru",
+        "descricao_dos_alimentos": "Mamão, Papaia, cru",
         "umidade_(%)": "88,6",
         "energia_(kcal)": "40",
         "energia_(kj)": "168",
@@ -6956,7 +6956,7 @@
     {
         "numero_do_alimento": 227,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": " Mam o verde, doce em calda, drenado",
+        "descricao_dos_alimentos": " Mamão verde, doce em calda, drenado",
         "umidade_(%)": "41,9",
         "energia_(kcal)": "209",
         "energia_(kj)": "876",
@@ -7112,7 +7112,7 @@
     {
         "numero_do_alimento": 232,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Maracuj , cru",
+        "descricao_dos_alimentos": "Maracujá, cru",
         "umidade_(%)": "82,9",
         "energia_(kcal)": "68",
         "energia_(kj)": "286",
@@ -7144,7 +7144,7 @@
     {
         "numero_do_alimento": 233,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Maracuj , polpa, congelada",
+        "descricao_dos_alimentos": "Maracujá, polpa, congelada",
         "umidade_(%)": "88,9",
         "energia_(kcal)": "39",
         "energia_(kj)": "162",
@@ -7174,7 +7174,7 @@
     {
         "numero_do_alimento": 234,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Maracuj , suco concentrado, envasado",
+        "descricao_dos_alimentos": "Maracujá, suco concentrado, envasado",
         "umidade_(%)": "88,9",
         "energia_(kcal)": "42",
         "energia_(kj)": "176",
@@ -7422,7 +7422,7 @@
     {
         "numero_do_alimento": 242,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "P ra, Park, crua",
+        "descricao_dos_alimentos": "Pêra, Park, crua",
         "umidade_(%)": "83,2",
         "energia_(kcal)": "61",
         "energia_(kj)": "254",
@@ -7452,7 +7452,7 @@
     {
         "numero_do_alimento": 243,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "P ra, Williams, crua",
+        "descricao_dos_alimentos": "Pêra, Williams, crua",
         "umidade_(%)": "85,0",
         "energia_(kcal)": "53",
         "energia_(kj)": "223",
@@ -7484,7 +7484,7 @@
     {
         "numero_do_alimento": 244,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "P ssego, Aurora, cru",
+        "descricao_dos_alimentos": "Pêssego, Aurora, cru",
         "umidade_(%)": "89,3",
         "energia_(kcal)": "36",
         "energia_(kj)": "152",
@@ -7514,7 +7514,7 @@
     {
         "numero_do_alimento": 245,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "P ssego, enlatado, em calda",
+        "descricao_dos_alimentos": "Pêssego, enlatado, em calda",
         "umidade_(%)": "82,2",
         "energia_(kcal)": "63",
         "energia_(kj)": "264",
@@ -7640,7 +7640,7 @@
     {
         "numero_do_alimento": 249,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Rom , crua",
+        "descricao_dos_alimentos": "Romã, crua",
         "umidade_(%)": "84,0",
         "energia_(kcal)": "56",
         "energia_(kj)": "233",
@@ -7700,7 +7700,7 @@
     {
         "numero_do_alimento": 251,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Tangerina, Ponc , crua",
+        "descricao_dos_alimentos": "Tangerina, Poncã, crua",
         "umidade_(%)": "89,2",
         "energia_(kcal)": "38",
         "energia_(kj)": "158",
@@ -7732,7 +7732,7 @@
     {
         "numero_do_alimento": 252,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Tangerina, Ponc , suco",
+        "descricao_dos_alimentos": "Tangerina, Poncã, suco",
         "umidade_(%)": "90,4",
         "energia_(kcal)": "36",
         "energia_(kj)": "151",
@@ -7764,7 +7764,7 @@
     {
         "numero_do_alimento": 253,
         "categoria": "Frutas e derivados",
-        "descricao_dos_alimentos": "Tucum , cru",
+        "descricao_dos_alimentos": "Tucumã, cru",
         "umidade_(%)": "51,3",
         "energia_(kcal)": "262",
         "energia_(kj)": "1096",
@@ -7947,7 +7947,7 @@
     },
     {
         "numero_do_alimento": 259,
-        "categoria": "Gorduras e  leos",
+        "categoria": "Gorduras e óleos",
         "descricao_dos_alimentos": "Azeite, de dend ",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
@@ -7962,7 +7962,7 @@
     },
     {
         "numero_do_alimento": 260,
-        "categoria": "Gorduras e  leos",
+        "categoria": "Gorduras e óleos",
         "descricao_dos_alimentos": "Azeite, de oliva, extra virgem",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
@@ -7977,7 +7977,7 @@
     },
     {
         "numero_do_alimento": 261,
-        "categoria": "Gorduras e  leos",
+        "categoria": "Gorduras e óleos",
         "descricao_dos_alimentos": "Manteiga, com sal",
         "umidade_(%)": "15,8",
         "energia_(kcal)": "726",
@@ -8007,7 +8007,7 @@
     },
     {
         "numero_do_alimento": 262,
-        "categoria": "Gorduras e  leos",
+        "categoria": "Gorduras e óleos",
         "descricao_dos_alimentos": "Manteiga, sem sal",
         "umidade_(%)": "13,6",
         "energia_(kcal)": "758",
@@ -8037,8 +8037,8 @@
     },
     {
         "numero_do_alimento": 263,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": "Margarina, com  leo hidrogenado, com sal (65% de lip deos)",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": "Margarina, com óleo hidrogenado, com sal (65% de lipídeos)",
         "umidade_(%)": "32,2",
         "energia_(kcal)": "596",
         "energia_(kj)": "2494",
@@ -8067,8 +8067,8 @@
     },
     {
         "numero_do_alimento": 264,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": "Margarina, com  leo hidrogenado, sem sal (80% de lip deos)",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": "Margarina, com óleo hidrogenado, sem sal (80% de lipídeos)",
         "umidade_(%)": "19,6",
         "energia_(kcal)": "723",
         "energia_(kj)": "3023",
@@ -8097,8 +8097,8 @@
     },
     {
         "numero_do_alimento": 265,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": "Margarina, com  leo interesterificado, com sal (65%de lip deos)",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": "Margarina, com óleo interesterificado, com sal (65%de lipídeos)",
         "umidade_(%)": "32,0",
         "energia_(kcal)": "594",
         "energia_(kj)": "2487",
@@ -8127,8 +8127,8 @@
     },
     {
         "numero_do_alimento": 266,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": "Margarina, com  leo interesterificado, sem sal (65% de lip deos)",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": "Margarina, com óleo interesterificado, sem sal (65% de lipídeos)",
         "umidade_(%)": "33,4",
         "energia_(kcal)": "593",
         "energia_(kj)": "2482",
@@ -8157,8 +8157,8 @@
     },
     {
         "numero_do_alimento": 267,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": " leo, de baba u",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": " óleo, de baba u",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
         "energia_(kj)": "3699",
@@ -8172,8 +8172,8 @@
     },
     {
         "numero_do_alimento": 268,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": " leo, de canola",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": " óleo, de canola",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
         "energia_(kj)": "3699",
@@ -8187,8 +8187,8 @@
     },
     {
         "numero_do_alimento": 269,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": " leo, de girassol",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": " óleo, de girassol",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
         "energia_(kj)": "3699",
@@ -8202,8 +8202,8 @@
     },
     {
         "numero_do_alimento": 270,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": " leo, de milho",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": "Óleo, de milho",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
         "energia_(kj)": "3699",
@@ -8217,8 +8217,8 @@
     },
     {
         "numero_do_alimento": 271,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": " leo, de pequi",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": " óleo, de pequi",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
         "energia_(kj)": "3699",
@@ -8232,8 +8232,8 @@
     },
     {
         "numero_do_alimento": 272,
-        "categoria": "Gorduras e  leos",
-        "descricao_dos_alimentos": " leo, de soja",
+        "categoria": "Gorduras e óleos",
+        "descricao_dos_alimentos": " óleo, de soja",
         "umidade_(%)": "NA",
         "energia_(kcal)": "884",
         "energia_(kj)": "3699",
@@ -8248,7 +8248,7 @@
     {
         "numero_do_alimento": 273,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Abadejo, fil , congelado, assado",
+        "descricao_dos_alimentos": "Abadejo, filé, congelado, assado",
         "umidade_(%)": "74,3",
         "energia_(kcal)": "112",
         "energia_(kj)": "467",
@@ -8279,7 +8279,7 @@
     {
         "numero_do_alimento": 274,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Abadejo, fil , congelado,cozido",
+        "descricao_dos_alimentos": "Abadejo, filé, congelado,cozido",
         "umidade_(%)": "79,7",
         "energia_(kcal)": "91",
         "energia_(kj)": "381",
@@ -8310,7 +8310,7 @@
     {
         "numero_do_alimento": 275,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Abadejo, fil , congelado, cru",
+        "descricao_dos_alimentos": "Abadejo, filé, congelado, cru",
         "umidade_(%)": "86,4",
         "energia_(kcal)": "59",
         "energia_(kj)": "247",
@@ -8341,7 +8341,7 @@
     {
         "numero_do_alimento": 276,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Abadejo, fil , congelado, grelhado",
+        "descricao_dos_alimentos": "Abadejo, filé, congelado, grelhado",
         "umidade_(%)": "71,0",
         "energia_(kcal)": "130",
         "energia_(kj)": "542",
@@ -8372,7 +8372,7 @@
     {
         "numero_do_alimento": 277,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Atum, conserva em  leo",
+        "descricao_dos_alimentos": "Atum, conserva em óleo",
         "umidade_(%)": "64,5",
         "energia_(kcal)": "166",
         "energia_(kj)": "694",
@@ -8590,7 +8590,7 @@
     {
         "numero_do_alimento": 284,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Camar o, Rio Grande, grande, cozido",
+        "descricao_dos_alimentos": "Camarão, Rio Grande, grande, cozido",
         "umidade_(%)": "78,7",
         "energia_(kcal)": "90",
         "energia_(kj)": "377",
@@ -8621,7 +8621,7 @@
     {
         "numero_do_alimento": 285,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Camar o, Rio Grande, grande, cru",
+        "descricao_dos_alimentos": "Camarão, Rio Grande, grande, cru",
         "umidade_(%)": "89,1",
         "energia_(kcal)": "47",
         "energia_(kj)": "197",
@@ -8652,7 +8652,7 @@
     {
         "numero_do_alimento": 286,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Camar o, Sete Barbas, sem cabe a, com casca, frito",
+        "descricao_dos_alimentos": "camarão, Sete Barbas, sem cabe a, com casca, frito",
         "umidade_(%)": "61,0",
         "energia_(kcal)": "231",
         "energia_(kj)": "968",
@@ -8746,7 +8746,7 @@
     {
         "numero_do_alimento": 289,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Corimbat , assado",
+        "descricao_dos_alimentos": "Corimba, assado",
         "umidade_(%)": "59,9",
         "energia_(kcal)": "261",
         "energia_(kj)": "1094",
@@ -8777,7 +8777,7 @@
     {
         "numero_do_alimento": 290,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Corimbat , cozido",
+        "descricao_dos_alimentos": "Corimba, cozido",
         "umidade_(%)": "64,6",
         "energia_(kcal)": "239",
         "energia_(kj)": "999",
@@ -9118,7 +9118,7 @@
     {
         "numero_do_alimento": 301,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Merluza, fil , assado",
+        "descricao_dos_alimentos": "Merluza, filé, assado",
         "umidade_(%)": "70,7",
         "energia_(kcal)": "122",
         "energia_(kj)": "510",
@@ -9149,7 +9149,7 @@
     {
         "numero_do_alimento": 302,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Merluza, fil , cru",
+        "descricao_dos_alimentos": "Merluza, filé, cru",
         "umidade_(%)": "82,1",
         "energia_(kcal)": "89",
         "energia_(kj)": "373",
@@ -9180,7 +9180,7 @@
     {
         "numero_do_alimento": 303,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Merluza, fil , frito",
+        "descricao_dos_alimentos": "Merluza, filé, frito",
         "umidade_(%)": "63,5",
         "energia_(kcal)": "192",
         "energia_(kj)": "802",
@@ -9273,7 +9273,7 @@
     {
         "numero_do_alimento": 306,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Pescada, fil , com farinha de trigo, frito",
+        "descricao_dos_alimentos": "Pescada, filé, com farinha de trigo, frito",
         "umidade_(%)": "53,2",
         "energia_(kcal)": "283",
         "energia_(kj)": "1186",
@@ -9304,7 +9304,7 @@
     {
         "numero_do_alimento": 307,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Pescada, fil , cru",
+        "descricao_dos_alimentos": "Pescada, filé, cru",
         "umidade_(%)": "79,5",
         "energia_(kcal)": "107",
         "energia_(kj)": "449",
@@ -9335,7 +9335,7 @@
     {
         "numero_do_alimento": 308,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Pescada, fil , frito",
+        "descricao_dos_alimentos": "Pescada, filé, frito",
         "umidade_(%)": "66,8",
         "energia_(kcal)": "154",
         "energia_(kj)": "645",
@@ -9366,7 +9366,7 @@
     {
         "numero_do_alimento": 309,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Pescada, fil , molho escabeche",
+        "descricao_dos_alimentos": "Pescada, filé, molho escabeche",
         "umidade_(%)": "74,5",
         "energia_(kcal)": "142",
         "energia_(kj)": "594",
@@ -9551,7 +9551,7 @@
     {
         "numero_do_alimento": 315,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Salm o, fil , com pele, fresco,  grelhado",
+        "descricao_dos_alimentos": "Salmão, filé, com pele, fresco,  grelhado",
         "umidade_(%)": "60,9",
         "energia_(kcal)": "229",
         "energia_(kj)": "957",
@@ -9582,7 +9582,7 @@
     {
         "numero_do_alimento": 316,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Salm o, sem pele, fresco, cru",
+        "descricao_dos_alimentos": "Salmão, sem pele, fresco, cru",
         "umidade_(%)": "69,0",
         "energia_(kcal)": "170",
         "energia_(kj)": "710",
@@ -9613,7 +9613,7 @@
     {
         "numero_do_alimento": 317,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Salm o, sem pele, fresco, grelhado",
+        "descricao_dos_alimentos": "Salmão, sem pele, fresco, grelhado",
         "umidade_(%)": "58,1",
         "energia_(kcal)": "243",
         "energia_(kj)": "1015",
@@ -9675,7 +9675,7 @@
     {
         "numero_do_alimento": 319,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Sardinha, conserva em  leo",
+        "descricao_dos_alimentos": "Sardinha, conserva em óleo",
         "umidade_(%)": "55,1",
         "energia_(kcal)": "285",
         "energia_(kj)": "1192",
@@ -9768,7 +9768,7 @@
     {
         "numero_do_alimento": 322,
         "categoria": "Pescados e frutos do mar",
-        "descricao_dos_alimentos": "Tucunar , fil , congelado, cru",
+        "descricao_dos_alimentos": "Tucunaré, filé, congelado, cru",
         "umidade_(%)": "79,9",
         "energia_(kcal)": "88",
         "energia_(kj)": "367",
@@ -10139,7 +10139,7 @@
     {
         "numero_do_alimento": 334,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, capa de contra-fil , com gordura, crua",
+        "descricao_dos_alimentos": "Carne, bovina, capa de contra-filé, com gordura, crua",
         "umidade_(%)": "64,8",
         "energia_(kcal)": "217",
         "energia_(kj)": "908",
@@ -10170,7 +10170,7 @@
     {
         "numero_do_alimento": 335,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, capa de contra-fil , com gordura, grelhada",
+        "descricao_dos_alimentos": "Carne, bovina, capa de contra-filé, com gordura, grelhada",
         "umidade_(%)": "47,9",
         "energia_(kcal)": "312",
         "energia_(kj)": "1304",
@@ -10201,7 +10201,7 @@
     {
         "numero_do_alimento": 336,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, capa de contra-fil , sem gordura, crua",
+        "descricao_dos_alimentos": "Carne, bovina, capa de contra-filé, sem gordura, crua",
         "umidade_(%)": "73,0",
         "energia_(kcal)": "131",
         "energia_(kj)": "548",
@@ -10232,7 +10232,7 @@
     {
         "numero_do_alimento": 337,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, capa de contra-fil , sem gordura, grelhada",
+        "descricao_dos_alimentos": "Carne, bovina, capa de contra-filé, sem gordura, grelhada",
         "umidade_(%)": "53,7",
         "energia_(kcal)": "239",
         "energia_(kj)": "1002",
@@ -10325,7 +10325,7 @@
     {
         "numero_do_alimento": 340,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, contra-fil ,   milanesa",
+        "descricao_dos_alimentos": "Carne, bovina, contra-filé,   milanesa",
         "umidade_(%)": "42,2",
         "energia_(kcal)": "352",
         "energia_(kj)": "1471",
@@ -10416,7 +10416,7 @@
     {
         "numero_do_alimento": 343,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, contra-fil , com gordura, cru",
+        "descricao_dos_alimentos": "Carne, bovina, contra-filé, com gordura, cru",
         "umidade_(%)": "65,7",
         "energia_(kcal)": "206",
         "energia_(kj)": "861",
@@ -10447,7 +10447,7 @@
     {
         "numero_do_alimento": 344,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, contra-fil , com gordura, grelhado",
+        "descricao_dos_alimentos": "Carne, bovina, contra-filé, com gordura, grelhado",
         "umidade_(%)": "51,7",
         "energia_(kcal)": "278",
         "energia_(kj)": "1163",
@@ -10478,7 +10478,7 @@
     {
         "numero_do_alimento": 345,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, contra-fil , sem gordura, cru",
+        "descricao_dos_alimentos": "Carne, bovina, contra-filé, sem gordura, cru",
         "umidade_(%)": "69,1",
         "energia_(kcal)": "157",
         "energia_(kj)": "655",
@@ -10509,7 +10509,7 @@
     {
         "numero_do_alimento": 346,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, contra-fil , sem gordura, grelhado",
+        "descricao_dos_alimentos": "Carne, bovina, contra-filé, sem gordura, grelhado",
         "umidade_(%)": "57,5",
         "energia_(kcal)": "194",
         "energia_(kj)": "810",
@@ -10602,7 +10602,7 @@
     {
         "numero_do_alimento": 349,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, cox o duro, sem gordura, cozido",
+        "descricao_dos_alimentos": "Carne, bovina, coxão duro, sem gordura, cozido",
         "umidade_(%)": "58,5",
         "energia_(kcal)": "217",
         "energia_(kj)": "906",
@@ -10633,7 +10633,7 @@
     {
         "numero_do_alimento": 350,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, cox o duro, sem gordura, cru",
+        "descricao_dos_alimentos": "Carne, bovina, coxão duro, sem gordura, cru",
         "umidade_(%)": "69,8",
         "energia_(kcal)": "148",
         "energia_(kj)": "619",
@@ -10664,7 +10664,7 @@
     {
         "numero_do_alimento": 351,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, cox o mole, sem gordura, cozido",
+        "descricao_dos_alimentos": "Carne, bovina, coxão mole, sem gordura, cozido",
         "umidade_(%)": "58,0",
         "energia_(kcal)": "219",
         "energia_(kj)": "915",
@@ -10695,7 +10695,7 @@
     {
         "numero_do_alimento": 352,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Carne, bovina, cox o mole, sem gordura, cru",
+        "descricao_dos_alimentos": "Carne, bovina, coxão mole, sem gordura, cru",
         "umidade_(%)": "68,6",
         "energia_(kcal)": "169",
         "energia_(kj)": "707",
@@ -11837,7 +11837,7 @@
     {
         "numero_do_alimento": 389,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Empada de frango, pr -cozida, assada",
+        "descricao_dos_alimentos": "Empada de frango, pré-cozida, assada",
         "umidade_(%)": "28,2",
         "energia_(kcal)": "358",
         "energia_(kj)": "1499",
@@ -11867,7 +11867,7 @@
     {
         "numero_do_alimento": 390,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Empada, de frango, pr -cozida",
+        "descricao_dos_alimentos": "Empada, de frango, pré-cozida",
         "umidade_(%)": "32,0",
         "energia_(kcal)": "377",
         "energia_(kj)": "1579",
@@ -12207,7 +12207,7 @@
     {
         "numero_do_alimento": 401,
         "categoria": "Carnes e derivados",
-        "descricao_dos_alimentos": "Frango, fil ,   milanesa",
+        "descricao_dos_alimentos": "Frango, filé,   milanesa",
         "umidade_(%)": "54,9",
         "energia_(kcal)": "221",
         "energia_(kj)": "924",
@@ -13576,7 +13576,7 @@
     {
         "numero_do_alimento": 446,
         "categoria": "Leite e derivados",
-        "descricao_dos_alimentos": "Bebida l ctea, p ssego",
+        "descricao_dos_alimentos": "Bebida láctea, Pêssego",
         "umidade_(%)": "87,7",
         "energia_(kcal)": "55",
         "energia_(kj)": "231",
@@ -13755,7 +13755,7 @@
     {
         "numero_do_alimento": 452,
         "categoria": "Leite e derivados",
-        "descricao_dos_alimentos": "Iogurte, sabor p ssego",
+        "descricao_dos_alimentos": "Iogurte, sabor Pêssego",
         "umidade_(%)": "85,1",
         "energia_(kcal)": "68",
         "energia_(kj)": "284",
@@ -13875,7 +13875,7 @@
     {
         "numero_do_alimento": 456,
         "categoria": "Leite e derivados",
-        "descricao_dos_alimentos": "Leite, de vaca, desnatado, p ",
+        "descricao_dos_alimentos": "Leite, de vaca, desnatado, pó",
         "umidade_(%)": "3,1",
         "energia_(kcal)": "362",
         "energia_(kj)": "1513",
@@ -13964,7 +13964,7 @@
     {
         "numero_do_alimento": 459,
         "categoria": "Leite e derivados",
-        "descricao_dos_alimentos": "Leite, de vaca, integral, p ",
+        "descricao_dos_alimentos": "Leite, de vaca, integral, pó",
         "umidade_(%)": "2,7",
         "energia_(kcal)": "497",
         "energia_(kj)": "2078",
@@ -14290,8 +14290,8 @@
     },
     {
         "numero_do_alimento": 470,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
-        "descricao_dos_alimentos": "Bebida isot nica, sabores variados",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
+        "descricao_dos_alimentos": "Bebida isotônica, sabores variados",
         "umidade_(%)": "93,5",
         "energia_(kcal)": "26",
         "energia_(kj)": "107",
@@ -14315,8 +14315,8 @@
     },
     {
         "numero_do_alimento": 471,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
-        "descricao_dos_alimentos": "Caf , infus o 10%",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
+        "descricao_dos_alimentos": "Café, infusão 10%",
         "umidade_(%)": "97,4",
         "energia_(kcal)": "9",
         "energia_(kj)": "38",
@@ -14340,7 +14340,7 @@
     },
     {
         "numero_do_alimento": 472,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
         "descricao_dos_alimentos": "Cana, aguardente 1",
         "energia_(kcal)": "216",
         "energia_(kj)": "902",
@@ -14364,7 +14364,7 @@
     },
     {
         "numero_do_alimento": 473,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
         "descricao_dos_alimentos": "Cana, caldo de",
         "umidade_(%)": "81,7",
         "energia_(kcal)": "65",
@@ -14394,7 +14394,7 @@
     },
     {
         "numero_do_alimento": 474,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
         "descricao_dos_alimentos": "Cerveja, pilsen 2",
         "umidade_(%)": "92,4",
         "energia_(kcal)": "41",
@@ -14424,8 +14424,8 @@
     },
     {
         "numero_do_alimento": 475,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
-        "descricao_dos_alimentos": "Ch , erva-doce, infus o 5%",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
+        "descricao_dos_alimentos": "Chá, erva-doce, infusão 5%",
         "umidade_(%)": "99,6",
         "energia_(kcal)": "1",
         "energia_(kj)": "6",
@@ -14454,8 +14454,8 @@
     },
     {
         "numero_do_alimento": 476,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
-        "descricao_dos_alimentos": "Ch , mate, infus o 5%",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
+        "descricao_dos_alimentos": "Chá, mate, infusão 5%",
         "umidade_(%)": "99,3",
         "energia_(kcal)": "3",
         "energia_(kj)": "11",
@@ -14484,8 +14484,8 @@
     },
     {
         "numero_do_alimento": 477,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
-        "descricao_dos_alimentos": "Ch , preto, infus o 5%",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
+        "descricao_dos_alimentos": "Chá, preto, infusão 5%",
         "umidade_(%)": "99,4",
         "energia_(kcal)": "2",
         "energia_(kj)": "9",
@@ -14514,7 +14514,7 @@
     },
     {
         "numero_do_alimento": 478,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
         "descricao_dos_alimentos": "Coco,  gua de",
         "umidade_(%)": "94,3",
         "energia_(kcal)": "22",
@@ -14544,7 +14544,7 @@
     },
     {
         "numero_do_alimento": 479,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
         "descricao_dos_alimentos": "Refrigerante, tipo  gua t nica",
         "umidade_(%)": "92,0",
         "energia_(kcal)": "31",
@@ -14569,7 +14569,7 @@
     },
     {
         "numero_do_alimento": 480,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
         "descricao_dos_alimentos": "Refrigerante, tipo cola",
         "umidade_(%)": "91,3",
         "energia_(kcal)": "34",
@@ -14594,8 +14594,8 @@
     },
     {
         "numero_do_alimento": 481,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
-        "descricao_dos_alimentos": "Refrigerante, tipo guaran ",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
+        "descricao_dos_alimentos": "Refrigerante, tipo guaraná",
         "umidade_(%)": "90,0",
         "energia_(kcal)": "39",
         "energia_(kj)": "162",
@@ -14619,7 +14619,7 @@
     },
     {
         "numero_do_alimento": 482,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
         "descricao_dos_alimentos": "Refrigerante, tipo laranja",
         "umidade_(%)": "88,2",
         "energia_(kcal)": "46",
@@ -14644,8 +14644,8 @@
     },
     {
         "numero_do_alimento": 483,
-        "categoria": "Bebidas (alco licas e n o alco licas)",
-        "descricao_dos_alimentos": "Refrigerante, tipo lim o",
+        "categoria": "Bebidas (alcoólicas e não alcoólicas)",
+        "descricao_dos_alimentos": "Refrigerante, tipo limão",
         "umidade_(%)": "89,7",
         "energia_(kcal)": "40",
         "energia_(kj)": "166",
@@ -14879,8 +14879,8 @@
     },
     {
         "numero_do_alimento": 491,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "Achocolatado, p ",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Achocolatado, pó",
         "umidade_(%)": "1,1",
         "energia_(kcal)": "401",
         "energia_(kj)": "1678",
@@ -14909,8 +14909,8 @@
     },
     {
         "numero_do_alimento": 492,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "A  car, cristal",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Açúcar, cristal",
         "umidade_(%)": "0,1",
         "energia_(kcal)": "387",
         "energia_(kj)": "1619",
@@ -14934,8 +14934,8 @@
     },
     {
         "numero_do_alimento": 493,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "A  car, mascavo",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Açúcar, mascavo",
         "umidade_(%)": "3,3",
         "energia_(kcal)": "369",
         "energia_(kj)": "1542",
@@ -14964,8 +14964,8 @@
     },
     {
         "numero_do_alimento": 494,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "A  car, refinado",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Açúcar, refinado",
         "umidade_(%)": "0,1",
         "energia_(kcal)": "387",
         "energia_(kj)": "1617",
@@ -14989,7 +14989,7 @@
     },
     {
         "numero_do_alimento": 495,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Chocolate, ao leite",
         "umidade_(%)": "1,3",
         "energia_(kcal)": "540",
@@ -15021,8 +15021,8 @@
     },
     {
         "numero_do_alimento": 496,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "Chocolate, ao leite, com castanha do Par ",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Chocolate, ao leite, com castanha do Pará",
         "umidade_(%)": "1,2",
         "energia_(kcal)": "559",
         "energia_(kj)": "2338",
@@ -15051,8 +15051,8 @@
     },
     {
         "numero_do_alimento": 497,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "Chocolate, ao leite, diet tico",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Chocolate, ao leite, dietético",
         "umidade_(%)": "1,7",
         "energia_(kcal)": "557",
         "energia_(kj)": "2330",
@@ -15081,7 +15081,7 @@
     },
     {
         "numero_do_alimento": 498,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Chocolate, meio amargo",
         "umidade_(%)": "1,0",
         "energia_(kcal)": "475",
@@ -15111,7 +15111,7 @@
     },
     {
         "numero_do_alimento": 499,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Cocada branca",
         "umidade_(%)": "3,4",
         "energia_(kcal)": "449",
@@ -15141,8 +15141,8 @@
     },
     {
         "numero_do_alimento": 500,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "Doce, de ab bora, cremoso",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Doce, de abóbora, cremoso",
         "umidade_(%)": "43,9",
         "energia_(kcal)": "199",
         "energia_(kj)": "832",
@@ -15171,7 +15171,7 @@
     },
     {
         "numero_do_alimento": 501,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Doce, de leite, cremoso",
         "umidade_(%)": "27,5",
         "energia_(kcal)": "306",
@@ -15203,8 +15203,8 @@
     },
     {
         "numero_do_alimento": 502,
-        "categoria": "Produtos a ucarados",
-        "descricao_dos_alimentos": "Gel ia, mocot , natural",
+        "categoria": "Produtos açucarados",
+        "descricao_dos_alimentos": "Geléia, mocotó, natural",
         "umidade_(%)": "73,5",
         "energia_(kcal)": "106",
         "energia_(kj)": "444",
@@ -15235,7 +15235,7 @@
     },
     {
         "numero_do_alimento": 503,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Glicose de milho",
         "umidade_(%)": "20,4",
         "energia_(kcal)": "292",
@@ -15265,7 +15265,7 @@
     },
     {
         "numero_do_alimento": 504,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Maria mole",
         "umidade_(%)": "21,6",
         "energia_(kcal)": "301",
@@ -15295,7 +15295,7 @@
     },
     {
         "numero_do_alimento": 505,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Maria mole, coco queimado",
         "umidade_(%)": "20,7",
         "energia_(kcal)": "307",
@@ -15325,7 +15325,7 @@
     },
     {
         "numero_do_alimento": 506,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Marmelada",
         "umidade_(%)": "28,5",
         "energia_(kcal)": "257",
@@ -15355,7 +15355,7 @@
     },
     {
         "numero_do_alimento": 507,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Mel, de abelha",
         "umidade_(%)": "15,8",
         "energia_(kcal)": "309",
@@ -15385,7 +15385,7 @@
     },
     {
         "numero_do_alimento": 508,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Melado",
         "umidade_(%)": "22,1",
         "energia_(kcal)": "297",
@@ -15415,7 +15415,7 @@
     },
     {
         "numero_do_alimento": 509,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Quindim",
         "umidade_(%)": "23,9",
         "energia_(kcal)": "411",
@@ -15445,7 +15445,7 @@
     },
     {
         "numero_do_alimento": 510,
-        "categoria": "Produtos a ucarados",
+        "categoria": "Produtos açucarados",
         "descricao_dos_alimentos": "Rapadura",
         "umidade_(%)": "7,1",
         "energia_(kcal)": "352",
@@ -15475,8 +15475,8 @@
     },
     {
         "numero_do_alimento": 511,
-        "categoria": "Miscel neas",
-        "descricao_dos_alimentos": "Caf , p , torrado",
+        "categoria": "Miscelâneas",
+        "descricao_dos_alimentos": "Café, pó, torrado",
         "umidade_(%)": "2,9",
         "energia_(kcal)": "419",
         "energia_(kj)": "1752",
@@ -15505,8 +15505,8 @@
     },
     {
         "numero_do_alimento": 512,
-        "categoria": "Miscel neas",
-        "descricao_dos_alimentos": "Capuccino, p ",
+        "categoria": "Miscelâneas",
+        "descricao_dos_alimentos": "Capuccino, pó",
         "umidade_(%)": "2,6",
         "energia_(kcal)": "417",
         "energia_(kj)": "1746",
@@ -15535,8 +15535,8 @@
     },
     {
         "numero_do_alimento": 513,
-        "categoria": "Miscel neas",
-        "descricao_dos_alimentos": "Fermento em p , qu mico",
+        "categoria": "Miscelâneas",
+        "descricao_dos_alimentos": "Fermento em pó, químico",
         "umidade_(%)": "7,1",
         "energia_(kcal)": "90",
         "energia_(kj)": "375",
@@ -15565,8 +15565,8 @@
     },
     {
         "numero_do_alimento": 514,
-        "categoria": "Miscel neas",
-        "descricao_dos_alimentos": "Fermento, biol gico, levedura, tablete",
+        "categoria": "Miscelâneas",
+        "descricao_dos_alimentos": "Fermento, biológico, levedura, tablete",
         "umidade_(%)": "71,9",
         "energia_(kcal)": "90",
         "energia_(kj)": "376",
@@ -15595,8 +15595,8 @@
     },
     {
         "numero_do_alimento": 515,
-        "categoria": "Miscel neas",
-        "descricao_dos_alimentos": "Gelatina, sabores variados, p ",
+        "categoria": "Miscelâneas",
+        "descricao_dos_alimentos": "Gelatina, sabores variados, pó",
         "umidade_(%)": "1,2",
         "energia_(kcal)": "380",
         "energia_(kj)": "1591",
@@ -15625,8 +15625,8 @@
     },
     {
         "numero_do_alimento": 516,
-        "categoria": "Miscel neas",
-        "descricao_dos_alimentos": "Sal, diet tico",
+        "categoria": "Miscelâneas",
+        "descricao_dos_alimentos": "Sal, dietético",
         "umidade_(%)": "0,6",
         "energia_(kcal)": "NA",
         "energia_(kj)": "NA",
@@ -15643,7 +15643,7 @@
     },
     {
         "numero_do_alimento": 517,
-        "categoria": "Miscel neas",
+        "categoria": "Miscelâneas",
         "descricao_dos_alimentos": "Sal, grosso",
         "umidade_(%)": "0,4",
         "energia_(kcal)": "NA",
@@ -15659,7 +15659,7 @@
     },
     {
         "numero_do_alimento": 518,
-        "categoria": "Miscel neas",
+        "categoria": "Miscelâneas",
         "descricao_dos_alimentos": "Shoyu",
         "umidade_(%)": "70,6",
         "energia_(kcal)": "61",
@@ -15689,7 +15689,7 @@
     },
     {
         "numero_do_alimento": 519,
-        "categoria": "Miscel neas",
+        "categoria": "Miscelâneas",
         "descricao_dos_alimentos": "Tempero a base de sal",
         "umidade_(%)": "7,7",
         "energia_(kcal)": "21",
@@ -15918,7 +15918,7 @@
     {
         "numero_do_alimento": 527,
         "categoria": "Alimentos preparados",
-        "descricao_dos_alimentos": "Bai o de dois, arroz e Feijão-de-corda",
+        "descricao_dos_alimentos": "Baião de dois, arroz e Feijão-de-corda",
         "umidade_(%)": "69,1",
         "energia_(kcal)": "136",
         "energia_(kj)": "568",
@@ -16037,7 +16037,7 @@
     {
         "numero_do_alimento": 531,
         "categoria": "Alimentos preparados",
-        "descricao_dos_alimentos": "Camar o   baiana",
+        "descricao_dos_alimentos": "camarão   baiana",
         "umidade_(%)": "82,0",
         "energia_(kcal)": "101",
         "energia_(kj)": "422",
@@ -16157,7 +16157,7 @@
     {
         "numero_do_alimento": 535,
         "categoria": "Alimentos preparados",
-        "descricao_dos_alimentos": "Cux , molho",
+        "descricao_dos_alimentos": "Cuxá, molho",
         "umidade_(%)": "81,0",
         "energia_(kcal)": "80",
         "energia_(kj)": "335",
@@ -16740,7 +16740,7 @@
     {
         "numero_do_alimento": 554,
         "categoria": "Alimentos preparados",
-        "descricao_dos_alimentos": "Vatap ",
+        "descricao_dos_alimentos": "Vatapó",
         "umidade_(%)": "58,4",
         "energia_(kcal)": "255",
         "energia_(kj)": "1066",
@@ -17526,7 +17526,7 @@
     {
         "numero_do_alimento": 580,
         "categoria": "Leguminosas e derivados",
-        "descricao_dos_alimentos": "P -de-moleque, amendoim",
+        "descricao_dos_alimentos": "Pé-de-moleque, amendoim",
         "umidade_(%)": "2,9",
         "energia_(kcal)": "503",
         "energia_(kj)": "2105",
@@ -17586,7 +17586,7 @@
     {
         "numero_do_alimento": 582,
         "categoria": "Leguminosas e derivados",
-        "descricao_dos_alimentos": "Soja, extrato sol vel, natural, fluido",
+        "descricao_dos_alimentos": "Soja, extrato solúvel, natural, fluido",
         "umidade_(%)": "91,3",
         "energia_(kcal)": "39",
         "energia_(kj)": "164",
@@ -17616,7 +17616,7 @@
     {
         "numero_do_alimento": 583,
         "categoria": "Leguminosas e derivados",
-        "descricao_dos_alimentos": "Soja, extrato sol vel, p ",
+        "descricao_dos_alimentos": "Soja, extrato solúvel, pó",
         "umidade_(%)": "4,5",
         "energia_(kcal)": "459",
         "energia_(kj)": "1920",
@@ -17676,7 +17676,7 @@
     {
         "numero_do_alimento": 585,
         "categoria": "Leguminosas e derivados",
-        "descricao_dos_alimentos": "Tremo o, cru",
+        "descricao_dos_alimentos": "tremoço, cru",
         "umidade_(%)": "9,7",
         "energia_(kcal)": "381",
         "energia_(kj)": "1595",
@@ -17706,7 +17706,7 @@
     {
         "numero_do_alimento": 586,
         "categoria": "Leguminosas e derivados",
-        "descricao_dos_alimentos": "Tremo o, em conserva",
+        "descricao_dos_alimentos": "Tremoço, em conserva",
         "umidade_(%)": "67,7",
         "energia_(kcal)": "121",
         "energia_(kj)": "505",
@@ -18066,3 +18066,6 @@
         "medida_caseira": "1 porção média (100 g)"
     }
 ]
+
+
+
