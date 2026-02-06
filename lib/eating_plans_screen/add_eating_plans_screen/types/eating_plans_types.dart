@@ -3,12 +3,18 @@ import 'package:nutrikmais/eating_plans_screen/add_eating_plans_screen/modals/su
 class MealCard {
   String mealName;
   int totalCalories;
+  double totalProtein;
+  double totalLipids;
+  double totalCarbs;
   List<MealItem> items;
   List<String> selectedDays;
 
   MealCard({
     required this.mealName,
     required this.totalCalories,
+    this.totalProtein = 0,
+    this.totalLipids = 0,
+    this.totalCarbs = 0,
     this.items = const [],
     this.selectedDays = const [],
   }) {

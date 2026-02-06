@@ -10,7 +10,7 @@ class MealCardWidget extends StatefulWidget {
   final List<String> days;
   final bool isEditMode;
   final VoidCallback onRemove;
-  final Function(String, int, int) onAddItem;
+  final Function(String, int, int, double, double, double) onAddItem;
   final Function(int) onRemoveItem;
   final VoidCallback onDayChanged;
 
@@ -123,10 +123,20 @@ class _MealCardWidgetState extends State<MealCardWidget> {
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
                                   ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  'peso: ${item.weight}g - ${item.calories} calorias',
+                                  'Peso: ${item.weight}g - ${item.calories} calorias',
+                                  style: const TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  'Prot: ${item.protein.toStringAsFixed(1)}g | Lip: ${item.lipids.toStringAsFixed(1)}g | Carb: ${item.carbs.toStringAsFixed(1)}g',
                                   style: const TextStyle(
                                     fontSize: 10,
                                     color: Colors.grey,
@@ -234,9 +244,17 @@ class _MealCardWidgetState extends State<MealCardWidget> {
                     foodNameController: _foodNameController,
                     weightController: _weightController,
                     caloriesController: _caloriesController,
-                    onAddFood: (foodName, weight, calories) {
-                      widget.onAddItem(foodName, weight, calories);
-                    },
+                    onAddFood:
+                        (foodName, weight, calories, protein, lipids, carbs) {
+                          widget.onAddItem(
+                            foodName,
+                            weight,
+                            calories,
+                            protein,
+                            lipids,
+                            carbs,
+                          );
+                        },
                   );
                 },
                 title: "adicionar alimento",

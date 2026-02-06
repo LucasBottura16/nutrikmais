@@ -9,6 +9,7 @@ import 'package:nutrikmais/eating_plans_screen/add_eating_plans_screen/modals/ad
 import 'package:nutrikmais/eating_plans_screen/add_eating_plans_screen/modals/suggestions_modal.dart';
 import 'package:nutrikmais/eating_plans_screen/add_eating_plans_screen/types/eating_plans_types.dart';
 import 'package:nutrikmais/eating_plans_screen/add_eating_plans_screen/components/meal_card_widget.dart';
+import 'package:nutrikmais/eating_plans_screen/models/eating_plans_model.dart';
 
 class AddEatingPlansView extends StatefulWidget {
   const AddEatingPlansView({super.key});
@@ -239,30 +240,59 @@ class _AddEatingPlansViewState extends State<AddEatingPlansView> {
                                 _mealCards.removeAt(index);
                               });
                             },
-                            onAddItem: (foodName, weight, calories) {
-                              setState(() {
-                                meal.items.add(
-                                  MealItem(
-                                    foodName: foodName,
-                                    weight: weight,
-                                    calories: calories,
-                                  ),
-                                );
-                                int newTotal = 0;
-                                for (var item in meal.items) {
-                                  newTotal += item.calories;
-                                }
-                                meal.totalCalories = newTotal;
-                              });
-                            },
+                            onAddItem:
+                                (
+                                  foodName,
+                                  weight,
+                                  calories,
+                                  protein,
+                                  lipids,
+                                  carbs,
+                                ) {
+                                  setState(() {
+                                    meal.items.add(
+                                      MealItem(
+                                        foodName: foodName,
+                                        weight: weight,
+                                        calories: calories,
+                                        protein: protein,
+                                        lipids: lipids,
+                                        carbs: carbs,
+                                      ),
+                                    );
+                                    int newTotalCalories = 0;
+                                    double newTotalProtein = 0;
+                                    double newTotalLipids = 0;
+                                    double newTotalCarbs = 0;
+                                    for (var item in meal.items) {
+                                      newTotalCalories += item.calories;
+                                      newTotalProtein += item.protein;
+                                      newTotalLipids += item.lipids;
+                                      newTotalCarbs += item.carbs;
+                                    }
+                                    meal.totalCalories = newTotalCalories;
+                                    meal.totalProtein = newTotalProtein;
+                                    meal.totalLipids = newTotalLipids;
+                                    meal.totalCarbs = newTotalCarbs;
+                                  });
+                                },
                             onRemoveItem: (itemIndex) {
                               setState(() {
                                 meal.items.removeAt(itemIndex);
-                                int newTotal = 0;
+                                int newTotalCalories = 0;
+                                double newTotalProtein = 0;
+                                double newTotalLipids = 0;
+                                double newTotalCarbs = 0;
                                 for (var item in meal.items) {
-                                  newTotal += item.calories;
+                                  newTotalCalories += item.calories;
+                                  newTotalProtein += item.protein;
+                                  newTotalLipids += item.lipids;
+                                  newTotalCarbs += item.carbs;
                                 }
-                                meal.totalCalories = newTotal;
+                                meal.totalCalories = newTotalCalories;
+                                meal.totalProtein = newTotalProtein;
+                                meal.totalLipids = newTotalLipids;
+                                meal.totalCarbs = newTotalCarbs;
                               });
                             },
                             onDayChanged: () {
@@ -354,17 +384,41 @@ class _AddEatingPlansViewState extends State<AddEatingPlansView> {
                   });
 
                   try {
-                    List<String> eatingPlansData = _mealCards.map((meal) {
-                      // Formato: Nome - Calorias\nDias: ...\nItens: nome(peso,cal)[sug1|sug2|...], ...
-                      String itemsString = meal.items
-                          .map((item) {
-                            String suggestions = item.suggestions.isNotEmpty
-                                ? '[${item.suggestions.join('|')}]'
-                                : '[]';
-                            return '${item.foodName}(${item.weight}g,${item.calories}cal)$suggestions';
-                          })
-                          .join(', ');
-                      return '${meal.mealName} - ${meal.totalCalories} calorias\nDias: ${meal.selectedDays.join(', ')}\nItens: $itemsString';
+                    List<EatingPlanMeal> eatingPlansData = _mealCards.map((
+                      meal,
+                    ) {
+                      return EatingPlanMeal(
+                        mealName: meal.mealName,
+                        totalCalories: meal.totalCalories,
+                        totalProtein: meal.totalProtein,
+                        totalLipids: meal.totalLipids,
+                        totalCarbs: meal.totalCarbs,
+                        days: meal.selectedDays,
+                        items: meal.items
+                            .map(
+                              (item) => EatingPlanItem(
+                                foodName: item.foodName,
+                                weight: item.weight,
+                                calories: item.calories,
+                                protein: item.protein,
+                                lipids: item.lipids,
+                                carbs: item.carbs,
+                                suggestions: item.suggestions
+                                    .map(
+                                      (sug) => EatingPlanSuggestion(
+                                        foodName: sug.foodName,
+                                        weight: sug.weight,
+                                        calories: sug.calories,
+                                        protein: sug.protein,
+                                        lipids: sug.lipids,
+                                        carbs: sug.carbs,
+                                      ),
+                                    )
+                                    .toList(),
+                              ),
+                            )
+                            .toList(),
+                      );
                     }).toList();
 
                     await _service.completedRegister(

@@ -259,6 +259,9 @@ class _EatingPlanDetailsViewState extends State<EatingPlanDetailsView> {
             foodName: item.foodName,
             weight: item.weight,
             calories: item.calories,
+            protein: item.protein,
+            lipids: item.lipids,
+            carbs: item.carbs,
             suggestions: item.suggestions,
           ),
           isEditMode: _isEditingMode,
@@ -293,10 +296,17 @@ class _EatingPlanDetailsViewState extends State<EatingPlanDetailsView> {
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 2),
                     Text(
-                      'peso: ${item.weight}g - ${item.calories} calorias',
+                      'Peso: ${item.weight}g - ${item.calories} calorias',
+                      style: const TextStyle(fontSize: 10, color: Colors.grey),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      'Prot: ${item.protein.toStringAsFixed(1)}g | Lip: ${item.lipids.toStringAsFixed(1)}g | Carb: ${item.carbs.toStringAsFixed(1)}g',
                       style: const TextStyle(fontSize: 10, color: Colors.grey),
                     ),
                     if (item.suggestions.isNotEmpty) ...[
@@ -420,13 +430,16 @@ class _EatingPlanDetailsViewState extends State<EatingPlanDetailsView> {
             foodNameController: _foodNameController,
             weightController: _weightController,
             caloriesController: _caloriesController,
-            onAddFood: (foodName, weight, calories) {
+            onAddFood: (foodName, weight, calories, protein, lipids, carbs) {
               setState(() {
                 meal.items.add(
                   MealDetailItem(
                     foodName: foodName,
                     weight: weight,
                     calories: calories,
+                    protein: protein,
+                    lipids: lipids,
+                    carbs: carbs,
                   ),
                 );
                 EatingPlanDetailsService.recalculateMealCalories(meal);

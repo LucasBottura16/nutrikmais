@@ -2,20 +2,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nutrikmais/globals/hooks/use_user_type.dart';
+import 'package:nutrikmais/eating_plans_screen/add_eating_plans_screen/modals/suggestions_modal.dart';
+import 'package:nutrikmais/eating_plans_screen/models/eating_plans_model.dart';
 
 class MealDetailItem {
   String foodName;
   int weight;
   int calories;
-  List<String> suggestions;
+  double protein;
+  double lipids;
+  double carbs;
+  List<SuggestionItem> suggestions;
 
   MealDetailItem({
     required this.foodName,
     required this.weight,
     required this.calories,
+    this.protein = 0,
+    this.lipids = 0,
+    this.carbs = 0,
     this.suggestions = const [],
   }) {
-    suggestions = List<String>.from(suggestions);
+    suggestions = List<SuggestionItem>.from(suggestions);
   }
 }
 
@@ -39,89 +47,39 @@ class EatingPlanDetailsService {
     return userPrefs.typeUser;
   }
 
-  static List<MealDetail> parseMealData(List<String> eatingPlans) {
+  static List<MealDetail> parseMealData(List<EatingPlanMeal> eatingPlans) {
     List<MealDetail> parsedMeals = [];
 
-    for (var mealString in eatingPlans) {
+    for (var meal in eatingPlans) {
       try {
-        // Parse format: "Nome - Calorias\nDias: ...\nItens: ..."
-        final lines = mealString.split('\n');
+        List<MealDetailItem> items = meal.items.map((item) {
+          List<SuggestionItem> suggestions = item.suggestions.map((sug) {
+            return SuggestionItem(
+              foodName: sug.foodName,
+              weight: sug.weight,
+              calories: sug.calories,
+              protein: sug.protein,
+              lipids: sug.lipids,
+              carbs: sug.carbs,
+            );
+          }).toList();
 
-        // Parse first line for meal name and calories
-        final firstLine = lines[0];
-        final firstLineParts = firstLine.split(' - ');
-        final mealName = firstLineParts[0].trim();
-        final caloriesText = firstLineParts.length > 1
-            ? firstLineParts[1].replaceAll(' calorias', '').trim()
-            : '0';
-        final totalCalories = int.tryParse(caloriesText) ?? 0;
-
-        // Parse days
-        List<String> days = [];
-        if (lines.length > 1 && lines[1].startsWith('Dias:')) {
-          final daysText = lines[1].replaceAll('Dias:', '').trim();
-          days = daysText.split(',').map((d) => d.trim()).toList();
-        }
-
-        // Parse items with suggestions
-        List<MealDetailItem> items = [];
-        if (lines.length > 2 && lines[2].startsWith('Itens:')) {
-          final itemsText = lines[2].replaceAll('Itens:', '').trim();
-
-          // Split by "), " but handle suggestions in brackets
-          final itemsList = <String>[];
-          var currentItem = '';
-          var bracketDepth = 0;
-
-          for (var i = 0; i < itemsText.length; i++) {
-            final char = itemsText[i];
-            if (char == '[') bracketDepth++;
-            if (char == ']') bracketDepth--;
-
-            currentItem += char;
-
-            // Check if we're at a delimiter and not inside brackets
-            if (i < itemsText.length - 2 &&
-                itemsText.substring(i, i + 2) == ', ' &&
-                bracketDepth == 0) {
-              itemsList.add(currentItem.trim());
-              currentItem = '';
-              i++; // Skip the space after comma
-            }
-          }
-          if (currentItem.trim().isNotEmpty) {
-            itemsList.add(currentItem.trim());
-          }
-
-          for (var itemStr in itemsList) {
-            // Format: "alimento(peso,cal)[sug1|sug2|...]" or "alimento(peso,cal)[]"
-            final match = RegExp(
-              r'(.+?)\((\d+)g,(\d+)cal\)\[(.*)\]',
-            ).firstMatch(itemStr);
-
-            if (match != null) {
-              final suggestionsStr = match.group(4)!;
-              final suggestions = suggestionsStr.isEmpty
-                  ? <String>[]
-                  : suggestionsStr.split('|');
-
-              items.add(
-                MealDetailItem(
-                  foodName: match.group(1)!.trim(),
-                  weight: int.parse(match.group(2)!),
-                  calories: int.parse(match.group(3)!),
-                  suggestions: suggestions,
-                ),
-              );
-            }
-          }
-        }
+          return MealDetailItem(
+            foodName: item.foodName,
+            weight: item.weight,
+            calories: item.calories,
+            protein: item.protein,
+            lipids: item.lipids,
+            carbs: item.carbs,
+            suggestions: suggestions,
+          );
+        }).toList();
 
         parsedMeals.add(
           MealDetail(
-            mealName: mealName,
-            totalCalories: totalCalories,
-            days: days,
+            mealName: meal.mealName,
+            totalCalories: meal.totalCalories,
+            days: meal.days,
             items: items,
           ),
         );
@@ -142,17 +100,50 @@ class EatingPlanDetailsService {
     }).toList();
   }
 
-  static List<String> convertMealsToString(List<MealDetail> meals) {
+  static List<EatingPlanMeal> convertMealsToEatingPlanMeal(
+    List<MealDetail> meals,
+  ) {
     return meals.map((meal) {
-      String itemsString = meal.items
-          .map((item) {
-            String suggestions = item.suggestions.isNotEmpty
-                ? '[${item.suggestions.join('|')}]'
-                : '[]';
-            return '${item.foodName}(${item.weight}g,${item.calories}cal)$suggestions';
-          })
-          .join(', ');
-      return '${meal.mealName} - ${meal.totalCalories} calorias\nDias: ${meal.days.join(', ')}\nItens: $itemsString';
+      double totalProtein = 0;
+      double totalLipids = 0;
+      double totalCarbs = 0;
+
+      List<EatingPlanItem> items = meal.items.map((item) {
+        totalProtein += item.protein;
+        totalLipids += item.lipids;
+        totalCarbs += item.carbs;
+
+        List<EatingPlanSuggestion> suggestions = item.suggestions.map((sug) {
+          return EatingPlanSuggestion(
+            foodName: sug.foodName,
+            weight: sug.weight,
+            calories: sug.calories,
+            protein: sug.protein,
+            lipids: sug.lipids,
+            carbs: sug.carbs,
+          );
+        }).toList();
+
+        return EatingPlanItem(
+          foodName: item.foodName,
+          weight: item.weight,
+          calories: item.calories,
+          protein: item.protein,
+          lipids: item.lipids,
+          carbs: item.carbs,
+          suggestions: suggestions,
+        );
+      }).toList();
+
+      return EatingPlanMeal(
+        mealName: meal.mealName,
+        totalCalories: meal.totalCalories,
+        totalProtein: totalProtein,
+        totalLipids: totalLipids,
+        totalCarbs: totalCarbs,
+        days: meal.days,
+        items: items,
+      );
     }).toList();
   }
 
@@ -161,13 +152,16 @@ class EatingPlanDetailsService {
     List<MealDetail> meals,
   ) async {
     try {
-      final eatingPlansData = convertMealsToString(meals);
+      final eatingPlansData = convertMealsToEatingPlanMeal(meals);
+      final eatingPlansMap = eatingPlansData
+          .map((meal) => meal.toMap())
+          .toList();
 
       await FirebaseFirestore.instance
           .collection('EatingPlans')
           .doc(uidEatingPlans)
           .update({
-            'eatingPlans': eatingPlansData,
+            'eatingPlans': eatingPlansMap,
             'eatingPlansUpdatedAt': DateFormat(
               'dd/MM/yyyy',
             ).format(DateTime.now()),

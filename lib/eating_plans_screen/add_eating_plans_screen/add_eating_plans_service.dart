@@ -30,7 +30,7 @@ class AddEatingPlansService {
     BuildContext context,
     String uidAccount,
     String patient,
-    List<String>? eatingPlans,
+    List<EatingPlanMeal>? eatingPlans,
   ) async {
     if (uidAccount.isEmpty || patient.isEmpty || eatingPlans == null) {
       showDialog(
@@ -57,7 +57,7 @@ class AddEatingPlansService {
   Future<void> completedRegister(
     String uidAccount,
     String patient,
-    List<String>? eatingPlans,
+    List<EatingPlanMeal>? eatingPlans,
   ) async {
     DBEatingPlans eatingPlanData = DBEatingPlans();
 

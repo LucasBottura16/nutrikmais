@@ -23,7 +23,6 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
   late StreamController<QuerySnapshot> _controllerStream;
   final bool _isLoading = false;
   StreamSubscription<QuerySnapshot>? _subscription;
-  String? _selectedPatientName;
   String? _selectedPatientUid;
 
   String _typeUser = "";
@@ -103,7 +102,6 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
                                       _subscription?.cancel();
                                       if (selectedUid.isEmpty) {
                                         setState(() {
-                                          _selectedPatientName = null;
                                           _selectedPatientUid = null;
                                         });
                                         _subscription =
@@ -112,29 +110,6 @@ class _BioimpedanceViewState extends State<BioimpedanceView> {
                                               typeUser: _typeUser,
                                             );
                                       } else {
-                                        final doc = await FirebaseFirestore
-                                            .instance
-                                            .collection('Bioimpedance')
-                                            .where(
-                                              'uidPatient',
-                                              isEqualTo: selectedUid,
-                                            )
-                                            .limit(1)
-                                            .get();
-                                        final patientName = doc.docs.isNotEmpty
-                                            ? (doc.docs.first
-                                                          .data()['patientName'] ??
-                                                      doc.docs.first
-                                                          .data()['patient'] ??
-                                                      '')
-                                                  .toString()
-                                            : '';
-
-                                        setState(() {
-                                          _selectedPatientName = patientName;
-                                          _selectedPatientUid = selectedUid;
-                                        });
-
                                         _subscription =
                                             BioimpedanceService.addListenerBioimpedances(
                                               _controllerStream,
