@@ -4,6 +4,7 @@ import 'package:nutrikmais/globals/customs/Widgets/app_bar.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
 import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:nutrikmais/globals/customs/components/custom_input_field.dart';
+import 'package:nutrikmais/utils/masks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileInfosPatientView extends StatefulWidget {
@@ -142,11 +143,15 @@ class _ProfileInfosPatientViewState extends State<ProfileInfosPatientView> {
                     CustomInputField(
                       controller: _controllerPhonePatient,
                       labelText: 'Telefone',
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [MasksInput.phoneFormatter],
+                      maxLength: 15,
                     ),
                     const SizedBox(height: 10),
                     CustomInputField(
                       controller: _controllerAddressPatient,
                       labelText: 'Endereço',
+                      maxLength: 120,
                     ),
                     const SizedBox(height: 20),
                     CustomButton(

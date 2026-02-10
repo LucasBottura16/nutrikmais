@@ -57,6 +57,7 @@ class _FormPatientState extends State<FormPatient> {
             controller: _controllerCodePatient,
             labelText: "CÓDIGO DO PACIENTE",
             hintText: "Insira o código passado pelo seu nutricionista",
+            maxLength: 6,
           ),
           foundPatient == null
               ? Container()
@@ -96,16 +97,21 @@ class _FormPatientState extends State<FormPatient> {
                       labelText: "NOME DO PACIENTE",
                       hintText: "Nome do paciente",
                       controller: _controllerNamePatient,
+                      maxLength: 60,
                     ),
                     CustomInputField(
                       labelText: "ENDEREÇO",
                       hintText: "Endereço do paciente",
                       controller: _controllerAddressPatient,
+                      maxLength: 120,
                     ),
                     CustomInputField(
                       labelText: "TELEFONE",
                       hintText: "Telefone do paciente",
                       controller: _controllerPhonePatient,
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [MasksInput.phoneFormatter],
+                      maxLength: 15,
                     ),
                     CustomInputField(
                       labelText: "CPF",
@@ -113,6 +119,7 @@ class _FormPatientState extends State<FormPatient> {
                       controller: _controllerCPFPatient,
                       keyboardType: TextInputType.number,
                       inputFormatters: [MasksInput.cpfFormatter],
+                      maxLength: 14,
                     ),
                     SizedBox(height: 15),
                     Text(
@@ -128,12 +135,14 @@ class _FormPatientState extends State<FormPatient> {
                       hintText: "Email do paciente",
                       controller: _controllerEmail,
                       keyboardType: TextInputType.emailAddress,
+                      maxLength: 100,
                     ),
                     CustomInputField(
                       labelText: "SENHA",
                       hintText: "Senha do paciente",
                       controller: _controllerPassord,
                       obscureText: true,
+                      maxLength: 32,
                     ),
                   ],
                 ),

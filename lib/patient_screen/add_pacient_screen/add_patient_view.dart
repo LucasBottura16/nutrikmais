@@ -46,6 +46,7 @@ class _AddPatientViewState extends State<AddPatientView> {
                         controller: _controllerPatient,
                         labelText: "Nome do Paciente",
                         hintText: "Digite o nome do paciente",
+                        maxLength: 60,
                       ),
                       SizedBox(height: 16),
                       CustomDropdown<String>(
@@ -65,6 +66,7 @@ class _AddPatientViewState extends State<AddPatientView> {
                         hintText: "Digite a data de nascimento (dd/mm/aaaa)",
                         keyboardType: TextInputType.number,
                         inputFormatters: [MasksInput.birthDateFormatter],
+                        maxLength: 10,
                       ),
                       CustomInputField(
                         controller: _controllerPhone,
@@ -72,17 +74,20 @@ class _AddPatientViewState extends State<AddPatientView> {
                         hintText: "(11) 9 9999-9999",
                         keyboardType: TextInputType.phone,
                         inputFormatters: [MasksInput.phoneFormatter],
+                        maxLength: 15,
                       ),
                       CustomInputField(
                         controller: _controllerAddress,
                         labelText: "Endereço",
                         hintText: "Digite o endereço do paciente",
+                        maxLength: 120,
                       ),
                       CustomInputField(
                         controller: _controllerEmail,
                         labelText: "Email",
                         hintText: "Digite o email do paciente",
                         keyboardType: TextInputType.emailAddress,
+                        maxLength: 100,
                       ),
                     ],
                   ),

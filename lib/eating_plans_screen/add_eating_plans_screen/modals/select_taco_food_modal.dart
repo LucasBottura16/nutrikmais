@@ -161,6 +161,7 @@ class _SelectTacoFoodDialogState extends State<_SelectTacoFoodDialog> {
               controller: _searchController,
               labelText: 'Buscar alimento...',
               prefixIcon: Icons.search,
+              maxLength: 60,
             ),
             const SizedBox(height: 12),
             CustomDropdown(

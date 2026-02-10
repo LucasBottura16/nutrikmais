@@ -141,6 +141,7 @@ class _LoginViewState extends State<LoginView> {
                         hintStyle: const TextStyle(color: Colors.white),
                         autoFocus: true,
                         keyboardType: TextInputType.emailAddress,
+                        maxLength: 100,
                         style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -165,6 +166,7 @@ class _LoginViewState extends State<LoginView> {
                         spacingHeight: 0,
                         hintStyle: const TextStyle(color: Colors.white),
                         obscureText: true,
+                        maxLength: 32,
                         style: const TextStyle(
                           fontSize: 18,
                           color: Colors.white,

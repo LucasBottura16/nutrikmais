@@ -213,6 +213,7 @@ class _AddOrientationsViewState extends State<AddOrientationsView> {
                           controller: _orientationController,
                           hintText: 'Adicione uma orientação',
                           labelText: 'Sem texto',
+                          maxLength: 200,
                         ),
                       ),
                       const SizedBox(width: 8),

@@ -43,6 +43,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
           controller: _controllerNutritionist,
           labelText: "NOME COMPLETO",
           hintText: "Digite seu nome",
+          maxLength: 60,
         ),
         CustomInputField(
           controller: _controllerCPF,
@@ -50,6 +51,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
           hintText: "000.000.000-00",
           keyboardType: TextInputType.number,
           inputFormatters: [MasksInput.cpfFormatter],
+          maxLength: 14,
         ),
         CustomInputField(
           controller: _controllerCRN,
@@ -57,6 +59,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
           hintText: "3 12345",
           keyboardType: TextInputType.number,
           prefix: "CRN-",
+          maxLength: 6,
         ),
         const SizedBox(height: 10),
         CustomDropdown<String>(
@@ -98,6 +101,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
           controller: _controllerAddress,
           labelText: "ENDEREÇO",
           hintText: "nome da rua",
+          maxLength: 120,
         ),
         CustomInputField(
           controller: _controllerPhone,
@@ -105,6 +109,7 @@ class _FormNutritionistState extends State<FormNutritionist> {
           hintText: "(11) 9 9999-9999",
           keyboardType: TextInputType.number,
           inputFormatters: [MasksInput.phoneFormatter],
+          maxLength: 15,
         ),
         const SizedBox(height: 30),
         const Text(
@@ -115,12 +120,15 @@ class _FormNutritionistState extends State<FormNutritionist> {
           controller: _controllerEmail,
           labelText: "EMAIL",
           hintText: "exemplo@email.com",
+          keyboardType: TextInputType.emailAddress,
+          maxLength: 100,
         ),
         CustomInputField(
           controller: _controllerPassword,
           labelText: "SENHA",
           hintText: "******",
           obscureText: true,
+          maxLength: 32,
         ),
         const SizedBox(height: 20),
         CustomButton(

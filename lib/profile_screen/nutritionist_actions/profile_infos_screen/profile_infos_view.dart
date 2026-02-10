@@ -6,6 +6,7 @@ import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:nutrikmais/globals/customs/components/custom_dropdown.dart';
 import 'package:nutrikmais/globals/customs/components/custom_input_field.dart';
 import 'package:nutrikmais/globals/customs/components/customs_multidropdown.dart';
+import 'package:nutrikmais/utils/masks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileInfosView extends StatefulWidget {
@@ -117,11 +118,15 @@ class _ProfileInfosViewState extends State<ProfileInfosView> {
                     CustomInputField(
                       controller: _controllerPhoneNutri,
                       labelText: 'Telefone',
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [MasksInput.phoneFormatter],
+                      maxLength: 15,
                     ),
                     const SizedBox(height: 10),
                     CustomInputField(
                       controller: _controllerAddressNutri,
                       labelText: 'Endereço',
+                      maxLength: 120,
                     ),
                     const SizedBox(height: 10),
                     CustomDropdown<String>(

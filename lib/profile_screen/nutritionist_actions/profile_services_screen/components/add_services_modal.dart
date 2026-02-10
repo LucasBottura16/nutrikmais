@@ -90,6 +90,7 @@ class _AddServiceSheetState extends State<AddServiceSheet> {
               controller: _nomeController,
               labelText: "Nome do Serviço",
               hintText: "insira um serviço",
+              maxLength: 60,
               validator: (value) => (value?.isEmpty ?? true)
                   ? "Por favor, insira um nome."
                   : null,
@@ -100,6 +101,7 @@ class _AddServiceSheetState extends State<AddServiceSheet> {
               controller: _descricaoController,
               labelText: "Descrição do Serviço",
               hintText: "insira uma desrcrição",
+              maxLength: 160,
               validator: (value) => (value?.isEmpty ?? true)
                   ? "Por favor, insira uma descrição."
                   : null,
@@ -110,6 +112,7 @@ class _AddServiceSheetState extends State<AddServiceSheet> {
               labelText: "Preço do Serviço",
               hintText: "R\$ 00.00",
               inputFormatters: [MasksInput.currencyRealFormatter],
+              maxLength: 15,
               validator: (value) => (value?.isEmpty ?? true)
                   ? "Por favor, insira um preço."
                   : null,

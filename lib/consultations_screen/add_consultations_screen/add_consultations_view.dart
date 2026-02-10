@@ -267,11 +267,13 @@ class _AddConsultationsViewState extends State<AddConsultationsView> {
                                   labelText: 'Local da Consulta',
                                   hintText: 'Digite o local da consulta',
                                   controller: _placeController,
+                                  maxLength: 120,
                                 )
                               : CustomInputField(
                                   labelText: 'Link da Consulta',
                                   hintText: 'Digite o link da consulta',
                                   controller: _placeController,
+                                  maxLength: 200,
                                 )
                         : SizedBox(),
                     const SizedBox(height: 12),

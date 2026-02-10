@@ -120,6 +120,7 @@ void showAddFoodDialog({
                     controller: foodNameController,
                     hintText: 'nome do alimento',
                     labelText: 'Alimento',
+                    maxLength: 60,
                   ),
                   const SizedBox(height: 12),
                   CustomInputField(
@@ -127,6 +128,7 @@ void showAddFoodDialog({
                     hintText: 'Ex: 150 (g)',
                     labelText: 'Medidas',
                     keyboardType: TextInputType.number,
+                    maxLength: 5,
                   ),
                   const SizedBox(height: 12),
                   CustomInputField(
@@ -134,6 +136,7 @@ void showAddFoodDialog({
                     hintText: 'Ex: 90',
                     labelText: 'Calorias',
                     keyboardType: TextInputType.number,
+                    maxLength: 6,
                   ),
                   const SizedBox(height: 12),
                   CustomInputField(
@@ -141,6 +144,7 @@ void showAddFoodDialog({
                     hintText: 'Ex: 10,5',
                     labelText: 'Proteína (g)',
                     keyboardType: TextInputType.number,
+                    maxLength: 6,
                   ),
                   const SizedBox(height: 12),
                   CustomInputField(
@@ -148,6 +152,7 @@ void showAddFoodDialog({
                     hintText: 'Ex: 5,2',
                     labelText: 'Lipídios (g)',
                     keyboardType: TextInputType.number,
+                    maxLength: 6,
                   ),
                   const SizedBox(height: 12),
                   CustomInputField(
@@ -155,6 +160,7 @@ void showAddFoodDialog({
                     hintText: 'Ex: 15,8',
                     labelText: 'Carboidratos (g)',
                     keyboardType: TextInputType.number,
+                    maxLength: 6,
                   ),
                 ],
               ),

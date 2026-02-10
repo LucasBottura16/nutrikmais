@@ -27,6 +27,7 @@ class CustomInputField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final UnderlineInputBorder? enabledBorder;
   final UnderlineInputBorder? focusedBorder;
+  final bool showCounter;
 
   const CustomInputField({
     super.key,
@@ -55,6 +56,7 @@ class CustomInputField extends StatelessWidget {
     this.contentPadding,
     this.enabledBorder,
     this.focusedBorder,
+    this.showCounter = false,
   });
 
   @override
@@ -85,6 +87,16 @@ class CustomInputField extends StatelessWidget {
           style: style,
           maxLength: maxLength,
           autofocus: autoFocus,
+          buildCounter: showCounter
+              ? null
+              : (
+                  BuildContext context, {
+                  required int currentLength,
+                  required bool isFocused,
+                  required int? maxLength,
+                }) {
+                  return null;
+                },
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: hintStyle,

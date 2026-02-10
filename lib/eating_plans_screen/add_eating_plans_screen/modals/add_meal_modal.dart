@@ -19,6 +19,7 @@ void showAddMealDialog({
               controller: mealNameController,
               hintText: 'Ex: Café da Manhã',
               labelText: 'Nome da Refeição',
+              maxLength: 40,
             ),
           ],
         ),

@@ -98,6 +98,7 @@ class _TabelaAlimentosViewState extends State<TabelaAlimentosView> {
               controller: _searchController,
               labelText: 'Buscar alimento...',
               prefixIcon: Icons.search,
+              maxLength: 60,
             ),
             const SizedBox(height: 16),
 
