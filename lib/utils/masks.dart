@@ -21,6 +21,12 @@ class MasksInput {
     filter: {"#": RegExp(r'[0-9]')}, // Permite apenas dígitos
     type: MaskAutoCompletionType.lazy, // Tipo de preenchimento da máscara
   );
+
+  static var birthDateFormatter = MaskTextInputFormatter(
+    mask: '##/##/####',
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.lazy,
+  );
 }
 
 class CurrencyInputFormatter extends MaskTextInputFormatter {

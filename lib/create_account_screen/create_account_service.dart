@@ -145,7 +145,7 @@ class CreateAccountService {
     BuildContext context,
     String uidNutritionist,
     String gender,
-    String age,
+    String birthDate,
     String codePatient,
     String lastschedule,
     String photo,
@@ -168,7 +168,7 @@ class CreateAccountService {
         userCredential.user!.uid,
         uidNutritionist,
         gender,
-        age,
+        birthDate,
         codePatient,
         lastschedule,
         photo,
@@ -202,7 +202,7 @@ class CreateAccountService {
     String uidPatient,
     String uidNutritionist,
     String gender,
-    String age,
+   String birthDate,
     String codePatient,
     String lastschedule,
     String photo,
@@ -223,7 +223,7 @@ class CreateAccountService {
     patient.email = email;
     patient.typeUser = typeUser;
     patient.gender = gender;
-    patient.age = age;
+    patient.birthDate = birthDate;
     patient.codePatient = codePatient;
     patient.photo = photo;
     patient.lastschedule = lastschedule;

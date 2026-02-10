@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
+import 'package:nutrikmais/utils/age_utils.dart';
 import 'package:nutrikmais/utils/random_key.dart';
 
 class AddPatientService {
@@ -17,14 +18,14 @@ class AddPatientService {
     BuildContext context,
     String patient,
     String gender,
-    String age,
+    String birthDate,
     String phone,
     String address,
     String email,
   ) async {
     if (patient.isEmpty ||
         phone.isEmpty ||
-        age.isEmpty ||
+        birthDate.isEmpty ||
         gender.isEmpty ||
         address.isEmpty ||
         email.isEmpty) {
@@ -42,7 +43,33 @@ class AddPatientService {
         },
       );
     } else {
-      await completedRegister(patient, gender, age, phone, address, email);
+      final int? age = AgeUtils.calculateAgeFromBirthDate(birthDate);
+
+      if (age == null) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return const AlertDialog(
+              title: Text("Data de nascimento inválida"),
+              content: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [Text("Informe uma data válida (dd/mm/aaaa).")],
+              ),
+            );
+          },
+        );
+        return;
+      }
+
+      await completedRegister(
+        patient,
+        gender,
+        birthDate,
+        phone,
+        address,
+        email,
+      );
 
       if (!context.mounted) return;
       Navigator.pop(context);
@@ -52,7 +79,7 @@ class AddPatientService {
   Future<void> completedRegister(
     String patient,
     String gender,
-    String age,
+    String birthDate,
     String phone,
     String address,
     String email,
@@ -60,7 +87,7 @@ class AddPatientService {
     DBPatientModel patients = DBPatientModel();
     patients.patient = patient;
     patients.gender = gender;
-    patients.age = age;
+    patients.birthDate = birthDate;
     patients.phone = phone;
     patients.address = address;
     patients.email = email;

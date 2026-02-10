@@ -4,7 +4,7 @@ class DBPatientModel {
   String? _uidPatient;
   String? _patient;
   String? _gender;
-  String? _age;
+  String? _birthDate;
   String? _phone;
   String? _cpf;
   String? _address;
@@ -22,11 +22,12 @@ class DBPatientModel {
   DBPatientModel.fromDocumentSnapshotPatients(
     DocumentSnapshot documentSnapshot,
   ) {
+    final data = documentSnapshot.data() as Map<String, dynamic>;
     uidAccount = documentSnapshot['uidAccount'];
     uidNutritionistPatient = documentSnapshot['uidNutritionist'];
     patient = documentSnapshot['patient'];
     gender = documentSnapshot['gender'];
-    age = documentSnapshot['age'];
+    birthDate = data['birthDate'] ?? '';
     phone = documentSnapshot['phone'];
     address = documentSnapshot['address'];
     email = documentSnapshot['email'];
@@ -45,7 +46,7 @@ class DBPatientModel {
         'uidAccount': uidAccount,
         'patient': _patient,
         'gender': _gender,
-        'age': _age,
+        'birthDate': _birthDate,
         'phone': _phone,
         'address': _address,
         'cpf': _cpf,
@@ -127,10 +128,10 @@ class DBPatientModel {
     _phone = value;
   }
 
-  String get age => _age!;
+  String get birthDate => _birthDate!;
 
-  set age(String value) {
-    _age = value;
+  set birthDate(String value) {
+    _birthDate = value;
   }
 
   String get gender => _gender!;

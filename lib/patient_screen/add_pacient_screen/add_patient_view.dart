@@ -16,7 +16,7 @@ class AddPatientView extends StatefulWidget {
 
 class _AddPatientViewState extends State<AddPatientView> {
   final TextEditingController _controllerPatient = TextEditingController();
-  final TextEditingController _controllerAge = TextEditingController();
+  final TextEditingController _controllerBirthYear = TextEditingController();
   final TextEditingController _controllerPhone = TextEditingController();
   final TextEditingController _controllerAddress = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
@@ -60,10 +60,11 @@ class _AddPatientViewState extends State<AddPatientView> {
                         labelText: 'Genêro',
                       ),
                       CustomInputField(
-                        controller: _controllerAge,
-                        labelText: "Idade",
-                        hintText: "Digite a idade do paciente",
+                        controller: _controllerBirthYear,
+                        labelText: "Data de nascimento",
+                        hintText: "Digite a data de nascimento (dd/mm/aaaa)",
                         keyboardType: TextInputType.number,
+                        inputFormatters: [MasksInput.birthDateFormatter],
                       ),
                       CustomInputField(
                         controller: _controllerPhone,
@@ -102,7 +103,7 @@ class _AddPatientViewState extends State<AddPatientView> {
                       context,
                       _controllerPatient.text,
                       _selectedGender ?? '',
-                      _controllerAge.text,
+                      _controllerBirthYear.text,
                       _controllerPhone.text,
                       _controllerAddress.text,
                       _controllerEmail.text,

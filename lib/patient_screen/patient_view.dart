@@ -11,6 +11,7 @@ import 'package:nutrikmais/globals/customs/components/custom_button.dart';
 import 'package:nutrikmais/globals/customs/components/custom_loading_data.dart';
 import 'package:nutrikmais/globals/customs/Widgets/my_drawer.dart';
 import 'package:nutrikmais/globals/customs/Widgets/select_patient_modal.dart';
+import 'package:nutrikmais/utils/age_utils.dart';
 
 class PatientView extends StatefulWidget {
   const PatientView({super.key});
@@ -232,7 +233,7 @@ class _PatientViewState extends State<PatientView> {
                                                       ),
                                                       const SizedBox(width: 10),
                                                       Text(
-                                                        "Idade: ${myPatient.age} anos",
+                                                        "Idade: ${AgeUtils.calculateAgeFromBirthDate(myPatient.birthDate)} anos",
                                                         style: const TextStyle(
                                                           fontSize: 13,
                                                           fontWeight:

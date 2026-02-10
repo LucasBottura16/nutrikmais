@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nutrikmais/patient_screen/models/patient_model.dart';
 import 'package:nutrikmais/globals/configs/colors.dart';
+import 'package:nutrikmais/utils/age_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ModalPatientView extends StatefulWidget {
@@ -85,6 +86,14 @@ class _ModalPatientViewState extends State<ModalPatientView> {
               ),
               Text(
                 "Telefone: ${widget.patient.phone}",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.grey,
+                ),
+              ),
+              Text(
+                "Idade: ${AgeUtils.calculateAgeFromBirthDate(widget.patient.birthDate)} anos",
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w400,

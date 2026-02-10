@@ -201,7 +201,7 @@ class _FormPatientState extends State<FormPatient> {
                       context,
                       foundPatient!.uidNutritionistPatient,
                       foundPatient!.gender,
-                      foundPatient!.age,
+                      foundPatient!.birthDate,
                       foundPatient!.codePatient,
                       foundPatient!.lastschedule,
                       foundPatient!.photo,
